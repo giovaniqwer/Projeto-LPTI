@@ -1,0 +1,1 @@
+8/03 - Utilizar uma senha previamente definida para se criar usuários administradoras. Essa senha é distribuída a todos os professores interessados. 
