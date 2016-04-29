@@ -75,15 +75,15 @@ color: #FFF;
 font-size: 35px;
 letter-spacing: 5px;
 font-weight: 900;
-background-color:rgb(000, 153, 255);
+background-color:rgb(34, 34, 34);
 padding-bottom: 60px;
 }
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-border-color: rgb(000, 153, 255);
+border-color: rgb(000, 152, 241);
 }
 .navbar-inverse {
-border-color: rgb(000, 153, 255);
+border-color: rgb(000, 152, 241);
 }
 .navbar-fixed-top {
 top: 0;
@@ -97,10 +97,10 @@ border-width: 0 0 0px;
     font-weight:900;
 }
 .navbar-inverse .navbar-nav > li > a:hover {
-    color:rgb(000, 153, 255);
+    color: rgb(000, 152, 241);
 }
 .active-menu-item {
-    color:rgb(000, 153, 255)!important;
+    color: rgb(000, 152, 241);!important;
 }
 .navbar-brand small {
     font-size:12px;
@@ -121,7 +121,7 @@ color:#fff;
 }
 
     #home-sec .overlay {
-        background-color:rgb(000, 153, 255);
+        background-color:rgb(000, 152, 241);
         min-height:350px;
     }
     #home-sec h1 {
@@ -132,6 +132,7 @@ color:#fff;
         padding-top:80px;
         font-weight:900;
 		max-height: 191px;
+		
     }
 #home-sec p {
     padding:3px;
