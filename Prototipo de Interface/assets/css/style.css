@@ -43,7 +43,7 @@ border-radius: 10px;
 cursor:pointer;
 }
 .icon-custom-2 {
-      background-color: #49CD7D;
+      background-color: rgb(0,152,241);
 padding: 25px;
 border-radius:50%;
 width:100px;
@@ -75,7 +75,7 @@ color: #FFF;
 font-size: 35px;
 letter-spacing: 5px;
 font-weight: 900;
-background-color:rgb(34, 34, 34);
+background-color:rgb(51,124,187);
 padding-bottom: 60px;
 }
 
@@ -242,7 +242,7 @@ padding: 5px;
    FOOTER SECTION STYLES
  ============================================================ */
 #footer-sec {
-    background-color:#121212;
+    background-color:rgb(51,124,187);;
     padding-bottom:30px;
     padding-top:30px;
     color: #DFD1D1;
@@ -253,7 +253,7 @@ padding: 5px;
 }
 
 .social-links a i {
-    background-color:#000;
+    background-color:rgb(51,124,187);
     padding:15px 20px;
     margin:5px;
 }

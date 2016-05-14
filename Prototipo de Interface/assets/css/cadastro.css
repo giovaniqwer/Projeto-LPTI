@@ -1,0 +1,19 @@
+#titulo{
+	text-transform:capitalize;
+	margin-bottom:60px;
+}
+
+#cadastro{
+	width:70%;
+	position:relative;
+	float:center;
+	margin:auto;
+	margin-bottom:60px;
+}
+.form-group{
+	margin:10px;
+}
+
+.form-group input{
+	padding:20px;
+}
