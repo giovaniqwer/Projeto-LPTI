@@ -1,0 +1,19 @@
+#navbar-ex-collapse{
+float:left;
+}
+.col-sm-6{
+position:justify;
+}
+.img-responsive{
+width:80px;
+height:80px;
+}
+.nav navbar-nav navbar-right{
+width:100px;
+}
+.menu{
+color: white;
+}
+.section{
+margin:150px 0px 150px 0px;
+}
