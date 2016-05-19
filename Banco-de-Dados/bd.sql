@@ -21,48 +21,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Categoria`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Categoria` (
-  `idCategoria` INT NOT NULL,
-  `idPost` INT NULL,
-  `idUsuario` INT NULL,
-  PRIMARY KEY (`idCategoria`),
-  INDEX `fk_CatPost_PostPost_idx` (`idPost` ASC),
-  INDEX `fk_CatUsr_UserUsr_idx` (`idUsuario` ASC),
-  CONSTRAINT `fk_CatPost_PostPost`
-    FOREIGN KEY (`idPost`)
-    REFERENCES `mydb`.`Post` (`idPost`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_CatUsr_UserUsr`
-    FOREIGN KEY (`idUsuario`)
-    REFERENCES `mydb`.`Usuario` (`idUsuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `mydb`.`Post`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Post` (
   `idPost` INT NOT NULL,
-  `idCatergoria` INT NULL,
   `idUsuario` INT NULL,
   `data_post` DATE NULL,
   `conteudoPost` VARCHAR(45) NULL,
   PRIMARY KEY (`idPost`),
   INDEX `fk_Post_1_idx` (`idUsuario` ASC),
-  INDEX `fk_PostCat_CatCat_idx` (`idCatergoria` ASC),
   CONSTRAINT `fk_PostUsr_UserUsr`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `mydb`.`Usuario` (`idUsuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_PostCat_CatCat`
-    FOREIGN KEY (`idCatergoria`)
-    REFERENCES `mydb`.`Categoria` (`idCategoria`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -86,6 +56,38 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Comentario` (
   CONSTRAINT `fk_ComentUsr_UserUsr`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `mydb`.`Usuario` (`idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Categoria`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Categoria` (
+  `idCategoria` INT NOT NULL,
+  `nome` VARCHAR(45) NULL,
+  PRIMARY KEY (`idCategoria`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`Classificacao`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`Classificacao` (
+  `Categoria_idCategoria` INT NOT NULL,
+  `Post_idPost` INT NOT NULL,
+  PRIMARY KEY (`Categoria_idCategoria`, `Post_idPost`),
+  INDEX `fk_Categoria_has_Post_Post1_idx` (`Post_idPost` ASC),
+  INDEX `fk_Categoria_has_Post_Categoria1_idx` (`Categoria_idCategoria` ASC),
+  CONSTRAINT `fk_Categoria_has_Post_Categoria1`
+    FOREIGN KEY (`Categoria_idCategoria`)
+    REFERENCES `mydb`.`Categoria` (`idCategoria`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Categoria_has_Post_Post1`
+    FOREIGN KEY (`Post_idPost`)
+    REFERENCES `mydb`.`Post` (`idPost`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
