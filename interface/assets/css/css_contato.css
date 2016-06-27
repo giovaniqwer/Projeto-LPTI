@@ -1,0 +1,17 @@
+#btnEnviar{
+	position:relative;
+	float:left;
+	bottom:16px;
+}
+
+#erro1{
+	position:relative;
+	bottom:65px;
+	left:107px;
+}
+
+#certo{
+	position:relative;
+	bottom:65px;
+	right:100px;
+}
