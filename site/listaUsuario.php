@@ -99,7 +99,7 @@
                         <td><?php echo $usuario ['email'] ?></td>
 												<td><?php echo $usuario ['identificacao'] ?></td>
                         <td>
-                            <a href="delete.php?id=<?php echo $usuario ['idUsuario']?>" onclick="return confirm('Deseja realmente remover este Usuario ?') ;"> Remover</a>
+                            <a href="delete-user.php?id=<?php echo $usuario ['idUsuario']?>" onclick="return confirm('Deseja realmente remover este Usuario ?') ;"> Remover</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>
