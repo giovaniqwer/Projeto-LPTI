@@ -19,12 +19,6 @@
 				<link href="assets/css/css.css" rel="stylesheet">
 				<link href="assets/css/css_contato.css" rel="stylesheet">
 
-		<script type="text/javascript">
-			$("#forms").submit(function(evt){
-    			   	  evt.preventDefault();
-                      window.history.back();
-				   });
-		</script>
 
     </head>
 <body>
@@ -55,13 +49,13 @@
 									<div class="col-md-6">
 										<div class="alert alert-info">
 											<strong>FALE CONOSCO</strong><br>
-												<form name="formulario" id="forms" action="add.php" method="post" onsubmit="verifica()">
+												<form name="formulario" id="forms" action="add.php" method="post" onsubmit="return validaContato()">
 													<label></label>
 													<input type="text" id="inputNome" class="form-control" placeholder="Nome" name="txtNome">
 													<label></label>
-													<input type="text" class="form-control" placeholder="Email" name="txtEmail">
+													<input type="text" id="inputEmail" class="form-control" placeholder="Email" name="txtEmail">
 													<label></label>
-													<textarea rows="5" class="form-control" placeholder="Diga-nos o que deseja divulgar" name="txtComentario"></textarea><br>
+													<textarea rows="5" id="inputTexto" class="form-control" placeholder="Diga-nos o que deseja divulgar" name="txtComentario"></textarea><br>
 													<input id="btnEnviar" type="submit" value="Enviar"/>
 												</form>
 										</div>

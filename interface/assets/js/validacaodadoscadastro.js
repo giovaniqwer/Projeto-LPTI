@@ -3,6 +3,7 @@
 
 function verificadadoscadastro () {
 	//Chamando as verificações
+	validaCampo();
 	verificaSenha();
 	limpaCampos();
 }
@@ -22,3 +23,18 @@ function limpaCampos() {
 	document.getElementById("cofirmacao_senhacadastro").value;
 }
 
+//Verifica campos em branco - Rafaela
+function validaCampo() {
+	var nome = document.querySelector("#first_name").value;
+ 	var email = document.querySelector("#email").value;
+	var matricula = document.querySelector("#matricula").value;
+	var senha = document.querySelector("#senha").value;
+	var confSenha = document.querySelector("#cofirmacao_senhacadastro").value;
+
+
+ 	if((nome=="") || (email=="") || (matricula=="") || (senha=="") || (confSenha=="")){
+		alert("Existem campos em branco");
+ 	}else{
+		alert("Enviado com sucesso!")
+	}
+}

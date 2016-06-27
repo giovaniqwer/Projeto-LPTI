@@ -6,11 +6,6 @@
  $email = isset($_POST['txtEmail']) ? $_POST['txtEmail'] : null;
  $comentario= isset($_POST['txtComentario']) ? $_POST['txtComentario'] : null;
  
- if (empty($nome) || empty($comentario) || empty($email)){
-    echo "Campos devem ser preenchidos!!";
-    exit;
- }
- 
  $contato = new contatos($nome, $email, $comentario);
 
  // insere no BD
