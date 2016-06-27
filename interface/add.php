@@ -5,16 +5,13 @@
  $nome = isset($_POST['txtNome']) ? $_POST['txtNome'] : null;
  $email = isset($_POST['txtEmail']) ? $_POST['txtEmail'] : null;
  $comentario= isset($_POST['txtComentario']) ? $_POST['txtComentario'] : null;
- 
+
  $contato = new contatos($nome, $email, $comentario);
 
  // insere no BD
  $PDO = db_connect();
  $sql = "INSERT INTO contatos(nomeContato, emailContato, comentarioContato) VALUES(:nome, :email, :comentario)";
  $stmt = $PDO->prepare($sql);
- echo $nome;
- echo $email;
- echo $comentario;
  $stmt->bindParam(':nome', $contato->getNome());
  $stmt->bindParam(':email', $contato->getEmail());
  $stmt->bindParam(':comentario', $contato->getComentario());

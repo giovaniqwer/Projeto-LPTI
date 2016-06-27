@@ -11,14 +11,15 @@
         <script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="assets/js/jquery-ui.js"></script>
         <script type="text/javascript" src="assets/js/ajax.js"></script>
-        <script type="text/javascript" src="assets/js/validacaodadoscadastro.js"></script>
         <title>Contato</title>
         <link href="assets/css/bootstrap.css" rel="stylesheet">
         <link href="assets/css/font-awesome.css" rel="stylesheet">
         <link href="assets/css/style.css" rel="stylesheet">
 				<link href="assets/css/css.css" rel="stylesheet">
 				<link href="assets/css/css_contato.css" rel="stylesheet">
-
+        <script type="text/javascript" src="assets/js/validacaodadoscadastro.js"></script>
+       <script type="text/javascript" src="assets/js/validacaodocontato.js"></script>
+       <script type="text/javascript" src="assets/js/validalogin.js"></script>
 
     </head>
 <body>
@@ -49,7 +50,7 @@
 									<div class="col-md-6">
 										<div class="alert alert-info">
 											<strong>FALE CONOSCO</strong><br>
-												<form name="formulario" id="forms" action="add.php" method="post" onsubmit="return validaContato()">
+												<form name="formulario" id="forms" action="add.php" method="post" onSubmit="return validaContato()" >
 													<label></label>
 													<input type="text" id="inputNome" class="form-control" placeholder="Nome" name="txtNome">
 													<label></label>
