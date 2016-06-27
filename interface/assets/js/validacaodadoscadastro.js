@@ -9,24 +9,32 @@ function verificadadoscadastro () {
 		var matricula = document.querySelector("#matricula").value;
 		var senha = document.querySelector("#senha").value;
 		var confSenha = document.querySelector("#cofirmacao_senhacadastro").value;
-
+		var teste = false;
 
 	 	if((nome=="") || (email=="") || (matricula=="") || (senha=="") || (confSenha=="")){
 			alert("Existem campos em branco");
 			return false;
 	 	}else{
-			alert("Cadastro realizado com sucesso!");
+			teste = true;
 		}
 
 //VERIFICA SENHAS
 	if (document.getElementById("senha").value.length < 6) {
 		alert("A senha deve ter pelo menos 6 caracteres");
+		return false;
 	}else if (document.getElementById("senha").value != document.getElementById("cofirmacao_senhacadastro").value) {
 		alert("As senhas digitadas não conferem!");
+		return false;
+	}else{
+	teste = true;
 	}
 	//LIMPA SENHA
 	document.getElementById("senha").value = "";
 	document.getElementById("cofirmacao_senhacadastro").value;
+
+	if(teste==true){
+		alert("CADASTRO REALIZADO COM SUCESSO!");
+	}
 }
 
 
