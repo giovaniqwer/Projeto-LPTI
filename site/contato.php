@@ -33,7 +33,7 @@
 		<div class="container">
 			<div class="row">
 				<div class=" text-center">
-					<div class="panel panel-default text-center" id="cadastro">
+					<div class="panel panel-default text-center">
 						<div class="panel-heading">
 							<h3 class="panel-title text-center">Entre em contato conosco!</h3>
 						</div>
