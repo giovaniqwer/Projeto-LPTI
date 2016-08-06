@@ -81,7 +81,7 @@
 						<br>
 
 						<!-- /. NAV TOP -->
-						<br>
+						r>
 						<nav class="navbar-default navbar-side" role="navigation">
 							<div class="sidebar-collapse">
 								<ul class="nav" id="main-menu">
@@ -92,47 +92,30 @@
 										<a href="#"><i class="fa fa-align-justify"></i>Eventos<span class="fa arrow"></span></a>
 										<ul class="nav nav-second-level">
 											<li>
-												<a href="panel-tabs.html"><i class="fa fa-play-circle">&nbsp;Mini Cursos</i></a>
+												<a href="minicurso.php"><i class="fa fa-play-circle">&nbsp;Mini Cursos</i></a>
 											</li>
 											<li>
-												<a href="notification.html"><i class="fa fa-bell ">&nbsp;Palestras</i></a>
+												<a href="palestra.php"><i class="fa fa-bell ">&nbsp;Palestras</i></a>
 											</li>
 											<li>
-												<a href="progress.html"><i class="fa fa-circle-o"></i>Entreterimento</a>
+												<a href="entreterimento.php"><i class="fa fa-circle-o"></i>Entreterimento</a>
 											</li>
 										</ul>
 									</li>
 									<li>
-										<a href="#"><i class="fa fa-yelp "></i>Estágios<span class="fa arrow"></span></a>
-										<ul class="nav nav-second-level">
-											<li>
-												<a href="#"><i class="fa fa-calculator">&nbsp; Economia</i></a>
-											</li>
-											<li>
-												<a href="#"><i class="fa fa-bank">&nbsp; Administração</i></a>
-											</li>
-											<li>
-												<a href="#"><i class="fa fa-bar-chart-o"></i>Ciencias Atuariais</a>
-											</li>
-											<li>
-												<a href="#"><i class="fa fa-th"></i>Todos</a>
-											</li>
-										</ul>
+										<a href="estagio.php"><i class="fa fa-search"></i>Estágio </a>
 									</li>
 									<li>
-										<a href="#"><i class="fa fa-search"></i>Anuncio </a>
+										<a href="anuncio.php"><i class="fa fa-search"></i>Anuncio </a>
 									</li>
 									<li>
-										<a href="#"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
+										<a href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
 									</li>
 									<li>
-										<a href="#"><i class="fa fa-globe"></i>Iniciação Cientifica</a>
+										<a href="inicCient.php"><i class="fa fa-globe"></i>Iniciação Cientifica</a>
 									</li>
 									<li>
-										<a href="#"><i class="fa fa-book"></i>Monitorias</a>
-									</li>
-									<li>
-										<a href="#s"><i class="fa -retro -picture-o fa-photo"></i>Galeria</a>
+										<a href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
 									</li>
 									<li>
 										<a href="#"><i class="fa fa-align-justify"></i>GRADE CURRICULAR</a>
@@ -220,35 +203,34 @@
         </section>
         <!--FIM DO RODAPÉ-->
 
-
-        <!-- COPY TEXT SECTION END-->
-        <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME
-        -->
-
-
-        <!-- CORE JQUERY -->
-        <script src="assets/js/jquery-1.11.1.js"></script>
-        <!-- BOOTSTRAP SCRIPTS -->
-        <script src="assets/js/bootstrap.js"></script>
-        <!-- CUSTOM SCRIPTS -->
-        <script src="assets/js/custom.js"></script>
+				<script src="../assets/js/jquery-1.11.1.js"></script>
+				<!-- BOOTSTRAP SCRIPTS -->
+				<script src="../assets/js/bootstrap.js"></script>
+				<!-- CUSTOM SCRIPTS -->
+				<script src="../assets/js/custom.js"></script>
 
 				<!--forum js-->
 				<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-    <!-- JQUERY SCRIPTS -->
-<script src="forum-calendario/assets/js/wizard/jquery.steps.js"></script>
+				<!-- JQUERY SCRIPTS -->
+				<script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
 
-    <!-- BOOTSTRAP SCRIPTS -->
-    <script src="forum-calendario/assets/js/bootstrap.js"></script>
-    <!-- METISMENU SCRIPTS -->
-    <script src="forum-calendario/assets/js/jquery.metisMenu.js"></script>
-    <!-- CUSTOM SCRIPTS -->
-    <script src="forum-calendario/assets/js/custom.js"></script>
-		<script src="forum-calendario/assets/js/jquery.mixitup.min.js"></script>
+				<!-- BOOTSTRAP SCRIPTS -->
+				<script src="../forum-calendario/assets/js/bootstrap.js"></script>
+				<!-- METISMENU SCRIPTS -->
+				<script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
+				<!-- CUSTOM SCRIPTS -->
+				<script src="../forum-calendario/assets/js/custom.js"></script>
+				<script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
 
-		<script src="forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
-		<script src="forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
-
+				<script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+				<script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
+				<script src="../assets/js/jquery-1.10.2.js"></script>
+				<!-- BOOTSTRAP SCRIPTS -->
+				<script src="../assets/js/bootstrap.js"></script>
+				<!-- METISMENU SCRIPTS -->
+				<script src="../assets/js/jquery.metisMenu.js"></script>
+				<!-- CUSTOM SCRIPTS -->
+				<script src="../assets/js/custom.js"></script>
 
 
 </body>

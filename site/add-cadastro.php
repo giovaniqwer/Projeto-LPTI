@@ -24,7 +24,7 @@
  $stmt->bindParam(':tipo', $usuario->getTipo());
 
  if($stmt->execute()){
-    header ('Location: index.html');
+    header ('Location: login.php');
  }else{
     echo "Erro ao cadastrar!!";
     print_r($stmt->errorInfo());

@@ -46,19 +46,20 @@
 			<div class="navbar-collapse collapse move-me" id="menuTopo">
 				<ul class="nav navbar-nav navbar-right set-links">
 					<li>
-							<a href="../index.html" class="active-menu-item">HOME</a>
+						<a href="admin.html">HOME</a>
 					</li>
 					<li>
-							<a href="../links.html">LINKS</a>
+						<a href="listaUsuario.php">USUARIOS</a>
 					</li>
 					<li>
-							<a href="../contato.php">CONTATO</a>
+						<a href="listaContato.php">MENSAGENS</a>
 					</li>
 					<li>
-							<a href="../cadastro.php">CADASTRE-SE</a>
-					</li>
-					<li>
-							<a href="../login.php">LOGIN</a>
+						<form action="../logout.php" role="form" method="post" name="formLogin">
+							<button type="submit" class="active btn btn-block btn-info btn-lg">Sair
+									<i class="fa fa-fw fa-lg fa-sign-out"></i>
+							</button>
+						</form>
 					</li>
 				</ul>
 			</div>
@@ -77,38 +78,38 @@
 			<div class="sidebar-collapse">
 				<ul class="nav" id="main-menu">
 					<li>
-						<a  href="forum.html"><i class="fa fa-dashboard "></i>Principal<br></a>
+						<a href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
 					</li>
 					<li>
 						<a hr ef="#"><i class="fa fa-align-justify"></i>Eventos<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li>
 
-								<a  href="minicurso.html"><i class="fa fa-play-circle">&nbsp;Mini Cursos</i></a>
+								<a href="minicurso.php"><i class="fa fa-play-circle">&nbsp;Mini Cursos</i></a>
 
 							</li>
 							<li>
-								<a href="palestra.html"><i class="fa fa-bell ">&nbsp;Palestras</i></a>
+								<a  href="palestra.php"><i class="fa fa-bell ">&nbsp;Palestras</i></a>
 							</li>
 							<li>
-								<a href="entreterimento.html"><i class="fa fa-circle-o"></i>Entreterimento</a>
+								<a href="entreterimento.php"><i class="fa fa-circle-o"></i>Entreterimento</a>
 							</li>
 						</ul>
 					</li>
 					<li>
-						<a href="estagio.html"><i class="fa fa-search"></i>Estágio </a>
+						<a href="estagio.php"><i class="fa fa-search"></i>Estágio </a>
 					</li>
 					<li>
-						<a class="active-menu" href="anuncio.html"><i class="fa fa-search"></i>Anuncio </a>
+						<a href="anuncio.php"><i class="fa fa-search"></i>Anuncio </a>
 					</li>
 					<li>
-						<a href="pesqext.html"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
+						<a class="active-menu" href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
 					</li>
 					<li>
-						<a href="inicCient.html"><i class="fa fa-globe"></i>Iniciação Cientifica</a>
+						<a href="inicCient.php"><i class="fa fa-globe"></i>Iniciação Cientifica</a>
 					</li>
 					<li>
-						<a href="monitorias.html"><i class="fa fa-book"></i>Monitorias</a>
+						<a href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
 					</li>
 					<li>
 						<a href="#"><i class="fa fa-align-justify"></i>GRADE CURRICULAR</a>
@@ -120,10 +121,10 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h1 class="page-head-line">Anuncio</h1>
+						<h1 class="page-head-line">Pesquisa e Extensão</h1>
 						<center>
 							<div id="divBusca">
-							  <img src="../assets/img/search3.png" alt="Buscar..." />
+								<img src="img/search3.png" alt="Buscar..." />
 								<input type="text" id="txtBusca" placeholder="Buscar..." />
 								<button id="btnBusca">Buscar</button>
 							</div>
@@ -133,33 +134,30 @@
 				<!-- /. ROW  -->
 				<div class="row">
 					<div class="col-md-4 col-sm-4" id="largura">
-						<div class="panel panel-success">
+						<div class="panel panel-warning">
 							<div class="panel-heading">
 								<div class="alert-link">
-									João Silva
+									Nome Usuário Postagem
 								</div>
 							</div>
 							<div class="panel-body">
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan.
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan.
-									Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
 							</div>
 							<div class="panel-footer">
 								<div class="form-group">
 									<label>Comentario</label>
-									<div class="alert alert-info">
-										<div class="alert-link">
-												Rafaela
-										</div>
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-
-									</div>
+									<textarea class="form-control" rows="3"></textarea>
+								</div>
+								<button type="submit" class="btn btn-info">Enviar Comentario </button>
+								<br>
+								<br>
 								<div class="alert alert-info">
 									<div class="alert-link">
-											Rafaela
+										Nome Usuário Comentario
 									</div>
 									Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-
+									<a href="#" class="btn btn-danger">Excluir</a>
 								</div>
 
 							</div>
@@ -167,13 +165,32 @@
 					</div>
 
 
+					<script src="../assets/js/jquery-1.11.1.js"></script>
+					<!-- BOOTSTRAP SCRIPTS -->
+					<script src="../assets/js/bootstrap.js"></script>
+					<!-- CUSTOM SCRIPTS -->
+					<script src="../assets/js/custom.js"></script>
+
+					<!--forum js-->
 					<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 					<!-- JQUERY SCRIPTS -->
-					<script src="assets/js/jquery-1.10.2.js"></script>
+					<script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
+
 					<!-- BOOTSTRAP SCRIPTS -->
-					<script src="assets/js/bootstrap.js"></script>
+					<script src="../forum-calendario/assets/js/bootstrap.js"></script>
 					<!-- METISMENU SCRIPTS -->
-					<script src="assets/js/jquery.metisMenu.js"></script>
+					<script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
 					<!-- CUSTOM SCRIPTS -->
-					<script src="assets/js/custom.js"></script>
+					<script src="../forum-calendario/assets/js/custom.js"></script>
+					<script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
+
+					<script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+					<script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
+					<script src="../assets/js/jquery-1.10.2.js"></script>
+					<!-- BOOTSTRAP SCRIPTS -->
+					<script src="../assets/js/bootstrap.js"></script>
+					<!-- METISMENU SCRIPTS -->
+					<script src="../assets/js/jquery.metisMenu.js"></script>
+					<!-- CUSTOM SCRIPTS -->
+					<script src="../assets/js/custom.js"></script>
 				</div>
