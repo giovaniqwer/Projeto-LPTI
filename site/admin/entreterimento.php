@@ -43,10 +43,10 @@
 				</button>
 				<a class="navbar-brand" href="#"><img src="../assets/img/logo.png"></a>
 			</div>
-			<div class="navbar-collapse collapse move-me" id="menuTopo">
+			<div class="navbar-collapse collapse move-me" >
 				<ul class="nav navbar-nav navbar-right set-links">
 					<li>
-						<a href="admin.html">HOME</a>
+						<a href="inicio.php">INICIO</a>
 					</li>
 					<li>
 						<a href="listaUsuario.php">USUARIOS</a>
@@ -137,7 +137,7 @@
 						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<div class="alert-link">
-									Nome Usuário Postagem
+									Nome Usuário Postagem&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#" class="btn btn-info">Excluir Postagem</a>
 								</div>
 							</div>
 							<div class="panel-body">
@@ -154,43 +154,109 @@
 								<br>
 								<div class="alert alert-info">
 									<div class="alert-link">
-										Nome Usuário Comentario
+										Zé
 									</div>
 									Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									<a href="#" class="btn btn-danger">Excluir</a>
+									<a href="#" class="btn btn-info">Excluir</a>
 								</div>
 
 							</div>
 						</div>
 					</div>
+					<div class="col-md-6" id="boxlateral">
+							<div class="panel panel-info">
+									<div class="panel-heading">
+											<i class="fa fa-bell fa-fw"></i>Menu
+									</div>
 
+									<div class="panel-body">
+											<div class="list-group">
 
-					<script src="../assets/js/jquery-1.11.1.js"></script>
-					<!-- BOOTSTRAP SCRIPTS -->
-					<script src="../assets/js/bootstrap.js"></script>
-					<!-- CUSTOM SCRIPTS -->
-					<script src="../assets/js/custom.js"></script>
+													<a href="#" class="list-group-item">
+															<i class="fa fa-twitter fa-fw"></i>Adicionar Postagem
+															<span class="pull-right text-muted small"><em></em>
+													</span>
+													</a>
+											</div>
 
-					<!--forum js-->
-					<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-					<!-- JQUERY SCRIPTS -->
-					<script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
+											<!-- /.list-group -->
 
-					<!-- BOOTSTRAP SCRIPTS -->
-					<script src="../forum-calendario/assets/js/bootstrap.js"></script>
-					<!-- METISMENU SCRIPTS -->
-					<script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
-					<!-- CUSTOM SCRIPTS -->
-					<script src="../forum-calendario/assets/js/custom.js"></script>
-					<script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
-
-					<script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
-					<script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
-					<script src="../assets/js/jquery-1.10.2.js"></script>
-					<!-- BOOTSTRAP SCRIPTS -->
-					<script src="../assets/js/bootstrap.js"></script>
-					<!-- METISMENU SCRIPTS -->
-					<script src="../assets/js/jquery.metisMenu.js"></script>
-					<!-- CUSTOM SCRIPTS -->
-					<script src="../assets/js/custom.js"></script>
 				</div>
+				<div class="panel panel-info">
+						<div class="panel-heading">
+								<i class="fa fa-bell fa-fw"></i>Tags
+						</div>
+
+						<div class="panel-body">
+								<div class="list-group">
+
+										<a href="#" class="list-group-item">
+												<i class="fa fa-twitter fa-fw"></i>Tag #01
+												<span class="pull-right text-muted small"><em></em>
+										</span>
+										</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			</div>
+								<section id="footer-sec">
+												<div class="container">
+														<div class="row">
+																<div class="col-md-4">
+																		<h4>UNIFAL - GRUPO PET</h4>
+																		<p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA
+																				– UNIFAL/MG Rede Social</p>
+																</div>
+																<div class="col-md-4">
+																		<h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar,
+																		Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
+																		<strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
+																</div>
+																<div class="col-md-4">
+																		<h4>SOCIAL LINKS</h4>
+																		<div class="social-links">
+																				<a href="#"> <i class="fa fa-facebook fa-2x"></i></a>
+																				<a href="#"> <i class="fa fa-twitter fa-2x"></i></a>
+																		</div>
+																</div>
+														</div>
+														<br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
+										</section>
+										<!--FIM DO RODAPÉ-->
+
+										<script src="../assets/js/jquery-1.11.1.js"></script>
+										<!-- BOOTSTRAP SCRIPTS -->
+										<script src="../assets/js/bootstrap.js"></script>
+										<!-- CUSTOM SCRIPTS -->
+										<script src="../assets/js/custom.js"></script>
+
+										<!--forum js-->
+										<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+										<!-- JQUERY SCRIPTS -->
+										<script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
+
+										<!-- BOOTSTRAP SCRIPTS -->
+										<script src="../forum-calendario/assets/js/bootstrap.js"></script>
+										<!-- METISMENU SCRIPTS -->
+										<script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
+										<!-- CUSTOM SCRIPTS -->
+										<script src="../forum-calendario/assets/js/custom.js"></script>
+										<script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
+
+										<script src="../forum-calesndario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+										<script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
+										<script src="../assets/js/jquery-1.10.2.js"></script>
+										<!-- BOOTSTRAP SCRIPTS -->
+										<script src="../assets/js/bootstrap.js"></script>
+										<!-- METISMENU SCRIPTS -->
+										<script src="../assets/js/jquery.metisMenu.js"></script>
+										<!-- CUSTOM SCRIPTS -->
+										<script src="../assets/js/custom.js"></script>
+
+
+							</body>
+							</html>

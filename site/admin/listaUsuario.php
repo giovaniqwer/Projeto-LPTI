@@ -56,10 +56,10 @@
 						</button>
 						<a class="navbar-brand" href="#"><img src="../assets/img/logo.png"></a>
 					</div>
-					<div class="navbar-collapse collapse move-me" id="menuTopo">
+					<div class="navbar-collapse collapse move-me">
 						<ul class="nav navbar-nav navbar-right set-links">
 							<li>
-								<a href="admin.html" class="active-menu-item">HOME</a>
+								<a href="inicio.php" class="active-menu-item">INICIO</a>
 							</li>
 							<li>
 								<a href="listaContato.php">MENSAGENS</a>
@@ -68,7 +68,11 @@
                 <a href="listaUsuario.php">USUARIOS</a>
               </li>
 							<li>
-								<a href="#">SAIR</a>
+								<form action="../logout.php" role="form" method="post" name="formLogin">
+									<button type="submit" class="active btn btn-block btn-info btn-lg">Sair
+											<i class="fa fa-fw fa-lg fa-sign-out"></i>
+									</button>
+								</form>
 							</li>
 						</ul>
 					</div>
@@ -86,7 +90,7 @@
 							<div class="sidebar-collapse">
 								<ul class="nav" id="main-menu">
 									<li>
-										<a class="active-menu" href="admin.html"><i class="fa fa-dashboard "></i>Principal<br></a>
+										<a class="active-menu" href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
 									</li>
 									<li>
 										<a href="#"><i class="fa fa-align-justify"></i>Eventos<span class="fa arrow"></span></a>
@@ -126,10 +130,9 @@
 						<div id="page-wrapper">
 							<div id="page-inner">
 								<div class="row">
-									<div class="col-md-12">
+									<div class="col-md-12" >
 										<h1 class="page-head-line">Usuarios</h1>
-										<div class="mensagem">
-									    <div class="ok">
+
 												<center>
 													<div id="divBusca">
 													<img src="img/search3.png" alt="Buscar..."/>
@@ -139,99 +142,100 @@
 											</center>
 
 												<br />
-									        <table width="100%" border="1">
-									            <thead>
-																<tr>
-
-																</tr>
-									                <tr>
-									                  <th>Nome</th>
-																		<th>Sobrenome</th>
-									                  <th>E-mail</th>
-									                  <th>Identificacao/Matricula</th>
-									                  <th>Ações</th>
-									                </tr>
-									            </thead>
-									            <tbody>
-									                <?php while($usuario = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-									                    <tr>
-									                        <td><?php echo $usuario ['nome'] ?></td>
-									                        <td><?php echo $usuario ['sobrenome'] ?></td>
-									                        <td><?php echo $usuario ['email'] ?></td>
-																					<td><?php echo $usuario ['identificacao'] ?></td>
-									                        <td>
-									                            <a href="delete-user.php?id=<?php echo $usuario ['idUsuario']?>" onclick="return confirm('Deseja realmente remover este Usuario ?') ;"> Remover</a>
-									                        </td>
-									                    </tr>
-									                <?php endwhile; ?>
-									            </tbody>
-									        </table>
 
 
-									    </div>
-									</div>
-									</div>
-									</div>
-									</div>
+												<!-- Table -->
+												<table class="table" id="largura">
+													<thead>
+														<tr>
+															<th>#</th>
+																<th>Matricula</th>
+															<th>Nome</th>
+															<th>email</th>
+															<th>Ação</th>
+														</tr>
+													</thead>
+													<tbody>
+														<?php while($usuario = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+
+
+														<tr class="list-group-item-info">
+															<td># </td>
+																	<td><?php echo $usuario ['identificacao'] ?></td>
+															<td><?php echo $usuario ['nome'] ?> <?php echo $usuario ['sobrenome'] ?></td>
+															<td><?php echo $usuario ['email'] ?> </td>
+															<td><a class="btn btn-primary" href="delete-user.php?id=<?php echo $usuario ['idUsuario']?>" onclick="return confirm('Deseja realmente remover este Usuario ?') ;"> Remover</a></td>
+														</tr>
+														<?php endwhile; ?>
+													</tbody>
+													<div class="col-md-6" id="boxlateral">
+															<div class="panel panel-info">
+																	<div class="panel-heading">
+																			<i class="fa fa-bell fa-fw"></i>Menu
+																	</div>
+
+																	<div class="panel-body">
+																			<div class="list-group">
+
+																					<a href="#" class="list-group-item">
+																							<i class="fa fa-twitter fa-fw"></i>Adicionar Postagem
+																							<span class="pull-right text-muted small"><em></em>
+																					</span>
+																					</a>
+																			</div>
+
+																			<!-- /.list-group -->
+
+												</div>
+												<div class="panel-body">
+														<div class="list-group">
+
+																<a href="#" class="list-group-item">
+																		<i class="fa fa-twitter fa-fw"></i>Tag #01
+																		<span class="pull-right text-muted small"><em></em>
+																</span>
+																</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
+							</div>
+						</div>
+					</div>
+				
 
-		<!--FIM DO CONTEUDO MENU-->
-        <!--RODAPÉ-->
-    <section id="footer-sec">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <h4>UNIFAL - GRUPO PET</h4>
-                        <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA
-                            – UNIFAL/MG Rede Social</p>
-                    </div>
-                    <div class="col-md-4">
-                        <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar,
-                        Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
-                        <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
-                    </div>
-                    <div class="col-md-4">
-                        <h4>SOCIAL LINKS</h4>
-                        <div class="social-links">
-                            <a href="#"> <i class="fa fa-facebook fa-2x"></i></a>
-                            <a href="#"> <i class="fa fa-twitter fa-2x"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
-        </section>
-        <!--FIM DO RODAPÉ-->
+							<script src="../assets/js/jquery-1.11.1.js"></script>
+							<!-- BOOTSTRAP SCRIPTS -->
+							<script src="../assets/js/bootstrap.js"></script>
+							<!-- CUSTOM SCRIPTS -->
+							<script src="../assets/js/custom.js"></script>
 
-				<script src="../assets/js/jquery-1.11.1.js"></script>
-				<!-- BOOTSTRAP SCRIPTS -->
-				<script src="../assets/js/bootstrap.js"></script>
-				<!-- CUSTOM SCRIPTS -->
-				<script src="../assets/js/custom.js"></script>
+							<!--forum js-->
+							<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+							<!-- JQUERY SCRIPTS -->
+							<script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
 
-				<!--forum js-->
-				<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-				<!-- JQUERY SCRIPTS -->
-				<script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
+							<!-- BOOTSTRAP SCRIPTS -->
+							<script src="../forum-calendario/assets/js/bootstrap.js"></script>
+							<!-- METISMENU SCRIPTS -->
+							<script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
+							<!-- CUSTOM SCRIPTS -->
+							<script src="../forum-calendario/assets/js/custom.js"></script>
+							<script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
 
-				<!-- BOOTSTRAP SCRIPTS -->
-				<script src="../forum-calendario/assets/js/bootstrap.js"></script>
-				<!-- METISMENU SCRIPTS -->
-				<script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
-				<!-- CUSTOM SCRIPTS -->
-				<script src="../forum-calendario/assets/js/custom.js"></script>
-				<script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
-
-				<script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
-				<script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
-				<script src="../assets/js/jquery-1.10.2.js"></script>
-				<!-- BOOTSTRAP SCRIPTS -->
-				<script src="../assets/js/bootstrap.js"></script>
-				<!-- METISMENU SCRIPTS -->
-				<script src="../assets/js/jquery.metisMenu.js"></script>
-				<!-- CUSTOM SCRIPTS -->
-				<script src="../assets/js/custom.js"></script>
+							<script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+							<script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
+							<script src="../assets/js/jquery-1.10.2.js"></script>
+							<!-- BOOTSTRAP SCRIPTS -->
+							<script src="../assets/js/bootstrap.js"></script>
+							<!-- METISMENU SCRIPTS -->
+							<script src="../assets/js/jquery.metisMenu.js"></script>
+							<!-- CUSTOM SCRIPTS -->
+							<script src="../assets/js/custom.js"></script>
 
 
-</body>
-</html>
+				</body>
+				</html>

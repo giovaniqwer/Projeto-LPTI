@@ -48,12 +48,7 @@
 					<li>
 						<a href="inicio.php">INICIO</a>
 					</li>
-					<li>
-						<a href="listaUsuario.php">USUARIOS</a>
-					</li>
-					<li>
-						<a href="listaContato.php">MENSAGENS</a>
-					</li>
+
 					<li>
 						<form action="../logout.php" role="form" method="post" name="formLogin">
 							<button type="submit" class="active btn btn-block btn-info btn-lg">Sair
@@ -79,7 +74,7 @@
 					<div class="sidebar-collapse">
 						<ul class="nav" id="main-menu">
 							<li>
-								<a class="active-menu" href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+								<a class="active-menu" href="aluno.php"><i class="fa fa-dashboard "></i>Principal<br></a>
 							</li>
 							<li>
 								<a hr ef="#"><i class="fa fa-align-justify"></i>Eventos<span class="fa arrow"></span></a>

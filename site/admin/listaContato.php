@@ -56,10 +56,10 @@
 						</button>
 						<a class="navbar-brand" href="#"><img src="../assets/img/logo.png"></a>
 					</div>
-					<div class="navbar-collapse collapse move-me" id="menuTopo">
+					<div class="navbar-collapse collapse move-me">
 						<ul class="nav navbar-nav navbar-right set-links">
 							<li>
-								<a href="admin.html" class="active-menu-item">HOME</a>
+								<a href="inicio.php" class="active-menu-item">INICIO</a>
 							</li>
 							<li>
 								<a href="listaContato.php">MENSAGENS</a>
@@ -68,7 +68,11 @@
                 <a href="listaUsuario.php">USUARIOS</a>
               </li>
 							<li>
-								<a href="#">SAIR</a>
+								<form action="../logout.php" role="form" method="post" name="formLogin">
+									<button type="submit" class="active btn btn-block btn-info btn-lg">Sair
+											<i class="fa fa-fw fa-lg fa-sign-out"></i>
+									</button>
+								</form>
 							</li>
 						</ul>
 					</div>
@@ -87,7 +91,7 @@
 							<div class="sidebar-collapse">
 								<ul class="nav" id="main-menu">
 									<li>
-										<a class="active-menu" href="admin.html"><i class="fa fa-dashboard "></i>Principal<br></a>
+										<a class="active-menu" href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
 									</li>
 									<li>
 										<a href="#"><i class="fa fa-align-justify"></i>Eventos<span class="fa arrow"></span></a>
@@ -129,8 +133,6 @@
 								<div class="row">
 									<div class="col-md-12">
 										<h1 class="page-head-line">Mensagens</h1>
-										<div class="mensagem">
-											<div class="ok">
 													<center>
 												<div id="divBusca">
 													<img src="img/search3.png" alt="Buscar..."/>
@@ -139,70 +141,103 @@
 												</div>
 													</center>
 												<br />
-													<table width="100%" border="1">
-															<thead>
-																	<tr>
-																		<th>Nome</th>
-																		<th>E-mail</th>
-																		<th>Mensagem</th>
-																		<th>Ações</th>
-																	</tr>
-															</thead>
-															<tbody>
-																	<?php while($contato = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-																			<tr>
-																					<td><?php echo $contato ['nomeContato'] ?></td>
-																					<td><?php echo $contato ['emailContato'] ?></td>
-																					<td><?php echo $contato ['comentarioContato'] ?></td>
-																					<td>
-																							<a href="delete.php?id=<?php echo $contato ['idContato']?>" onclick="return confirm('Deseja realmente excluir essa mensagem?') ;"> Excluir</a>
-																					</td>
-																			</tr>
-																	<?php endwhile; ?>
-															</tbody>
-													</table>
+												<div class="row" >
+				                   <div class="col-md-4 col-sm-4" id="largura">
 
+				                        <div class="panel panel-info">
+				                            <div class="panel-heading">
+				                              	Caixa de mensagem
+				                            </div>
+																		<?php while($contato = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+				                            <div class="panel-body" style="padding: 0px;">
+				                                <div class="chat-widget-main">
+				                                    <div class="chat-widget-left">
+				                                        <?php echo $contato ['comentarioContato'] ?>
 
+				                                    </div>
+																							<h4>Remetente: <?php echo $contato ['nomeContato'] ?></h4>
+																							<?php echo $contato ['emailContato'] ?>
+																							<h6><a href="delete.php?id=<?php echo $contato ['idContato']?>" onclick="return confirm('Deseja realmente excluir essa mensagem?') ;"> EXCLUIR</a></h6>
+																							<h6 class="page-head-line"></h6>
+				                                </div>
+				                            </div>
+				                      	<?php endwhile; ?>
+				                    </div>
 											</div>
-									</div>
-									</div>
-									</div>
-									</div>
+											<div class="col-md-6" id="boxlateral">
+													<div class="panel panel-info">
+															<div class="panel-heading">
+																	<i class="fa fa-bell fa-fw"></i>Menu
+															</div>
+
+															<div class="panel-body">
+																	<div class="list-group">
+
+																			<a href="#" class="list-group-item">
+																					<i class="fa fa-twitter fa-fw"></i>Adicionar Postagem
+																					<span class="pull-right text-muted small"><em></em>
+																			</span>
+																			</a>
+																	</div>
+
+																	<!-- /.list-group -->
+
+										</div>
+										<div class="panel panel-info">
+												<div class="panel-heading">
+														<i class="fa fa-bell fa-fw"></i>Tags
+												</div>
+
+												<div class="panel-body">
+														<div class="list-group">
+
+																<a href="#" class="list-group-item">
+																		<i class="fa fa-twitter fa-fw"></i>Tag #01
+																		<span class="pull-right text-muted small"><em></em>
+																</span>
+																</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
+							</div>
+						</div>
+					</div>
+				</di>
+																<!--FIM DO RODAPÉ-->
 
-		<!--CONTEUDO MENU-->
+																<script src="../assets/js/jquery-1.11.1.js"></script>
+																<!-- BOOTSTRAP SCRIPTS -->
+																<script src="../assets/js/bootstrap.js"></script>
+																<!-- CUSTOM SCRIPTS -->
+																<script src="../assets/js/custom.js"></script>
+
+																<!--forum js-->
+																<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+																<!-- JQUERY SCRIPTS -->
+																<script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
+
+																<!-- BOOTSTRAP SCRIPTS -->
+																<script src="../forum-calendario/assets/js/bootstrap.js"></script>
+																<!-- METISMENU SCRIPTS -->
+																<script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
+																<!-- CUSTOM SCRIPTS -->
+																<script src="../forum-calendario/assets/js/custom.js"></script>
+																<script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
+
+																<script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+																<script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
+																<script src="../assets/js/jquery-1.10.2.js"></script>
+																<!-- BOOTSTRAP SCRIPTS -->
+																<script src="../assets/js/bootstrap.js"></script>
+																<!-- METISMENU SCRIPTS -->
+																<script src="../assets/js/jquery.metisMenu.js"></script>
+																<!-- CUSTOM SCRIPTS -->
+																<script src="../assets/js/custom.js"></script>
 
 
-		<script src="../assets/js/jquery-1.11.1.js"></script>
-		<!-- BOOTSTRAP SCRIPTS -->
-		<script src="../assets/js/bootstrap.js"></script>
-		<!-- CUSTOM SCRIPTS -->
-		<script src="../assets/js/custom.js"></script>
-
-		<!--forum js-->
-		<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-		<!-- JQUERY SCRIPTS -->
-		<script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
-
-		<!-- BOOTSTRAP SCRIPTS -->
-		<script src="../forum-calendario/assets/js/bootstrap.js"></script>
-		<!-- METISMENU SCRIPTS -->
-		<script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
-		<!-- CUSTOM SCRIPTS -->
-		<script src="../forum-calendario/assets/js/custom.js"></script>
-		<script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
-
-		<script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
-		<script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
-		<script src="../assets/js/jquery-1.10.2.js"></script>
-		<!-- BOOTSTRAP SCRIPTS -->
-		<script src="../assets/js/bootstrap.js"></script>
-		<!-- METISMENU SCRIPTS -->
-		<script src="../assets/js/jquery.metisMenu.js"></script>
-		<!-- CUSTOM SCRIPTS -->
-		<script src="../assets/js/custom.js"></script>
-
-
-</body>
-</html>
+													</body>
+													</html>

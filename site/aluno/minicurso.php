@@ -48,12 +48,7 @@
 					<li>
 						<a href="inicio.php">INICIO</a>
 					</li>
-					<li>
-						<a href="listaUsuario.php">USUARIOS</a>
-					</li>
-					<li>
-						<a href="listaContato.php">MENSAGENS</a>
-					</li>
+
 					<li>
 						<form action="../logout.php" role="form" method="post" name="formLogin">
 							<button type="submit" class="active btn btn-block btn-info btn-lg">Sair
@@ -78,14 +73,14 @@
 			<div class="sidebar-collapse">
 				<ul class="nav" id="main-menu">
 					<li>
-						<a  href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+						<a  href="aluno.php"><i class="fa fa-dashboard "></i>Principal<br></a>
 					</li>
 					<li>
-						<a href="#"><i class="fa fa-align-justify"></i>Eventos<span class="fa arrow"></span></a>
+						<a hr ef="#"><i class="fa fa-align-justify"></i>Eventos<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li>
 
-								<a  href="minicurso.php"><i class="fa fa-play-circle">&nbsp;Mini Cursos</i></a>
+								<a class="active-menu" href="minicurso.php"><i class="fa fa-play-circle">&nbsp;Mini Cursos</i></a>
 
 							</li>
 							<li>
@@ -100,7 +95,7 @@
 						<a href="estagio.php"><i class="fa fa-search"></i>Estágio </a>
 					</li>
 					<li>
-						<a class="active-menu" href="anuncio.php"><i class="fa fa-search"></i>Anuncio </a>
+						<a href="anuncio.php"><i class="fa fa-search"></i>Anuncio </a>
 					</li>
 					<li>
 						<a href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
@@ -110,7 +105,6 @@
 					</li>
 					<li>
 						<a href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
-					</li>
 					<li>
 						<a href="#"><i class="fa fa-align-justify"></i>GRADE CURRICULAR</a>
 					</li>
@@ -121,7 +115,7 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h1 class="page-head-line">Anuncio</h1>
+						<h1 class="page-head-line">Mini Curso</h1>
 						<center>
 							<div id="divBusca">
 								<img src="img/search3.png" alt="Buscar..." />
@@ -134,10 +128,10 @@
 				<!-- /. ROW  -->
 				<div class="row">
 					<div class="col-md-4 col-sm-4" id="largura">
-						<div class="panel panel-success">
+						<div class="panel panel-primary">
 							<div class="panel-heading">
 								<div class="alert-link">
-									Nome Usuário Postagem&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="#" class="btn btn-info">Excluir Postagem</a>
+									Nome Usuário Postagem
 								</div>
 							</div>
 							<div class="panel-body">
@@ -153,12 +147,18 @@
 								<br>
 								<div class="alert alert-info">
 									<div class="alert-link">
-										Nome Usuário Comentario
+										Meu Comentario
 									</div>
 									Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 									<a href="#" class="btn btn-info">Excluir</a>
 								</div>
+								<div class="alert alert-info">
+									<div class="alert-link">
+										Nome usuario Comentario
+									</div>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 
+								</div>
 							</div>
 						</div>
 					</div>
