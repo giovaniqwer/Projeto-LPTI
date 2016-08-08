@@ -6,11 +6,10 @@
     define('DB_USER', 'root');
     define('DB_PASS', 'root');
     define('DB_NAME', 'LPTI');
-    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+    
     //habilita todas as exibições de errors
     ini_set('display_errors',true);
     error_reporting(E_ALL);
 
     date_default_timezone_set('America/Sao_Paulo');
-    
 ?>

@@ -1,5 +1,5 @@
 <?php
-	require_once 'init.php';
+	require_once '../init.php';
 	$PDO = db_connect();
 	$sql_count = "SELECT COUNT(*) AS total FROM contatos ORDER BY nome ASC";
 	$sql = "SELECT idContato, nomeContato, emailContato, comentarioContato FROM contatos ORDER BY nomeContato ASC";

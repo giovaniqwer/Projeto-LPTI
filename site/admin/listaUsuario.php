@@ -1,5 +1,5 @@
 <?php
-	require_once 'init.php';
+	require_once '../init.php';
 	$PDO = db_connect();
 	$sql_count = "SELECT COUNT(*) AS total FROM Usuario ORDER BY nome ASC";
 	$sql = "SELECT idUsuario, nome,sobrenome,senha, email, identificacao,TipoUsuario_idTipoUsuario FROM Usuario ORDER BY nome ASC";
@@ -205,7 +205,7 @@
 							</div>
 						</div>
 					</div>
-				
+
 
 							<script src="../assets/js/jquery-1.11.1.js"></script>
 							<!-- BOOTSTRAP SCRIPTS -->
