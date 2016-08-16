@@ -87,7 +87,7 @@
                                     <h3 class="panel-title text-center">Faça parte do Divulga ICSA!</h3>
                                 </div>
                                 <div class="panel-body">
-                                    <form name="formulario" id="forms" action="add-cadastro.php" method="post" onsubmit=" return verificadadoscadastro()">
+                                    <form name="formulario" id="forms" action="add-cadastro.php" method="post" onsubmit="return verificadadoscadastro()">
                                         <div class="row">
 
                                             <div class="form-group">
