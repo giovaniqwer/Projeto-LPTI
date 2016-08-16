@@ -31,10 +31,6 @@ function verificadadoscadastro () {
 	//LIMPA SENHA
 	document.getElementById("senha").value = "";
 	document.getElementById("cofirmacao_senhacadastro").value;
-
-	if(teste==true){
-		alert("CADASTRO REALIZADO COM SUCESSO!");
-	}
 }
 
 
