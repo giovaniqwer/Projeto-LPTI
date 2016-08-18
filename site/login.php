@@ -99,7 +99,7 @@
                                             <label for="inputPassword3" class="control-label">Senha</label>
                                         </div>
                                         <div class="col-sm-10">
-                                            <input type="password" class="form-control input-lg" id="inputPassword3" placeholder="senha" name="senha">
+                                            <input type="password" class="form-control input-lg" id="inputPassword3" placeholder="Senha" name="senha">
                                             <!-- <span class="fa fa-3x fa-asterisk fa-fw pull-right text-muted"></span> -->
                                         </div>
                                     </div>
