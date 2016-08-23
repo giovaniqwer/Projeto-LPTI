@@ -50,7 +50,7 @@ function validaEmail($email, $senha) {
   $nemail = addslashes($email);
   $nsenha = addslashes($senha);
   // Monta uma consulta SQL (query) para procurar um usuário
-  $sql = "SELECT `idUsuario`, `nome` FROM `".$_SG['tabela']."` WHERE ".$cS." `email` = '".$nemail."' AND ".$cS." `senha` = '".$nsenha."' LIMIT 1";
+  $sql = "SELECT `idUsuario`, `nome`, `TipoUsuario_idTipoUsuario` FROM `".$_SG['tabela']."` WHERE ".$cS." `email` = '".$nemail."' AND ".$cS." `senha` = '".$nsenha."' LIMIT 1";
   $query = mysql_query($sql);
   $resultado = mysql_fetch_assoc($query);
   // Verifica se encontrou algum registro
@@ -58,15 +58,17 @@ function validaEmail($email, $senha) {
     // Nenhum registro foi encontrado => o usuário é inválido
     return false;
   } else {
+  	echo $resultado['TipoUsuario_idTipoUsuario'];
     // Definimos dois valores na sessão com os dados do usuário
-    $_SESSION['emailID'] = $resultado['id']; // Pega o valor da coluna 'id do registro encontrado no MySQL
+    $_SESSION['emailID'] = $resultado['idUsuario']; // Pega o valor da coluna 'id do registro encontrado no MySQL
     $_SESSION['emailNome'] = $resultado['nome']; // Pega o valor da coluna 'nome' do registro encontrado no MySQL
+    $_SESSION['emailTipo'] = $resultado['TipoUsuario_idTipoUsuario'];
     // Verifica a opção se sempre validar o login
-    if ($_SG['validaSempre'] == true) {
+ /*   if ($_SG['validaSempre'] == true) {
       // Definimos dois valores na sessão com os dados do login
       $_SESSION['emailLogin'] = $email;
       $_SESSION['emailSenha'] = $senha;
-    }
+    }*/
     return true;
   }
 }

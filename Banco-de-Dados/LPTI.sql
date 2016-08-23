@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 17-Ago-2016 às 08:59
+-- Data de Criação: 23-Ago-2016 às 17:43
 -- Versão do servidor: 5.5.47-0ubuntu0.14.04.1
 -- versão do PHP: 5.5.9-1ubuntu4.14
 
@@ -126,11 +126,12 @@ CREATE TABLE IF NOT EXISTS `Disciplina` (
 
 CREATE TABLE IF NOT EXISTS `Evento` (
   `idEvento` int(11) NOT NULL AUTO_INCREMENT,
-  `dataEvento` date NOT NULL,
-  `localEvento` varchar(100) NOT NULL,
-  `horarioEvento` time NOT NULL,
-  `palestrante` varchar(100) NOT NULL,
-  `temaEvento` varchar(100) NOT NULL,
+  `data` date DEFAULT NULL,
+  `local` varchar(100) DEFAULT NULL,
+  `palestrante` varchar(80) NOT NULL,
+  `horario` time DEFAULT NULL,
+  `tema` varchar(100) DEFAULT NULL,
+  `descricao` varchar(100) NOT NULL,
   PRIMARY KEY (`idEvento`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -185,14 +186,15 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
   `TipoUsuario_idTipoUsuario` int(11) NOT NULL,
   PRIMARY KEY (`idUsuario`),
   KEY `fk_Usuario_TipoUsuario1_idx` (`TipoUsuario_idTipoUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Extraindo dados da tabela `Usuario`
 --
 
 INSERT INTO `Usuario` (`idUsuario`, `nome`, `sobrenome`, `senha`, `email`, `identificacao`, `TipoUsuario_idTipoUsuario`) VALUES
-(22, 'rafa', 'custodio', '123456', 'rafa@gmail.com', 555555555, 2);
+(23, 'Carol', 'Marostica', '124124', 'carol@gmail.com', 124, 2),
+(24, 'Rafaela', 'Custódio', '123456', 'rafa@gmail.com', 123, 2);
 
 --
 -- Constraints for dumped tables

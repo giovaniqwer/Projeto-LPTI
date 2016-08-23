@@ -1,0 +1,17 @@
+$(document).ready(function() {
+    $('#calendar').fullCalendar({
+    events:[
+    {
+		title : 'evento1',
+		start : '2016-08-18'    
+    
+    },
+    {
+		title : 'evento2',
+		start : '2016-08-19'   
+		color: 'red'; 
+    
+    }
+    ]
+});
+  });
