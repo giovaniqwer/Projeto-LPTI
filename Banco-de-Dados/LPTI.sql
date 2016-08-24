@@ -120,21 +120,6 @@ CREATE TABLE IF NOT EXISTS `Disciplina` (
 
 -- --------------------------------------------------------
 
---
--- Estrutura da tabela `Evento`
---
-
-CREATE TABLE IF NOT EXISTS `Evento` (
-  `idEvento` int(11) NOT NULL AUTO_INCREMENT,
-  `data` date DEFAULT NULL,
-  `local` varchar(100) DEFAULT NULL,
-  `palestrante` varchar(80) NOT NULL,
-  `horario` time DEFAULT NULL,
-  `tema` varchar(100) DEFAULT NULL,
-  `descricao` varchar(100) NOT NULL,
-  PRIMARY KEY (`idEvento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
 -- --------------------------------------------------------
 
 --
@@ -187,14 +172,33 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
   PRIMARY KEY (`idUsuario`),
   KEY `fk_Usuario_TipoUsuario1_idx` (`TipoUsuario_idTipoUsuario`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+DROP TABLE IF EXISTS `mydb`.`Evento` ;
 
---
--- Extraindo dados da tabela `Usuario`
---
-
-INSERT INTO `Usuario` (`idUsuario`, `nome`, `sobrenome`, `senha`, `email`, `identificacao`, `TipoUsuario_idTipoUsuario`) VALUES
-(23, 'Carol', 'Marostica', '124124', 'carol@gmail.com', 124, 2),
-(24, 'Rafaela', 'Custódio', '123456', 'rafa@gmail.com', 123, 2);
+CREATE TABLE IF NOT EXISTS `Evento` (
+  `idEvento` INT NOT NULL AUTO_INCREMENT,
+  `data` DATE NOT NULL,
+  `local` VARCHAR(100) NOT NULL,
+  `horarioEvento` TIME NOT NULL,
+  `palestrante` VARCHAR(50) NOT NULL,
+  `tema` VARCHAR(45) NOT NULL,
+  `descricao` VARCHAR(255) NOT NULL,
+  `Classificacao_Categoria_idCategoria` INT NOT NULL,
+  `Classificacao_Post_idPost` INT NOT NULL,
+  `Usuario_idUsuario` INT NOT NULL,
+  PRIMARY KEY (`idEvento`),
+  INDEX `fk_Evento_Classificacao1_idx` (`Classificacao_Categoria_idCategoria` ASC, `Classificacao_Post_idPost` ASC),
+  INDEX `fk_Evento_Usuario1_idx` (`Usuario_idUsuario` ASC),
+  CONSTRAINT `fk_Evento_Classificacao1`
+    FOREIGN KEY (`Classificacao_Categoria_idCategoria` , `Classificacao_Post_idPost`)
+    REFERENCES `LPTI`.`Classificacao` (`Categoria_idCategoria` , `Post_idPost`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Evento_Usuario1`
+    FOREIGN KEY (`Usuario_idUsuario`)
+    REFERENCES `LPTI`.`Usuario` (`idUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 --
 -- Constraints for dumped tables

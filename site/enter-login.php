@@ -13,11 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // O usuário e a senha digitados foram validados, manda pra página interna
     echo $_SESSION['emailTipo'];
     //Verifica se o usuário é administrador ou comum
-    if($_SESSION['emailTipo'] == 2){
-    	
+    if($_SESSION['emailTipo'] == 1){
 		header("Location:admin/inicio.php");
-	}else if($_SESSION['emailTipo'] == 1){
-		header("Location:forum-calendario/forum.html");
+	}else if($_SESSION['emailTipo'] == 2){
+		header("Location:aluno/inicio.html");
 	}
   } else {
     // O usuário e/ou a senha são inválidos, manda de volta pro form de login

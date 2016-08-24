@@ -1,8 +1,8 @@
-<?php 
+<?php
 	session_start();
 	if(empty($_SESSION["emailID"])|| empty($_SESSION["emailNome"])|| empty($_SESSION["emailTipo"])) {
-		header("Location:../error.html");	
-	}	
+		header("Location:../error.html");
+	}
 ?>
 <html><head>
         <meta charset="utf-8">
@@ -61,7 +61,7 @@
                                 <button type="submit" class="active btn btn-block btn-info btn-lg">Sair
                                     <i class="fa fa-fw fa-lg fa-sign-out"></i>
                                 </button>
-								
+
                             </form>
                         </li>
                     </ul>
@@ -131,31 +131,31 @@
                                         <div class="panel-heading"></div>
                                         <div class="panel-body">
                                             <div class="row">
-                                                <div class="col-md-2 ">
+                                                <div class="col-md-3 ">
                                                     <div class="alert alert-info text-center">
                                                         <i class="fa fa-5x fa-users"></i>
                                                         <a href="listaUsuario.php"><h3>Usuários</h3></a>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2 ">
+                                                <div class="col-md-3 ">
                                                     <div class="alert alert-success text-center">
                                                         <i class="fa fa-5x fa-comments"></i>
                                                         <a href="admin.php"><h3>Fórum</h3></a>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2 ">
+                                                <div class="col-md-3 ">
                                                     <div class="alert alert-warning text-center">
                                                         <i class="fa fa-5x fa-envelope"></i>
                                                         <a href="listaContato.php"><h3>Mensagens</h3></a>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2 ">
+                                                <div class="col-md-3 ">
                                                     <div class="alert alert-danger text-center">
                                                         <i class="fa fa-5x fa-graduation-cap"></i>
                                                         <a href="disciplinas.php"><h3>Disciplinas</h3></a>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2 ">
+                                                <div class="col-md-3 ">
                                                     <div class="alert text-center" style="background-color:#EED2EE">
                                                         <i class="fa fa-5x fa-calendar" style="color:#BA55D3"></i>
                                                         <a href="../calendario/adm/evento.php"><h3>Calendário</h3></a>

@@ -2,8 +2,8 @@
 
 	session_start();
 	if(empty($_SESSION["emailID"])|| empty($_SESSION["emailNome"])|| empty($_SESSION["emailTipo"])) {
-		header("Location:../error.html");	
-	}	
+		header("Location:../error.html");
+	}
 	require_once '../init.php';
 	$PDO = db_connect();
 	$sql_count = "SELECT COUNT(*) AS total FROM contatos ORDER BY nome ASC";
@@ -67,15 +67,15 @@
 						<a href="inicio.php">INICIO</a>
 					</li>
 					<li>
-						<a href="listaUsuario.php">USUARIOS</a>
+						<a href="listaContato.php">MENSSAGENS</a>
 					</li>
 					<li>
-						<a href="listaContato.php">MENSAGENS</a>
+						<a href="listaUsuario.php">USUARIOS</a>
 					</li>
 					 <li>
                     <a href="#"><?php echo $_SESSION["emailNome"] ?></a>
                 </li>
-                
+
 							<li>
 								<form action="../logout.php" role="form" method="post" name="formLogin">
 									<button type="submit" class="active btn btn-block btn-info btn-lg">Sair
@@ -83,7 +83,7 @@
 									</button>
 								</form>
 							</li>
-							
+
 						</ul>
 					</div>
 				</div>

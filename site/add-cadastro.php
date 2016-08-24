@@ -26,7 +26,7 @@ else{
  $senha= isset($_POST['password_confirmation']) ? $_POST['password_confirmation'] : null;
  $email = isset($_POST['email']) ? $_POST['email'] : null;
  $matricula= isset($_POST['matricula']) ? $_POST['matricula'] : null;
- $tipo = 2;
+ $tipo = 1;
 
 
 
@@ -50,4 +50,3 @@ else{
     print_r($stmt->errorInfo());
  }}
 ?>
-
