@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if(empty($_SESSION["emailID"])|| empty($_SESSION["emailNome"])|| empty($_SESSION["emailTipo"])) {
-		header("Location:../login.php");
+	header("Location:../login.php");
 	}
 ?>
 <html>

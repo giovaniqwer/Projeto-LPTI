@@ -13,7 +13,7 @@
 	$total = $stmt_count->fetchColumn();
 	$stmt = $PDO->prepare($sql);
 	$stmt->execute();
-?>
+	?>
 
 <html>
 	<head>

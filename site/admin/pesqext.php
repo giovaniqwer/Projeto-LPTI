@@ -84,7 +84,7 @@
 			<div class="conteudo">
 
 		<nav class="navbar-default navbar-side" role="navigation">
-			<div class="sidebar-collapse">
+		<div class="sidebar-collapse">
 				<ul class="nav" id="main-menu">
 					<li>
 						<a href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
