@@ -2,7 +2,7 @@
 
 	session_start();
 	if(empty($_SESSION["emailID"])|| empty($_SESSION["emailNome"])|| empty($_SESSION["emailTipo"])) {
-		header("Location:../error.html");
+		header("Location:../login.php");
 	}
 	require_once '../init.php';
 	$PDO = db_connect();

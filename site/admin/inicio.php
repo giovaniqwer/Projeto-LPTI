@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if(empty($_SESSION["emailID"])|| empty($_SESSION["emailNome"])|| empty($_SESSION["emailTipo"])) {
-		header("Location:../error.html");
+		header("Location:../login.php");
 	}
 ?>
 <html><head>
@@ -152,13 +152,13 @@
                                                 <div class="col-md-3 ">
                                                     <div class="alert alert-danger text-center">
                                                         <i class="fa fa-5x fa-graduation-cap"></i>
-                                                        <a href="disciplinas.php"><h3>Disciplinas</h3></a>
+                                                        <a href="disciplinas.html"><h3>Disciplinas</h3></a>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 ">
                                                     <div class="alert text-center" style="background-color:#EED2EE">
                                                         <i class="fa fa-5x fa-calendar" style="color:#BA55D3"></i>
-                                                        <a href="../calendario/adm/evento.php"><h3>Calendário</h3></a>
+                                                        <a href="#"><h3>Calendário</h3></a>
                                                     </div>
                                                 </div>
                                             </div>
