@@ -1,15 +1,5 @@
 <?php
-/**
-* Sistema de segurança com acesso restrito
-*
-* Usado para restringir o acesso de certas páginas do seu site
-*
-* @author Thiago Belem <contato@thiagobelem.net>
-* @link http://thiagobelem.net/
-*
-* @version 1.0
-* @package SistemaSeguranca
-*/
+
 //  Configurações do Script
 // ==============================
 $_SG['conectaServidor'] = true;    // Abre uma conexão com o servidor MySQL?
@@ -30,7 +20,7 @@ $_SG['tabela'] = 'Usuario';       // Nome da tabela onde os usuários são salvo
 // Verifica se precisa fazer a conexão com o MySQL
 if ($_SG['conectaServidor'] == true) {
   $_SG['link'] = mysqli_connect($_SG['servidor'], $_SG['email'], $_SG['senha'], $_SG['banco']) or die("MySQL: Não foi possível conectar-se ao servidor [".$_SG['servidor']."].");
- 
+
 }
 // Verifica se precisa iniciar a sessão
 if ($_SG['abreSessao'] == true)

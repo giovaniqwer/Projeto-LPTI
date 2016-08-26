@@ -5,3 +5,15 @@
 		$(".conteudo").load(href + " .conteudo");
  });
  });
+
+ $(document).ready(function(e){
+   $(".add-post").click(function(){
+     $("#modal").fadeIn(50);
+   });
+   $("#fechar, #modal").click(function(e){
+     if(e.target !==this){
+       return;
+     }
+      $("#modal").fadeOut(50);
+   });
+ });
