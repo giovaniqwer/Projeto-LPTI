@@ -10,11 +10,11 @@ if (empty($id)) {
 }
 // remove do BD
 $PDO = db_connect();
-$sql = "DELETE FROM Usuario WHERE idUsuario = :id";
+$sql = "DELETE FROM Post WHERE idPost = :id";
 $stmt = $PDO->prepare($sql);
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 if ($stmt->execute()) {
-    header('Location: listaUsuario.php');
+    header('Location: ../admin/monitorias.php');
 } else {
     echo " Erro ao excluir";
     print_r($stmt->errorInfo());
