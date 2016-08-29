@@ -164,7 +164,7 @@ $stmt->execute();
                                             <div class="panel-heading">
 
                                                 <div class="alert-link">
-                                                    Dono do Post&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-succes" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+                                                    Dono do Post&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-success" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
                                                 </div>
 
                                             </div>

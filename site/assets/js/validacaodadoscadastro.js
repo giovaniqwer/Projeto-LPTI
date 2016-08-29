@@ -33,7 +33,7 @@ function verificadadoscadastro() {
     document.getElementById("cofirmacao_senhacadastro").value;
 }
 
-
+/*
 function validaPost() {
     var post = document.querySelector("#post").value;
     var categoria = document.querySelector("#catg").value;
@@ -46,7 +46,7 @@ function validaPost() {
     } else {
         teste = true;
     }
-}
+}*/
 
 
 //Verifica campos em branco - Rafaela
