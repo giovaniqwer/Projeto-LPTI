@@ -62,10 +62,10 @@ $stmt->execute();
                 <div class="navbar-collapse collapse move-me">
                     <ul class="nav navbar-nav navbar-right set-links">
                         <li>
-                            <a href="inicio.php">INICIO</a>
+                            <a href="inicio.php">INÍCIO</a>
                         </li>
                         <li>
-                            <a href="listaUsuario.php">USUARIOS</a>
+                            <a href="listaUsuario.php">USUÁRIOS</a>
                         </li>
                         <li>
                             <a href="listaContato.php">MENSAGENS</a>
@@ -113,7 +113,7 @@ $stmt->execute();
                                             <a href="palestra.php"><i class="fa fa-cube">&nbsp;Palestras</i></a>
                                         </li>
                                         <li>
-                                            <a class="active-menu" href="entreterimento.php"><i class="fa fa-smile-o"></i>Entreterimento</a>
+                                            <a class="active-menu" href="entretenimento.php"><i class="fa fa-smile-o"></i>Entretenimento</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -121,7 +121,7 @@ $stmt->execute();
                                     <a href="estagio.php"><i class="fa fa-briefcase "></i>Estágio </a>
                                 </li>
                                 <li>
-                                    <a href="anuncio.php"><i class="fa fa-bullhorn"></i>Anuncio </a>
+                                    <a href="anuncio.php"><i class="fa fa-bullhorn"></i>Anúncio </a>
                                 </li>
                                 <li>
                                     <a href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
@@ -133,7 +133,7 @@ $stmt->execute();
                                     <a href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-align-justify"></i>GRADE CURRICULAR</a>
+                                    <a href="disciplinas.php"><i class="fa fa-align-justify"></i>Grade Curricular</a>
                                 </li>
                             </ul>
                         </div>
@@ -143,7 +143,7 @@ $stmt->execute();
                         <div id="page-inner">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1 class="page-head-line">Entreterimento</h1>
+                                    <h1 class="page-head-line">Entretenimento</h1>
                                     <center>
                                         <div id="divBusca">
                                             <img src="img/search3.png" alt="Buscar..." />
@@ -163,7 +163,7 @@ $stmt->execute();
                                             <div class="panel-heading">
 
                                                 <div class="alert-link">
-                                                    Dono do Post&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-primary" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+                                                    <?php echo $post['nome'].' '.$post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-primary" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
                                                 </div>
 
                                             </div>
@@ -258,9 +258,9 @@ $stmt->execute();
                                                     <ul class="dropdown-menu">
                                                         <option value="1">Mini Curso</option>
                                                         <option value="2">Palestra</option>
-                                                        <option value="3">Entreterimento</option>
+                                                        <option value="3">Entretenimento</option>
                                                         <option value="4">Estágio</option>
-                                                        <option value="5">Anuncio</option>
+                                                        <option value="5">Anúncio</option>
                                                         <option value="6">Pesquisa e Extensão</option>
                                                         <option value="7">Iniciacao Cientifica</option>
                                                         <option value="8">Monitorias</option>

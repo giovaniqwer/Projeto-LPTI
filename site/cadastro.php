@@ -2,7 +2,7 @@
 require 'init.php';
 ?>
 <!--CONTEUDO-FORMULARIO CADASTRO-->
-<html>
+<html lang="pt-br">
 
     <head>
         <meta charset="utf-8">

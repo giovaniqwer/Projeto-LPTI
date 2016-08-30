@@ -7,18 +7,13 @@ require_once '../init.php';
 include_once '../cadastro-class.php';
 $PDO = db_connect();
 $sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
-$sql = "SELECT Post.idPost, Post.idUsuario, Post.dataPost, Post.conteudoPost, Post.Tag, Post.Categoria_idCategoria, Usuario.nome, Usuario.sobrenome
-FROM Post
-LEFT JOIN Usuario ON Usuario.idUsuario = Post.idUsuario
-WHERE Categoria_idCategoria =5
-ORDER BY idPost DESC ";
+$sql = "SELECT idPost,idUsuario,dataPost, conteudoPost, Tag, Categoria_idCategoria FROM Post WHERE Categoria_idCategoria=3  ORDER BY idPost DESC";
 $stmt_count = $PDO->prepare($sql_count);
 $stmt_count->execute();
 $total = $stmt_count->fetchColumn();
 $stmt = $PDO->prepare($sql);
 $stmt->execute();
 ?>
-
 <html>
 
     <head>
@@ -67,10 +62,10 @@ $stmt->execute();
                 <div class="navbar-collapse collapse move-me">
                     <ul class="nav navbar-nav navbar-right set-links">
                         <li>
-                            <a href="inicio.php">INÍCIO</a>
+                            <a href="inicio.php">INICIO</a>
                         </li>
                         <li>
-                            <a href="listaUsuario.php">USUÁRIOS</a>
+                            <a href="listaUsuario.php">USUARIOS</a>
                         </li>
                         <li>
                             <a href="listaContato.php">MENSAGENS</a>
@@ -118,7 +113,7 @@ $stmt->execute();
                                             <a href="palestra.php"><i class="fa fa-cube">&nbsp;Palestras</i></a>
                                         </li>
                                         <li>
-                                            <a href="entretenimento.php"><i class="fa fa-smile-o"></i>Entretenimento</a>
+                                            <a class="active-menu" href="entretenimento.php"><i class="fa fa-smile-o"></i>Entretenimento</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -126,7 +121,7 @@ $stmt->execute();
                                     <a href="estagio.php"><i class="fa fa-briefcase "></i>Estágio </a>
                                 </li>
                                 <li>
-                                    <a class="active-menu" href="anuncio.php"><i class="fa fa-bullhorn"></i>Anúncio </a>
+                                    <a href="anuncio.php"><i class="fa fa-bullhorn"></i>Anuncio </a>
                                 </li>
                                 <li>
                                     <a href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
@@ -148,7 +143,7 @@ $stmt->execute();
                         <div id="page-inner">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1 class="page-head-line">Anúncio</h1>
+                                    <h1 class="page-head-line">Entretenimento</h1>
                                     <center>
                                         <div id="divBusca">
                                             <img src="img/search3.png" alt="Buscar..." />
@@ -164,11 +159,11 @@ $stmt->execute();
                             <div class="row">
                                 <div class="col-md-4 col-sm-4" id="largura">
                                     <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>   
-                                        <div class="panel panel-success">
+                                        <div class="panel panel-primary">
                                             <div class="panel-heading">
 
                                                 <div class="alert-link">
-                                                    <?php echo $post['nome'].' '.$post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-success" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+                                                    Dono do Post&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-primary" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
                                                 </div>
 
                                             </div>
@@ -254,7 +249,7 @@ $stmt->execute();
                                         <form name="formularioPost" id="formPost" action="../Post/add-post.php" method="post">
                                             <div class="form-group">
                                                 <label>Post:</label>
-                                                <textarea name="conteudoPost"  class="form-control" rows="3"></textarea>
+                                                <textarea name="conteudoPost" class="form-control" rows="3"></textarea>
                                                 <label>Categoria:</label>
                                             </div>
 
@@ -265,7 +260,7 @@ $stmt->execute();
                                                         <option value="2">Palestra</option>
                                                         <option value="3">Entretenimento</option>
                                                         <option value="4">Estágio</option>
-                                                        <option value="5">Anúncio</option>
+                                                        <option value="5">Anuncio</option>
                                                         <option value="6">Pesquisa e Extensão</option>
                                                         <option value="7">Iniciacao Cientifica</option>
                                                         <option value="8">Monitorias</option>
@@ -339,7 +334,7 @@ $stmt->execute();
                     <script src="../forum-calendario/assets/js/custom.js"></script>
                     <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
 
-                    <script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+                    <script src="../forum-calesndario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
                     <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
                     <script src="../assets/js/jquery-1.10.2.js"></script>
                     <!-- BOOTSTRAP SCRIPTS -->

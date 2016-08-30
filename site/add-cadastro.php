@@ -6,6 +6,7 @@ include_once 'cadastro-class.php';
 //INICIO ALTERAÇÃO GIOVANI
 //CONFERE SE O E-MAIL JÁ ESTÁ CADASTRADO NO BANCO DE DADOS ANTES DE ENVIAR
 $email = $_POST['email'];
+
 $pdo = new PDO("mysql:host=localhost; dbname=LPTI", "root", "root");
 $stm = $pdo->prepare("SELECT * FROM Usuario where email='$email' ");
 $stm->execute();
