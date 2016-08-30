@@ -29,9 +29,9 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
         <link href="../assets/css/css.css" rel="stylesheet">
         <link href="css/estilo.css" rel="stylesheet">
         <!--SCRIPT VALIDACAO-->
-        <script type="text/javascript" src="assets/js/validacaodadoscadastro.js"></script>
-        <script type="text/javascript" src="assets/js/validacaodocontato.js"></script>
-        <script type="text/javascript" src="assets/js/validalogin.js"></script>
+        <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
+        <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
+        <script type="text/javascript" src="../assets/js/validalogin.js"></script>
     </head>
 
     <body>

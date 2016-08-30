@@ -45,9 +45,9 @@ $stmt->execute();
         <link href="../assets/css/css.css" rel="stylesheet">
         <link href="css/estilo.css" rel="stylesheet">
         <!--SCRIPT VALIDACAO-->
-        <script type="text/javascript" src="assets/js/validacaodadoscadastro.js"></script>
-        <script type="text/javascript" src="assets/js/validacaodocontato.js"></script>
-        <script type="text/javascript" src="assets/js/validalogin.js"></script>
+        <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
+        <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
+        <script type="text/javascript" src="../assets/js/validalogin.js"></script>
 
 
     </head>
@@ -168,7 +168,7 @@ $stmt->execute();
                                             <div class="panel-heading">
 
                                                 <div class="alert-link">
-                                                    <?php echo $post['nome'].' '.$post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-success" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+                                                    <?php echo $post['nome'].' '.$post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-success" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
                                                 </div>
 
                                             </div>
@@ -251,15 +251,15 @@ $stmt->execute();
                                         Postagem
                                     </div>
                                     <div class="panel-body">
-                                        <form name="formularioPost" id="formPost" action="../Post/add-post.php" method="post">
+                                        <form name="formularioPost" id="formPost" action="../Post/add-post.php" method="post" onsubmit="return validaPost()">
                                             <div class="form-group">
                                                 <label>Post:</label>
-                                                <textarea name="conteudoPost"  class="form-control" rows="3"></textarea>
+                                                <textarea name="conteudoPost" id="pt" class="form-control" rows="3"></textarea>
                                                 <label>Categoria:</label>
                                             </div>
 
                                             <div class="btn-group">
-                                                <select data-toggle="dropdown" name=categoriaPost class="btn btn-primary dropdown-toggle"><span class="caret"></span>
+                                                <select data-toggle="dropdown" id="catg" name=categoriaPost class="btn btn-primary dropdown-toggle"><span class="caret"></span>
                                                     <ul class="dropdown-menu">
                                                         <option value="1">Mini Curso</option>
                                                         <option value="2">Palestra</option>
@@ -275,7 +275,7 @@ $stmt->execute();
                                                 <br>                                                   
                                                 <div class="input-group">
                                                     <label>Palavra Chave:</label>
-                                                    <input type="text" name="tagPost" class="form-control" placeholder="Adicionar Tag" />
+                                                    <input type="text" name="tagPost" id="tag" class="form-control" placeholder="Adicionar Tag" />
                                                 </div>
                                             </div>
 

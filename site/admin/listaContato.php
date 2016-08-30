@@ -43,7 +43,7 @@ $stmt->execute();
         <!--CSS CALENDARIO-->
         <link href="../forum-calendario/assets/css/calendario.css" rel="stylesheet">
         <!--SCRIPT VALIDACAO-->
-        <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
+         <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
         <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
         <script type="text/javascript" src="../assets/js/validalogin.js"></script>
 

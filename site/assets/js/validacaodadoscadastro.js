@@ -33,20 +33,20 @@ function verificadadoscadastro() {
     document.getElementById("cofirmacao_senhacadastro").value;
 }
 
-/*
+
 function validaPost() {
-    var post = document.querySelector("#post").value;
+    var post = document.querySelector("#pt").value;
     var categoria = document.querySelector("#catg").value;
     var tag = document.querySelector("#tag").value;
     var tPost = false;
 
-    if ((post == "") || (categoria == "") || (tag == "") ) {
+    if ((post == "") || (categoria =="") || (tag == "") ){
         alert("Campo em Branco");
         return false;
     } else {
-        teste = true;
+        tPost = true;
     }
-}*/
+}
 
 
 //Verifica campos em branco - Rafaela
