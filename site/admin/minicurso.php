@@ -134,7 +134,7 @@ $stmt->execute();
                                     <a href="inicCient.php"><i class="fa fa-flask"></i>Iniciação Cientifica</a>
                                 </li>
                                 <li>
-                                    <a class="active-menu" href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
+                                    <a href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
                                 </li>
                                 <li>
                                     <a href="disciplinas.php"><i class="fa fa-align-justify"></i>Grade Curricular</a>

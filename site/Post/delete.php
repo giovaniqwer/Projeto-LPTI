@@ -14,7 +14,9 @@ $sql = "DELETE FROM Post WHERE idPost = :id";
 $stmt = $PDO->prepare($sql);
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 if ($stmt->execute()) {
-    header('Location: ../admin/monitorias.php');
+    echo "<script language='JavaScript'> 
+window.location='".$_SERVER['HTTP_REFERER']."'; 
+</script> ";
 } else {
     echo " Erro ao excluir";
     print_r($stmt->errorInfo());

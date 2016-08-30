@@ -3,7 +3,6 @@
 session_start();
 require_once '../init.php';
 include_once 'post-class.php';
-include_once '../cadastro-class.php';
 
 // pega os dados do formulário
 
@@ -21,17 +20,18 @@ $post = new Post($idUser, $dataPost, $conteudoPost, $tagPost, $categoriaPost);
 $PDO = db_connect();
 $sql = "INSERT INTO Post(idUsuario, dataPost, conteudoPost, Tag, Categoria_idCategoria) VALUES(:idUser, :dataPost, :conteudoPost, :tagPost, :categoriaPost)";
 $stmt = $PDO->prepare($sql);
-$stmt->bindParam(':idUser', $post->getUser());
-$stmt->bindParam(':dataPost', $post->getDataPost());
-$stmt->bindParam(':conteudoPost', $post->getConteudoPost());
-$stmt->bindParam(':tagPost', $post->getTagPost());
-$stmt->bindParam(':categoriaPost', $post->getCategoriaPost());
+@$stmt->bindParam(':idUser', $post->getUser());
+@$stmt->bindParam(':dataPost', $post->getDataPost());
+@$stmt->bindParam(':conteudoPost', $post->getConteudoPost());
+@$stmt->bindParam(':tagPost', $post->getTagPost());
+@$stmt->bindParam(':categoriaPost', $post->getCategoriaPost());
 
 
 if ($stmt->execute()) {
-
-    header('Location: ../admin/monitorias.php');
-          /*  ../admin/monitorias.php'*/
+	echo "<script language='JavaScript'> 
+window.location='".$_SERVER['HTTP_REFERER']."'; 
+</script> ";
+ 
 } else {
 
     echo "Erro ao cadastrar postagem!!";
