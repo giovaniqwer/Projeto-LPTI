@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 //  Configurações do Script
 
@@ -16,6 +16,7 @@ $_SG['tabela'] = 'Usuario';       // Nome da tabela onde os usuários são salvo
 // Verifica se precisa fazer a conexão com o MySQL
 if ($_SG['conectaServidor'] == true) {
     $_SG['link'] = mysqli_connect($_SG['servidor'], $_SG['email'], $_SG['senha'], $_SG['banco']) or die("MySQL: Não foi possível conectar-se ao servidor [" . $_SG['servidor'] . "].");
+    
 }
 // Verifica se precisa iniciar a sessão
 if ($_SG['abreSessao'] == true)
@@ -42,7 +43,7 @@ function validaEmail($email, $senha) {
         echo $resultado['TipoUsuario_idTipoUsuario'];
         // Definimos dois valores na sessão com os dados do usuário
         $_SESSION['emailID'] = $resultado['idUsuario']; // Pega o valor da coluna 'id do registro encontrado no MySQL
-        $_SESSION['emailNome'] = $resultado['nome']; // Pega o valor da coluna 'nome' do registro encontrado no MySQL
+        $_SESSION['emailNome'] = utf8_encode($resultado['nome']); // Pega o valor da coluna 'nome' do registro encontrado no MySQL
         $_SESSION['emailTipo'] = $resultado['TipoUsuario_idTipoUsuario'];
         // Verifica a opção se sempre validar o login
 

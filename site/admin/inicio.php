@@ -10,7 +10,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="">
-        <meta name="author" content="alunos">
+        <meta name="author" content="alunos" >
         <!--css forum -->
         <link href="../forum-calendario/assets/css/bootstrap.css" rel="stylesheet">
         <link href="../forum-calendario/assets/css/font-awesome.css" rel="stylesheet">
@@ -32,6 +32,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
         <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
         <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
         <script type="text/javascript" src="../assets/js/validalogin.js"></script>
+       
     </head>
 
     <body>
@@ -57,11 +58,13 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                         <li>
                             <a href="listaUsuario.php">USUÁRIOS</a>
                         </li>
+	                     
                         <li>
                             <a href="#">
                                 <?php echo $_SESSION["emailNome"] ?>
                             </a>
                         </li>
+                    
                         <li>
                             <form action="../logout.php" role="form" method="post" name="formLogin">
                                 <button type="submit" class="active btn btn-block btn-primary btn-lg">Sair
@@ -187,6 +190,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                                     <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
                                 </div>
                                 <div class="col-md-4">
+                                 <?php echo $_SESSION["emailNome"] ?>
                                     <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
                                     <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
                                 </div>
