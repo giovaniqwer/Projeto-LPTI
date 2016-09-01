@@ -24,6 +24,9 @@ else {
     $senha = isset($_POST['password_confirmation']) ? $_POST['password_confirmation'] : null;
     $email = isset($_POST['email']) ? $_POST['email'] : null;
     $matricula = isset($_POST['matricula']) ? $_POST['matricula'] : null;
+    $nome = utf8_decode($nome);
+    $sobrenome = utf8_decode($sobrenome);
+    $email = utf8_decode($email);
     $tipo = 1;
 
 
