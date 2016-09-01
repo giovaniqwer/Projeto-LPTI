@@ -124,6 +124,9 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                                     <a href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
                                 </li>
                                 <li>
+                                    <a href="outros.php"><i class="fa fa-archive"></i>Outros</a>
+                                </li>
+                                <li>
                                     <a href="disciplinas.php"><i class="fa fa-align-justify"></i>Grade Curricular</a>
                                 </li>
                             </ul>

@@ -46,10 +46,10 @@
                 <div class="navbar-collapse collapse move-me">
                     <ul class="nav navbar-nav navbar-right set-links">
                         <li>
-                            <a href="../index.html" class="active-menu-item">HOME</a>
+                            <a href="../index.php" class="active-menu-item">HOME</a>
                         </li>
                         <li>
-                            <a href="../links.html">LINKS</a>
+                            <a href="../links.php">LINKS</a>
                         </li>
                         <li>
                             <a href="../contato.php">CONTATO</a>
@@ -77,38 +77,41 @@
                         <div class="sidebar-collapse">
                             <ul class="nav" id="main-menu">
                                 <li>
-                                    <a href="forum.html"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                    <a href="forum.php"><i class="fa fa-dashboard "></i>Principal<br></a>
                                 </li>
                                 <li>
                                     <a hr ef="#"><i class="fa fa-align-justify"></i>Eventos<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
 
-                                            <a href="minicurso.html"><i class="fa fa-play-circle">&nbsp;Mini Cursos</i></a>
+                                            <a href="minicurso.php"><i class="fa fa-play-circle">&nbsp;Mini Cursos</i></a>
 
                                         </li>
                                         <li>
-                                            <a href="palestra.html"><i class="fa fa-bell ">&nbsp;Palestras</i></a>
+                                            <a href="palestra.php"><i class="fa fa-bell ">&nbsp;Palestras</i></a>
                                         </li>
                                         <li>
-                                            <a href="entreterimento.html"><i class="fa fa-circle-o"></i>Entreterimento</a>
+                                            <a href="entreterimento.php"><i class="fa fa-circle-o"></i>Entreterimento</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="estagio.html"><i class="fa fa-search"></i>Estágio </a>
+                                    <a href="estagio.php"><i class="fa fa-search"></i>Estágio </a>
                                 </li>
                                 <li>
-                                    <a href="anuncio.html"><i class="fa fa-search"></i>Anuncio </a>
+                                    <a href="anuncio.php"><i class="fa fa-search"></i>Anuncio </a>
                                 </li>
                                 <li>
-                                    <a href="pesqext.html"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
+                                    <a href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
                                 </li>
                                 <li>
-                                    <a href="inicCient.html"><i class="fa fa-globe"></i>Iniciação Cientifica</a>
+                                    <a href="inicCient.php"><i class="fa fa-globe"></i>Iniciação Cientifica</a>
                                 </li>
                                 <li>
-                                    <a href="monitorias.html"><i class="fa fa-book"></i>Monitorias</a>
+                                    <a href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
+                                </li>
+                                <li>
+                                    <a href="outros.php"><i class="fa fa-archive"></i>Outros</a>
                                 </li>
                                 <li>
                                     <a class="active-menu" href="#"><i class="fa fa-align-justify"></i>Grade Curricular</a>
@@ -142,7 +145,7 @@
                                             <div class="row">
                                                 <div class="panel-body">
                                                     <spam> Ow wow wow, calmae, qq se ta falano? eu n escolhi curso nenhum nao vei. </spam>
-                                                    <a href="painelzao.html" class="btn btn-danger">Calma q eu te salvo, tiu</a>
+                                                    <a href="painelzao.php" class="btn btn-danger">Calma q eu te salvo, tiu</a>
                                                 </div>
                                                 <div class="col-md-4 ">
                                                     <div class="alert alert-info text-center">
@@ -150,7 +153,7 @@
                                                         <hr/>
                                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
                                                         <hr/>
-                                                        <a href="Humanas.html" class="btn btn-info">Ver mais...</a>
+                                                        <a href="Humanas.php" class="btn btn-info">Ver mais...</a>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 ">
@@ -159,7 +162,7 @@
                                                         <hr/>
                                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.</p>
                                                         <hr/>
-                                                        <a href="exatas.html" class="btn btn-info">Ver mais...</a>
+                                                        <a href="exatas.php" class="btn btn-info">Ver mais...</a>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 ">
@@ -168,7 +171,7 @@
                                                         <hr/>
                                                         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.</p>
                                                         <hr/>
-                                                        <a href="qqeutofaseno.html" class="btn btn-success">Ver mais...</a>
+                                                        <a href="qqeutofaseno.php" class="btn btn-success">Ver mais...</a>
                                                     </div>
                                                 </div>
                                             </div>

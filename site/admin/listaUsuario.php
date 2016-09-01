@@ -138,6 +138,9 @@ $stmt->execute();
                                     <a href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
                                 </li>
                                 <li>
+                                    <a href="outros.php"><i class="fa fa-archive"></i>Outros</a>
+                                </li>
+                                <li>
                                     <a href="disciplinas.php"><i class="fa fa-align-justify"></i>Grade Curricular</a>
                                 </li>
                             </ul>
@@ -187,7 +190,7 @@ $stmt->execute();
                                                     </td>
                                                     <td>
                                                         <?php echo $usuario ['email'] ?> </td>
-                                                    <td><a class="btn btn-primary" href="delete-user.php?id=<?php echo $usuario ['idUsuario'] ?>" onclick="return confirm('Deseja realmente remover este Usuario ?');"> Remover</a></td>
+                                                    <td><a class="btn btn-primary" onclick="return confirm('Deseja realmente desativar as atividades deste Usuario ?');"> Desativar</a></td>
                                                 </tr>
                                             <?php endwhile; ?>
                                         </tbody>
@@ -260,6 +263,7 @@ $stmt->execute();
                                                 <option value="6">Pesquisa e Extensão</option>
                                                 <option value="7">Iniciacao Cientifica</option>
                                                 <option value="8">Monitorias</option>
+                                                <option value="9">Outros</option>
                                             </ul>
                                         </select>
                                         <br />

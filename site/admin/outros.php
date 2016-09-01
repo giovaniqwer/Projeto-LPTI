@@ -10,7 +10,7 @@ $sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
 $sql = "SELECT Post.idPost, Post.idUsuario, Post.dataPost, Post.conteudoPost, Post.Tag, Post.Categoria_idCategoria, Usuario.nome, Usuario.sobrenome
 FROM Post
 LEFT JOIN Usuario ON Usuario.idUsuario = Post.idUsuario
-WHERE Categoria_idCategoria = 3
+WHERE Categoria_idCategoria =9
 ORDER BY idPost DESC ";
 $stmt_count = $PDO->prepare($sql_count);
 $stmt_count->execute();
@@ -18,7 +18,6 @@ $total = $stmt_count->fetchColumn();
 $stmt = $PDO->prepare($sql);
 $stmt->execute();
 ?>
-
 <html>
 
     <head>
@@ -45,14 +44,17 @@ $stmt->execute();
         <link href="../assets/css/css.css" rel="stylesheet">
         <link href="css/estilo.css" rel="stylesheet">
         <!--SCRIPT VALIDACAO-->
-        <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
+         <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
         <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
         <script type="text/javascript" src="../assets/js/validalogin.js"></script>
+        <!--JANELA MODAL-->
+
 
 
     </head>
 
     <body>
+
         <!--TOPO DO SITE-->
         <div class="navbar navbar-inverse navbar-fixed-top ">
             <div class="container">
@@ -96,7 +98,7 @@ $stmt->execute();
             <div id="wrapper">
                 <br>
 
-                <!-- /. MENU LATERAL -->
+                <!-- MENU LATERAL -->
                 <br>
                 <div class="conteudo">
 
@@ -118,7 +120,7 @@ $stmt->execute();
                                             <a href="palestra.php"><i class="fa fa-cube">&nbsp;Palestras</i></a>
                                         </li>
                                         <li>
-                                            <a class="active-menu" href="entretenimento.php"><i class="fa fa-smile-o"></i>Entretenimento</a>
+                                            <a href="entretenimento.php"><i class="fa fa-smile-o"></i>Entretenimento</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -132,10 +134,13 @@ $stmt->execute();
                                     <a href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
                                 </li>
                                 <li>
-                                    <a href="inicCient.php"><i class="fa fa-flask"></i>Iniciação Cientifica</a>
+                                    <a href="inicCient.php"><i class="fa fa-globe"></i>Iniciação Cientifica</a>
                                 </li>
                                 <li>
                                     <a href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
+                                </li>
+                                <li>
+                                    <a class="active-menu" href="outros.php"><i class="fa fa-archive"></i>Outros</a>
                                 </li>
                                 <li>
                                     <a href="disciplinas.php"><i class="fa fa-align-justify"></i>Grade Curricular</a>
@@ -143,12 +148,12 @@ $stmt->execute();
                             </ul>
                         </div>
                     </nav>
-                    <!--FIM MENU LATERAL-->
+                    <!--FIM MENU -->
                     <div id="page-wrapper">
                         <div id="page-inner">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1 class="page-head-line">Entretenimento</h1>
+                                    <h1 class="page-head-line">Outros</h1>
                                     <center>
                                         <div id="divBusca">
                                             <img src="img/search3.png" alt="Buscar..." />
@@ -164,11 +169,12 @@ $stmt->execute();
                             <div class="row">
                                 <div class="col-md-4 col-sm-4" id="largura">
                                     <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>   
-                                        <div class="panel panel-primary">
+                                        <div class="panel panel-default">
                                             <div class="panel-heading">
 
                                                 <div class="alert-link">
-                                                    <?php echo $post['nome'].' '.$post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-primary" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+                                                    <?php echo $post['nome'].' '.$post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-default" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+
                                                 </div>
 
                                             </div>
@@ -206,17 +212,17 @@ $stmt->execute();
 
                                         <div class="panel-body">
                                             <div class="list-group">
-
-                                                <a href="#" class="list-group-item">
+                                                <a href="#0" class="list-group-item">
                                                     <div class="add-post">
                                                         <i class="fa fa-plus fa-fw"></i> Adicionar Postagem
                                                     </div>
+
                                                     <span class="pull-right text-muted small"><em></em>
                                                     </span>
                                                 </a>
                                             </div>
 
-                                            <!-- /.list-group -->
+
 
                                         </div>
                                         <div class="panel panel-info">
@@ -241,8 +247,10 @@ $stmt->execute();
                         </div>
                     </div>
 
-                    
-                    <!--JANELA MODAL ADD POST-->
+
+
+
+                   <!--JANELA MODAL ADD POST-->
                     <div id="modal">
                         <div class="modal-box">
                             <div class="modal-box-conteudo">
@@ -259,7 +267,7 @@ $stmt->execute();
                                             </div>
 
                                             <div class="btn-group">
-                                                <select data-toggle="dropdown" id="catg" name="categoriaPost" class="btn btn-primary dropdown-toggle"><span class="caret"></span>
+                                                <select data-toggle="dropdown" id="catg" name=categoriaPost class="btn btn-primary dropdown-toggle"><span class="caret"></span>
                                                     <ul class="dropdown-menu">
                                                         <option value="1">Mini Curso</option>
                                                         <option value="2">Palestra</option>
@@ -269,6 +277,7 @@ $stmt->execute();
                                                         <option value="6">Pesquisa e Extensão</option>
                                                         <option value="7">Iniciacao Cientifica</option>
                                                         <option value="8">Monitorias</option>
+                                                        <option value="9">Outros</option>
                                                     </ul>
                                                 </select>
                                                 <br />
@@ -297,6 +306,8 @@ $stmt->execute();
                     </div>
                     <!--FIM JANELA MODAL ADD POST-->
 
+
+
                     <section id="footer-sec">
                         <div class="container">
                             <div class="row">
@@ -305,7 +316,7 @@ $stmt->execute();
                                     <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
                                 </div>
                                 <div class="col-md-4">
-                                    <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
+                                    <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar,Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
                                     <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
                                 </div>
                                 <div class="col-md-4">
@@ -317,8 +328,9 @@ $stmt->execute();
                                 </div>
                             </div>
                             <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
+                        <!--FIM DO RODAPÉ-->
                     </section>
-                    <!--FIM DO RODAPÉ-->
+
 
                     <script src="../assets/js/jquery-1.11.1.js"></script>
                     <!-- BOOTSTRAP SCRIPTS -->
@@ -338,8 +350,7 @@ $stmt->execute();
                     <!-- CUSTOM SCRIPTS -->
                     <script src="../forum-calendario/assets/js/custom.js"></script>
                     <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
-
-                    <script src="../forum-calesndario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+                    <script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
                     <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
                     <script src="../assets/js/jquery-1.10.2.js"></script>
                     <!-- BOOTSTRAP SCRIPTS -->
@@ -348,8 +359,6 @@ $stmt->execute();
                     <script src="../assets/js/jquery.metisMenu.js"></script>
                     <!-- CUSTOM SCRIPTS -->
                     <script src="../assets/js/custom.js"></script>
-
-
                     </body>
 
                     </html>

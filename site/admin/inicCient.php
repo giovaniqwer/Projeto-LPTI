@@ -137,6 +137,9 @@ $stmt->execute();
                                     <a href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
                                 </li>
                                 <li>
+                                    <a href="outros.php"><i class="fa fa-archive"></i>Outros</a>
+                                </li>
+                                <li>
                                     <a href="disciplinas.php"><i class="fa fa-align-justify"></i>Grade Curricular</a>
                                 </li>
                             </ul>
@@ -270,6 +273,7 @@ $stmt->execute();
                                                         <option value="6">Pesquisa e Extensão</option>
                                                         <option value="7">Iniciacao Cientifica</option>
                                                         <option value="8">Monitorias</option>
+                                                        <option value="9">Outros</option>
                                                     </ul>
                                                 </select>
                                                 <br />

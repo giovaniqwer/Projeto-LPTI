@@ -2,10 +2,10 @@
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tempo de Geração: 28/08/2016 às 21:00
--- Versão do servidor: 5.5.50-0ubuntu0.14.04.1
--- Versão do PHP: 5.5.9-1ubuntu4.19
+-- Máquina: localhost
+-- Data de Criação: 01-Set-2016 às 12:07
+-- Versão do servidor: 5.5.47-0ubuntu0.14.04.1
+-- versão do PHP: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de dados: `LPTI`
+-- Base de Dados: `LPTI`
 --
 CREATE DATABASE IF NOT EXISTS `LPTI` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `LPTI`;
@@ -25,7 +25,7 @@ USE `LPTI`;
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Categoria`
+-- Estrutura da tabela `Categoria`
 --
 
 CREATE TABLE IF NOT EXISTS `Categoria` (
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `Categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `Categoria`
+-- Extraindo dados da tabela `Categoria`
 --
 
 INSERT INTO `Categoria` (`idCategoria`, `nome`) VALUES
@@ -46,12 +46,13 @@ INSERT INTO `Categoria` (`idCategoria`, `nome`) VALUES
 (5, 'Anuncio'),
 (6, 'Pesquisa e Extensão'),
 (7, 'Iniciacão Cientifica'),
-(8, 'Monitorias');
+(8, 'Monitorias'),
+(9, 'Outros');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Comentario`
+-- Estrutura da tabela `Comentario`
 --
 
 CREATE TABLE IF NOT EXISTS `Comentario` (
@@ -68,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `Comentario` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `contatos`
+-- Estrutura da tabela `contatos`
 --
 
 CREATE TABLE IF NOT EXISTS `contatos` (
@@ -81,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `contatos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Fazendo dump de dados para tabela `contatos`
+-- Extraindo dados da tabela `contatos`
 --
 
 INSERT INTO `contatos` (`idcontato`, `nomeContato`, `emailContato`, `comentarioContato`, `data`) VALUES
@@ -91,7 +92,7 @@ INSERT INTO `contatos` (`idcontato`, `nomeContato`, `emailContato`, `comentarioC
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Curso`
+-- Estrutura da tabela `Curso`
 --
 
 CREATE TABLE IF NOT EXISTS `Curso` (
@@ -103,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `Curso` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Disciplina`
+-- Estrutura da tabela `Disciplina`
 --
 
 CREATE TABLE IF NOT EXISTS `Disciplina` (
@@ -121,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `Disciplina` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Evento`
+-- Estrutura da tabela `Evento`
 --
 
 CREATE TABLE IF NOT EXISTS `Evento` (
@@ -142,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `Evento` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Post`
+-- Estrutura da tabela `Post`
 --
 
 CREATE TABLE IF NOT EXISTS `Post` (
@@ -155,27 +156,22 @@ CREATE TABLE IF NOT EXISTS `Post` (
   PRIMARY KEY (`idPost`),
   KEY `fk_Post_1_idx` (`idUsuario`),
   KEY `fk_Post_Categoria1_idx` (`Categoria_idCategoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=38 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=47 ;
 
 --
--- Fazendo dump de dados para tabela `Post`
+-- Extraindo dados da tabela `Post`
 --
 
 INSERT INTO `Post` (`idPost`, `idUsuario`, `dataPost`, `conteudoPost`, `Tag`, `Categoria_idCategoria`) VALUES
-(26, 2, '28/08/2016 17:2', 'PALESTRA', 'PALESTRA', 2),
-(30, 2, '28/08/2016 19:3', 'ESTE POST DEVERIA ESTAR SOMENTE EM MONITORIA', 'MONITORIA', 8),
-(31, 2, '28/08/2016 19:3', 'ESTE POST DEVERIA ESTAR SOMENTE EM MINICURSO', 'mini curso', 1),
-(32, 2, '28/08/2016 19:3', 'ESTE POST DEVERIA ESTAR SOMENTE EM PALESTRAS', 'PALESTRA', 2),
-(33, 2, '28/08/2016 19:3', 'ESTE POST DEVERIA ESTAR SOMENTE EM ENTRETERIMENTO', 'ENTRETERIMENTO', 3),
-(34, 2, '28/08/2016 19:3', 'ESTE POST DEVERIA ESTAR SOMENTE EM ESTAGIO', 'estágio', 4),
-(35, 2, '28/08/2016 19:3', 'ESTE POST DEVERIA ESTAR SOMENTE EM ANUNCIO', 'anuncio', 5),
-(36, 2, '28/08/2016 19:3', 'ESTE POST DEVERIA ESTAR SOMENTE EM PESQUISA E EXTENSÃO', 'PESQUISA E EXTE', 6),
-(37, 2, '28/08/2016 19:3', 'ESTE POST DEVERIA ESTAR SOMENTE EM INICIACAO CIENTIFICA', 'IC', 7);
+(42, 3, '01/09/2016 10:2', 'Olá', 'oi', 1),
+(43, 3, '01/09/2016 10:2', 'carai', 'Oi', 4),
+(45, 3, '01/09/2016 11:0', 'hsahahahshsjfsdja', 'dfsdfsdfsd', 5),
+(46, 3, '01/09/2016 11:0', 'hsfdhasjdhj', 'dfsdfsdfsd', 3);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `TipoUsuario`
+-- Estrutura da tabela `TipoUsuario`
 --
 
 CREATE TABLE IF NOT EXISTS `TipoUsuario` (
@@ -185,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `TipoUsuario` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Fazendo dump de dados para tabela `TipoUsuario`
+-- Extraindo dados da tabela `TipoUsuario`
 --
 
 INSERT INTO `TipoUsuario` (`idTipoUsuario`, `tipo`) VALUES
@@ -195,7 +191,7 @@ INSERT INTO `TipoUsuario` (`idTipoUsuario`, `tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Usuario`
+-- Estrutura da tabela `Usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `Usuario` (
@@ -205,52 +201,54 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
   `senha` varchar(50) NOT NULL,
   `email` varchar(45) NOT NULL,
   `identificacao` int(11) NOT NULL,
+  `Atividade` int(1) NOT NULL,
   `TipoUsuario_idTipoUsuario` int(11) NOT NULL,
   PRIMARY KEY (`idUsuario`),
   KEY `fk_Usuario_TipoUsuario1_idx` (`TipoUsuario_idTipoUsuario`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Fazendo dump de dados para tabela `Usuario`
+-- Extraindo dados da tabela `Usuario`
 --
 
-INSERT INTO `Usuario` (`idUsuario`, `nome`, `sobrenome`, `senha`, `email`, `identificacao`, `TipoUsuario_idTipoUsuario`) VALUES
-(1, 'Giovani', 'junior', '123456', 'gigi@123.com', 2, 1),
-(2, 'Rafaela', 'CustÃ³dio', '123456', 'rafa@gmail.com', 1, 1);
+INSERT INTO `Usuario` (`idUsuario`, `nome`, `sobrenome`, `senha`, `email`, `identificacao`, `Atividade`, `TipoUsuario_idTipoUsuario`) VALUES
+(3, 'Rafaela', 'Custódio', '123456', 'rafa@gmail.com', 1, 0, 1),
+(4, 'Ráfãélâ', 'Silva', '123456', 'rafaela@gmail.com', 2, 0, 1),
+(5, 'Vítor', 'Melo', '123456', 'vitor@gmail.com', 2, 0, 1);
 
 --
--- Restrições para dumps de tabelas
+-- Constraints for dumped tables
 --
 
 --
--- Restrições para tabelas `Comentario`
+-- Limitadores para a tabela `Comentario`
 --
 ALTER TABLE `Comentario`
   ADD CONSTRAINT `fk_ComentPost_PostPost` FOREIGN KEY (`idPost`) REFERENCES `Post` (`idPost`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_ComentUsr_UserUsr` FOREIGN KEY (`idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `Disciplina`
+-- Limitadores para a tabela `Disciplina`
 --
 ALTER TABLE `Disciplina`
   ADD CONSTRAINT `fk_Disciplina_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Disciplina_Curso1` FOREIGN KEY (`Curso_idCurso`) REFERENCES `Curso` (`idCurso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `Evento`
+-- Limitadores para a tabela `Evento`
 --
 ALTER TABLE `Evento`
   ADD CONSTRAINT `fk_Evento_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `Post`
+-- Limitadores para a tabela `Post`
 --
 ALTER TABLE `Post`
   ADD CONSTRAINT `fk_PostUsr_UserUsr` FOREIGN KEY (`idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Post_Categoria1` FOREIGN KEY (`Categoria_idCategoria`) REFERENCES `Categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `Usuario`
+-- Limitadores para a tabela `Usuario`
 --
 ALTER TABLE `Usuario`
   ADD CONSTRAINT `fk_Usuario_TipoUsuario1` FOREIGN KEY (`TipoUsuario_idTipoUsuario`) REFERENCES `TipoUsuario` (`idTipoUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
