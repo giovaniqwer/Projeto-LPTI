@@ -60,54 +60,60 @@
             </div>
         </div>
         <br>
-        <!-- CARROSSEL DE FOTOS-->
-        <div class="conteudo">
+<div class="conteudo">
             <div id="wrapper">
                 <br>
-                <!-- /. NAV TOP -->
+                <!-- /. MENU LATERAL -->
                 <br>
                 <div class="conteudo">
+
                     <nav class="navbar-default navbar-side" role="navigation">
                         <div class="sidebar-collapse">
                             <ul class="nav" id="main-menu">
                                 <li>
-                                    <a class="active-menu" href="aluno.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                    <a href="aluno.php"><i class="fa fa-dashboard "></i>Principal<br></a>
                                 </li>
                                 <li>
-                                    <a hr="" ef="#"><i class="fa fa-align-justify"></i>Eventos<span class="fa arrow"></span></a>
+                                    <a href="#"><i class="fa fa-bell"></i>Eventos<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="minicurso.php"><i class="fa fa-play-circle">&nbsp;Mini Cursos</i></a>
+
+                                            <a href="minicurso.php"><i class="fa fa-graduation-cap">&nbsp;Mini Cursos</i></a>
+
                                         </li>
                                         <li>
-                                            <a href="palestra.php"><i class="fa fa-bell ">&nbsp;Palestras</i></a>
+                                            <a href="palestra.php"><i class="fa fa-cube">&nbsp;Palestras</i></a>
                                         </li>
                                         <li>
-                                            <a href="entreterimento.php"><i class="fa fa-circle-o"></i>Entreterimento</a>
+                                            <a href="entretenimento.php"><i class="fa fa-smile-o"></i>Entretenimento</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="estagio.php"><i class="fa fa-search"></i>Estágio </a>
+                                    <a href="estagio.php"><i class="fa fa-briefcase "></i>Estágio </a>
                                 </li>
                                 <li>
-                                    <a href="anuncio.php"><i class="fa fa-search"></i>Anuncio </a>
+                                    <a href="anuncio.php"><i class="fa fa-bullhorn"></i>Anúncio </a>
                                 </li>
                                 <li>
                                     <a href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
                                 </li>
                                 <li>
-                                    <a href="inicCient.php"><i class="fa fa-globe"></i>Iniciação Cientifica</a>
+                                    <a href="inicCient.php"><i class="fa fa-flask"></i>Iniciação Cientifica</a>
                                 </li>
                                 <li>
                                     <a href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-align-justify"></i>GRADE CURRICULAR</a>
+                                    <a href="outros.php"><i class="fa fa-archive"></i>Outros</a>
+                                </li>
+                                <li>
+                                    <a href="disciplinas.php"><i class="fa fa-align-justify"></i>Grade Curricular</a>
                                 </li>
                             </ul>
                         </div>
                     </nav>
+                    <!--FIM MENU LATERAL-->
                     <div id="page-wrapper">
                         <div id="page-inner">
                             <div class="row">
@@ -122,29 +128,34 @@
                                         <div class="panel-heading"></div>
                                         <div class="panel-body">
                                             <div class="row">
-
-                                                <div class="col-md-3 " id="i">
+                                                
+                                                <div class="col-md-3 ">
                                                     <div class="alert alert-success text-center">
                                                         <i class="fa fa-5x fa-comments"></i>
-                                                        <a href="aluno.php"><h3>Fórum</h3></a>
+                                                        <a href="admin.php"><h3>Fórum</h3></a>
                                                     </div>
                                                 </div>
-
-                                                <div class="col-md-3 "  id="i">
+                                               
+                                                <div class="col-md-3 ">
                                                     <div class="alert alert-danger text-center">
                                                         <i class="fa fa-5x fa-graduation-cap"></i>
                                                         <a href="disciplinas.php"><h3>Disciplinas</h3></a>
                                                     </div>
                                                 </div>
-
+                                                <div class="col-md-3 ">
+                                                    <div class="alert text-center" style="background-color:#EED2EE">
+                                                        <i class="fa fa-5x fa-calendar" style="color:#BA55D3"></i>
+                                                        <a href="#"><h3>Calendário</h3></a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                          </div>
-                          </div>
+                        </div>
+                    </div>
                           <section id="footer-sec">
                                   <div class="container">
                                       <div class="row">

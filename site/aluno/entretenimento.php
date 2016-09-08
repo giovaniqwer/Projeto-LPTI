@@ -10,7 +10,7 @@ $sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
 $sql = "SELECT Post.idPost, Post.idUsuario, Post.dataPost, Post.conteudoPost, Post.Tag, Post.Categoria_idCategoria, Usuario.nome, Usuario.sobrenome
 FROM Post
 LEFT JOIN Usuario ON Usuario.idUsuario = Post.idUsuario
-WHERE Categoria_idCategoria =6
+WHERE Categoria_idCategoria =3
 ORDER BY idPost DESC ";
 $stmt_count = $PDO->prepare($sql_count);
 $stmt_count->execute();
@@ -44,7 +44,7 @@ $stmt->execute();
         <link href="../assets/css/css.css" rel="stylesheet">
         <link href="css/estilo.css" rel="stylesheet">
         <!--SCRIPT VALIDACAO-->
-         <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
+        <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
         <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
         <script type="text/javascript" src="../assets/js/validalogin.js"></script>
 
@@ -66,9 +66,9 @@ $stmt->execute();
                 <div class="navbar-collapse collapse move-me">
                     <ul class="nav navbar-nav navbar-right set-links">
                         <li>
-                            <a href="inicio.php">INÍCIO</a>
+                            <a href="inicio.php">INICIO</a>
                         </li>
-                       
+                        
                         <li>
                             <a href="#">
                                 <?php echo $_SESSION["emailNome"] ?>
@@ -112,7 +112,7 @@ $stmt->execute();
                                             <a href="palestra.php"><i class="fa fa-cube">&nbsp;Palestras</i></a>
                                         </li>
                                         <li>
-                                            <a href="entretenimento.php"><i class="fa fa-smile-o"></i>Entretenimento</a>
+                                            <a class="active-menu" href="entretenimento.php"><i class="fa fa-smile-o"></i>Entretenimento</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -120,10 +120,10 @@ $stmt->execute();
                                     <a href="estagio.php"><i class="fa fa-briefcase "></i>Estágio </a>
                                 </li>
                                 <li>
-                                    <a href="anuncio.php"><i class="fa fa-bullhorn"></i>Anúncio </a>
+                                    <a href="anuncio.php"><i class="fa fa-bullhorn"></i>Anuncio </a>
                                 </li>
                                 <li>
-                                    <a class="active-menu" href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
+                                    <a href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
                                 </li>
                                 <li>
                                     <a href="inicCient.php"><i class="fa fa-flask"></i>Iniciação Cientifica</a>
@@ -145,7 +145,7 @@ $stmt->execute();
                         <div id="page-inner">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1 class="page-head-line">Pesquisa e Extensão</h1>
+                                    <h1 class="page-head-line">Entretenimento</h1>
                                     <center>
                                         <div id="divBusca">
                                             <img src="img/search3.png" alt="Buscar..." />
@@ -161,11 +161,11 @@ $stmt->execute();
                             <div class="row">
                                 <div class="col-md-4 col-sm-4" id="largura">
                                     <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>   
-                                        <div class="panel panel-info">
+                                        <div class="panel panel-primary">
                                             <div class="panel-heading">
 
                                                 <div class="alert-link">
- <?php echo $post['nome'].' '.$post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+ 																	<?php echo $post['nome'].' '.$post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
                                                     <?php
                                                     if($_SESSION["emailID"]==$post['idUsuario']){                                              
                                                        echo "<a class='btn btn-success' href='../Post/delete.php?id=".$post['idPost']."' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
@@ -244,7 +244,7 @@ $stmt->execute();
                     </div>
 
 
-                   <!--JANELA MODAL ADD POST-->
+                    <!--JANELA MODAL ADD POST-->
                     <div id="modal">
                         <div class="modal-box">
                             <div class="modal-box-conteudo">
@@ -342,7 +342,7 @@ $stmt->execute();
                     <script src="../forum-calendario/assets/js/custom.js"></script>
                     <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
 
-                    <script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+                    <script src="../forum-calesndario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
                     <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
                     <script src="../assets/js/jquery-1.10.2.js"></script>
                     <!-- BOOTSTRAP SCRIPTS -->

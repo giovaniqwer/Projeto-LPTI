@@ -27,14 +27,17 @@ else {
     $nome = utf8_decode($nome);
     $sobrenome = utf8_decode($sobrenome);
     $email = utf8_decode($email);
-    $tipo = 1;
-
-
-
+    
+    if($matricula % 2 == 0){
+   	 $tipo = 1;
+	 }else if($matricula % 2 != 0){
+	    $tipo = 2;	 
+	 }
+	 
     $usuario = new Usuario($nome, $sobrenome, $senha, $email, $matricula, $tipo);
-
+	
     // insere no BD
-// $PDO = db_connect();
+	// $PDO = db_connect();
     $sql = "INSERT INTO Usuario(nome,sobrenome, senha, email,identificacao, TipoUsuario_idTipoUsuario) VALUES(:nome, :sobrenome, :senha, :email, :matricula, :tipo)";
     $stmt = $pdo->prepare($sql);
     @$stmt->bindParam(':nome', $usuario->getNome());

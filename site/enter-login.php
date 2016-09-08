@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($_SESSION['emailTipo'] == 1) {
             header("Location:admin/inicio.php");
         } else if ($_SESSION['emailTipo'] == 2) {
-            header("Location:aluno/inicio.html");
+            header("Location:aluno/inicio.php");
         }
     } else {
         // O usuário e/ou a senha são inválidos, manda de volta pro form de login

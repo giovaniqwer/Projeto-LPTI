@@ -22,6 +22,7 @@ if ($_SG['conectaServidor'] == true) {
 if ($_SG['abreSessao'] == true)
     session_start();
 
+
 /**
  * Função que valida um usuário e senha**
  */
@@ -55,6 +56,7 @@ function validaEmail($email, $senha) {
  * Função que protege uma página
  */
 function protegePagina() {
+
     global $_SG;
     if (!isset($_SESSION['emailID']) OR ! isset($_SESSION['emailNome'])) {
         // Não há usuário logado, manda pra página de login
