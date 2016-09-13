@@ -11,7 +11,7 @@ $_SG['servidor'] = 'localhost';    // Servidor MySQL
 $_SG['email'] = 'root';          // Usuário MySQL
 $_SG['senha'] = 'root';                // Senha MySQL
 $_SG['banco'] = 'LPTI';            // Banco de dados MySQL
-$_SG['paginaLogin'] = 'usuario/login.php'; // Página de login
+$_SG['paginaLogin'] = 'negado.html'; // Página de login
 $_SG['tabela'] = 'Usuario';       // Nome da tabela onde os usuários são salvos
 // Verifica se precisa fazer a conexão com o MySQL
 if ($_SG['conectaServidor'] == true) {

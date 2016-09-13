@@ -2,7 +2,9 @@
 	session_start();
 	if(empty($_SESSION["emailID"])|| empty($_SESSION["emailNome"])|| empty($_SESSION["emailTipo"])) {
 		header("Location:../error.html");	
-	}	
+	}	else if($_SESSION["emailTipo"]!=2){
+	header("Location:../negado.html");
+}
 ?>
 <html><head>
         <meta charset="utf-8">

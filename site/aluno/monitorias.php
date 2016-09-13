@@ -2,6 +2,8 @@
 session_start();
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
+}else if($_SESSION["emailTipo"]!=2){
+	header("Location:../negado.html");
 }
 require_once '../init.php';
 include_once '../cadastro-class.php';

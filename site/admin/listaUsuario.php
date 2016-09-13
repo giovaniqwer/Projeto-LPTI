@@ -2,6 +2,8 @@
 session_start();
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
+}else if($_SESSION["emailTipo"]!=1){
+	header("Location:../negado.html");
 }
 require_once '../init.php';
 $PDO = db_connect();
@@ -20,7 +22,7 @@ $stmt->execute();
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="">
-        <meta name="author" content="alunos">
+        <meta name="author" content="alunos" >
         <!--css forum -->
         <link href="../forum-calendario/assets/css/bootstrap.css" rel="stylesheet">
         <link href="../forum-calendario/assets/css/font-awesome.css" rel="stylesheet">
