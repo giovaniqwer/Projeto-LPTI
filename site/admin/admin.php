@@ -2,9 +2,22 @@
 session_start();
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
-}else if($_SESSION["emailTipo"]!=1){
-	 header("Location:../error.html");
+} else if ($_SESSION["emailTipo"] != 1) {
+    header("Location:../negado.html");
 }
+require_once '../init.php';
+include_once '../cadastro-class.php';
+$PDO = db_connect();
+$sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
+$sql = "SELECT Post.idPost, Post.idUsuario, Post.dataPost, Post.conteudoPost, Post.Tag, Post.Categoria_idCategoria, Usuario.nome, Usuario.sobrenome
+FROM Post
+LEFT JOIN Usuario ON Usuario.idUsuario = Post.idUsuario
+ORDER BY idPost DESC ";
+$stmt_count = $PDO->prepare($sql_count);
+$stmt_count->execute();
+$total = $stmt_count->fetchColumn();
+$stmt = $PDO->prepare($sql);
+$stmt->execute();
 ?>
 <html>
 
@@ -145,58 +158,51 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                             <!-- /. ROW  -->
 
 
-                            <!-- /. ROW  -->
+                             <!-- /. POSTAGENS -->
+                            
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
+                                <div class="col-md-4 col-sm-4" id="largura">
+                                    <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>  
+                                        <div class="panel panel-default" >
+                                            <div class="panel-heading" style="background-color:#99ffe6">
 
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-md-4 ">
-                                                    <div class="alert alert-info text-center">
-                                                        <h4> Palestra</h4>
-                                                        <hr />
-
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                                                        </p>
-                                                        <hr />
-                                                        <a href="palestra.php" class="btn btn-info">Ver mais...</a>
-                                                    </div>
+                                                <div class="alert-link"><b>
+                                                    <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+                                                    </b>
+                                                   
+                                                   
+                                                       <a style='background-color: #66ffd9' class='btn btn-default' href='../Post/delete.php?id=" . $post['idPost'] . "' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
+                                                    
+                                                   
                                                 </div>
-                                                <div class="col-md-4 ">
-                                                    <div class="alert alert-danger text-center">
-                                                        <h4>Estágio</h4>
-                                                        <hr />
 
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                                                        </p>
-                                                        <hr />
-                                                        <a href="estagio.php" class="btn btn-danger">Ver mais...</a>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 ">
-                                                    <div class="alert alert-success text-center">
-                                                        <h4>Vaga em Republica</h4>
-                                                        <hr />
+                                            </div>
+                                            <div class="panel-body">
+                                                <?php echo $post ['conteudoPost']; ?>
 
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.
-                                                        </p>
-                                                        <hr />
-                                                        <a href="anuncio.php" class="btn btn-success">Ver mais...</a>
-                                                    </div>
+                                            </div>
+
+                                            <div class="panel-footer">
+                                                <div class="form-group">
+                                                    <label>Comentario</label>
+                                                    <textarea class="form-control" rows="3"></textarea>
                                                 </div>
+                                                <button type="submit" class="btn btn-info">Enviar Comentario </button>
+                                                <br>
+                                                <br>
+                                                <div class="alert alert-info">
+                                                    <div class="alert-link">
+                                                        Nome Usuário Comentario
+                                                    </div>
+                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                                    <a href="#" class="btn btn-info">Excluir</a>
+                                                </div>
+
                                             </div>
                                         </div>
-                                    </div>
+                                    <?php endwhile; ?>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                                <!-- /. FIM POSTAGENS -->
 
                     <section id="footer-sec">
                         <div class="container">

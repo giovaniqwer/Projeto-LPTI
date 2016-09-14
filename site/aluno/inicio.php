@@ -134,7 +134,7 @@
                                                 <div class="col-md-3 ">
                                                     <div class="alert alert-success text-center">
                                                         <i class="fa fa-5x fa-comments"></i>
-                                                        <a href="admin.php"><h3>Fórum</h3></a>
+                                                        <a href="aluno.php"><h3>Fórum</h3></a>
                                                     </div>
                                                 </div>
                                                

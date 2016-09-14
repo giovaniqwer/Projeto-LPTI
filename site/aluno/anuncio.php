@@ -107,7 +107,7 @@ if ( $_SESSION['emailTipo']!=2) {
                         <div class="sidebar-collapse">
                             <ul class="nav" id="main-menu">
                                 <li>
-                                    <a href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                    <a href="aluno.php"><i class="fa fa-dashboard "></i>Principal<br></a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-bell"></i>Eventos<span class="fa arrow"></span></a>

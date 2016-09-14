@@ -2,8 +2,8 @@
 session_start();
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
-}else if($_SESSION["emailTipo"]!=2){
-	header("Location:../negado.html");
+} else if ($_SESSION["emailTipo"] != 2) {
+    header("Location:../negado.html");
 }
 require_once '../init.php';
 include_once '../cadastro-class.php';
@@ -46,7 +46,7 @@ $stmt->execute();
         <link href="../assets/css/css.css" rel="stylesheet">
         <link href="css/estilo.css" rel="stylesheet">
         <!--SCRIPT VALIDACAO-->
-       <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
+        <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
         <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
         <script type="text/javascript" src="../assets/js/validalogin.js"></script>
 
@@ -70,7 +70,7 @@ $stmt->execute();
                         <li>
                             <a href="inicio.php">INÍCIO</a>
                         </li>
-                        
+
                         <li>
                             <a href="#">
                                 <?php echo $_SESSION["emailNome"] ?>
@@ -100,7 +100,7 @@ $stmt->execute();
                         <div class="sidebar-collapse">
                             <ul class="nav" id="main-menu">
                                 <li>
-                                    <a href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                    <a href="aluno.php"><i class="fa fa-dashboard "></i>Principal<br></a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-bell"></i>Eventos<span class="fa arrow"></span></a>
@@ -166,11 +166,12 @@ $stmt->execute();
                                         <div class="panel panel-primary">
                                             <div class="panel-heading">
 
-                                                <div class="alert-link">
- <?php echo $post['nome'].' '.$post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+                                                <div class="alert-link"><b>
+                                                    <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> 
+                                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </b>
                                                     <?php
-                                                    if($_SESSION["emailID"]==$post['idUsuario']){                                              
-                                                       echo "<a class='btn btn-success' href='../Post/delete.php?id=".$post['idPost']."' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
+                                                    if ($_SESSION["emailID"] == $post['idUsuario']) {
+                                                        echo "<a class='btn btn-primary' href='../Post/delete.php?id=" . $post['idPost'] . "' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
                                                     }
                                                     ?>
                                                 </div>
@@ -246,7 +247,7 @@ $stmt->execute();
                     </div>
 
 
-                   <!--JANELA MODAL ADD POST-->
+                    <!--JANELA MODAL ADD POST-->
                     <div id="modal">
                         <div class="modal-box">
                             <div class="modal-box-conteudo">

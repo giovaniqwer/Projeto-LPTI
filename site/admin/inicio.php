@@ -9,7 +9,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
 <html>
 
     <head>
-        <meta charset="utf-8">
+       <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="">
         <meta name="author" content="alunos" >
@@ -24,6 +24,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
         <script type="text/javascript" src="../assets/js/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="../assets/js/jquery-ui.js"></script>
         <script type="text/javascript" src="../assets/js/ajax.js"></script>
+
         <title>Divulga ICSA</title>
         <link href="../assets/css/bootstrap.css" rel="stylesheet">
         <link href="../assets/css/font-awesome.css" rel="stylesheet">
@@ -31,7 +32,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
         <link href="../assets/css/css.css" rel="stylesheet">
         <link href="css/estilo.css" rel="stylesheet">
         <!--SCRIPT VALIDACAO-->
-        <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
+       <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
         <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
         <script type="text/javascript" src="../assets/js/validalogin.js"></script>
        
@@ -54,11 +55,11 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                         <li>
                             <a href="inicio.php">INÍCIO</a>
                         </li>
-                        <li>
-                            <a href="listaContato.php">MENSAGENS</a>
+                       <li>
+                            <a href="listaUsuario.php">USUÁRIOS</a>
                         </li>
                         <li>
-                            <a href="listaUsuario.php">USUÁRIOS</a>
+                            <a href="listaContato.php">MENSAGENS</a>
                         </li>
 	                     
                         <li>

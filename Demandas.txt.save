@@ -1,0 +1,12 @@
+----------------------------------------------------------------------------------------
+0- Desabilitar usuario e impedir que faca login e se cadastre novamente caso tenha sido banido
+1- Seguranca de senha (senha não pode ir em texto claro para o BD) e Verificar se o email é realmente válido;
+2- Tela para que o usuário possa ver e alterar seu nome e senha;
+3- Disciplinas:
+	3.1- Usuário administrador conseguir adicionar uma disciplina e seus atributos;
+	3.2- Visualizacao completa de disciplinas(admin e aluno);
+	3.3- Usuário adminsitrador conseguir gerenciar as disciplinas(excluir e alterar).
+4-Pesquisar postagens do fórum utilizando sua palavra chave.
+5-PIOR PARTE: UNIR COM O DO OUTRO GRUPO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+----------------------------------------------------------------------------------------
+
