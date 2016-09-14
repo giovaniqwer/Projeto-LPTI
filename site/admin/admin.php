@@ -25,7 +25,7 @@ $stmt->execute();
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="">
-        <meta name="author" content="alunos">
+        <meta name="author" content="alunos" >
         <!--css forum -->
         <link href="../forum-calendario/assets/css/bootstrap.css" rel="stylesheet">
         <link href="../forum-calendario/assets/css/font-awesome.css" rel="stylesheet">
@@ -170,8 +170,8 @@ $stmt->execute();
                                                     <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
                                                     </b>
                                                    
-                                                   
-                                                       <a style='background-color: #66ffd9' class='btn btn-default' href='../Post/delete.php?id=" . $post['idPost'] . "' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
+                                                   	<a class="btn btn-default" style='background-color: #66ffd9' href="../Post/delete.php?id=<?php echo $post ['idPost']?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+
                                                     
                                                    
                                                 </div>
@@ -202,6 +202,7 @@ $stmt->execute();
                                         </div>
                                     <?php endwhile; ?>
                                 </div>
+                                </div>
                                 <!-- /. FIM POSTAGENS -->
 
                     <section id="footer-sec">
@@ -223,6 +224,8 @@ $stmt->execute();
                                     </div>
                                 </div>
                             </div>
+</div>
+
                             <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
                     </section>
                     <!--FIM DO RODAPÉ-->
