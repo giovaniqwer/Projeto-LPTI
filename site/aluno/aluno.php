@@ -82,7 +82,7 @@ $stmt->execute();
             </div>
         </div>
         <br>
-        <!-- CARROSSEL DE FOTOS-->
+      
         <div class="conteudo">
             <div id="wrapper">
                 <br>

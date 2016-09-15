@@ -4,8 +4,8 @@
 2- Tela para que o usuário possa ver e alterar seu nome e senha;
 3- Disciplinas:
 	3.1- Usuário administrador conseguir adicionar uma disciplina e seus atributos;
-	3.2- Visualizacao completa de disciplinas(admin e aluno);
-	3.3- Usuário adminsitrador conseguir gerenciar as disciplinas(excluir e alterar).
+	3.2- Visualizacao completa de disciplinas(admin e aluno e usuario não cadastrado);
+	3.3- Usuário adminsitrador conseguir gerenciar as disciplinas(excluir e alterar e etc).
 4-Pesquisar postagens do fórum utilizando sua palavra chave.
 5-PIOR PARTE: UNIR COM O DO OUTRO GRUPO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 ----------------------------------------------------------------------------------------
