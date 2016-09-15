@@ -2,7 +2,9 @@
 	session_start();
 	if(empty($_SESSION["emailID"])|| empty($_SESSION["emailNome"])|| empty($_SESSION["emailTipo"])) {
 		header("Location:../error.html");	
-	}	
+	}	else if($_SESSION["emailTipo"]!=2){
+	header("Location:../negado.html");
+}
 ?>
 <html><head>
         <meta charset="utf-8">
@@ -45,7 +47,7 @@
                 <div class="navbar-collapse collapse move-me">
                     <ul class="nav navbar-nav navbar-right set-links">
                         <li>
-                            <a href="inicio.php">INICIO</a>
+                            <a href="inicio.php">INÍCIO</a>
                         </li>
                         
                         <li>
@@ -132,7 +134,7 @@
                                                 <div class="col-md-3 ">
                                                     <div class="alert alert-success text-center">
                                                         <i class="fa fa-5x fa-comments"></i>
-                                                        <a href="admin.php"><h3>Fórum</h3></a>
+                                                        <a href="aluno.php"><h3>Fórum</h3></a>
                                                     </div>
                                                 </div>
                                                

@@ -1,7 +1,10 @@
 <?php
 session_start();
+echo $_SESSION["emailTipo"];
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
+}else if($_SESSION["emailTipo"]!=2){
+	header("Location:../negado.html");
 }
 require_once '../init.php';
 include_once '../cadastro-class.php';
@@ -104,7 +107,7 @@ if ( $_SESSION['emailTipo']!=2) {
                         <div class="sidebar-collapse">
                             <ul class="nav" id="main-menu">
                                 <li>
-                                    <a href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                    <a href="aluno.php"><i class="fa fa-dashboard "></i>Principal<br></a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-bell"></i>Eventos<span class="fa arrow"></span></a>
@@ -227,22 +230,7 @@ if ( $_SESSION['emailTipo']!=2) {
                                             <!-- /.list-group -->
 
                                         </div>
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-bell fa-fw"></i>Tags
-                                            </div>
-
-                                            <div class="panel-body">
-                                                <div class="list-group">
-
-                                                    <a href="#" class="list-group-item">
-                                                        <i class="fa fa-twitter fa-fw"></i>Tag #01
-                                                        <span class="pull-right text-muted small"><em></em>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

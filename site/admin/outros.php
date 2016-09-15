@@ -172,7 +172,7 @@ $stmt->execute();
                                 <div class="col-md-4 col-sm-4" id="largura">
                                     <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>   
                                         <div class="panel panel-default">
-                                            <div class="panel-heading">
+                                            <div class="panel-heading" style="background-color: #D9C8E3">
 
                                                 <div class="alert-link">
                                                     <?php echo $post['nome'].' '.$post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-default" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
@@ -227,22 +227,7 @@ $stmt->execute();
 
 
                                         </div>
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-bell fa-fw"></i>Tags
-                                            </div>
-
-                                            <div class="panel-body">
-                                                <div class="list-group">
-
-                                                    <a href="#" class="list-group-item">
-                                                        <i class="fa fa-twitter fa-fw"></i>Tag #01
-                                                        <span class="pull-right text-muted small"><em></em>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

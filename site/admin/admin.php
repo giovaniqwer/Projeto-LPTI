@@ -67,10 +67,10 @@ $stmt->execute();
                 <div class="navbar-collapse collapse move-me">
                     <ul class="nav navbar-nav navbar-right set-links">
                         <li>
-                            <a href="inicio.php">INICIO</a>
+                            <a href="inicio.php">INÍCIO</a>
                         </li>
                         <li>
-                            <a href="listaUsuario.php">USUARIOS</a>
+                            <a href="listaUsuario.php">USUÁRIOS</a>
                         </li>
                         <li>
                             <a href="listaContato.php">MENSAGENS</a>
@@ -92,7 +92,7 @@ $stmt->execute();
             </div>
         </div>
         <br>
-        <!-- CARROSSEL DE FOTOS-->
+      
         <div class="conteudo">
             <div id="wrapper">
                 <br>
@@ -163,14 +163,14 @@ $stmt->execute();
                             <div class="row">
                                 <div class="col-md-4 col-sm-4" id="largura">
                                     <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>  
-                                        <div class="panel panel-default" >
-                                            <div class="panel-heading" style="background-color:#99ffe6">
+                                        <div class="panel panel-info" >
+                                            <div class="panel-heading" style="background-color:#CAEBE9">
 
                                                 <div class="alert-link"><b>
                                                     <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
                                                     </b>
                                                    
-                                                   	<a class="btn btn-default" style='background-color: #66ffd9' href="../Post/delete.php?id=<?php echo $post ['idPost']?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+                                                   	<a class="btn btn-default" style="background-color: #ffffff" href="../Post/delete.php?id=<?php echo $post ['idPost']?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
 
                                                     
                                                    
@@ -202,9 +202,92 @@ $stmt->execute();
                                         </div>
                                     <?php endwhile; ?>
                                 </div>
-                                </div>
-                                <!-- /. FIM POSTAGENS -->
+                       
+                                      <!-- /. FIM POSTAGENS -->
+                                <div class="col-md-6" id="boxlateral">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <i class="fa fa-bars fa-fw"></i>Menu
+                                        </div>
 
+                                        <div class="panel-body">
+                                            <div class="list-group">
+
+                                                <a href="#" class="list-group-item">
+                                                    <div class="add-post">
+                                                        <i class="fa fa-plus fa-fw"></i> Adicionar Postagem
+                                                    </div>
+                                                    <span class="pull-right text-muted small"><em></em>
+                                                    </span>
+                                                </a>
+                                            </div>
+
+                                            <!-- /.list-group -->
+
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--JANELA MODAL ADD POST-->
+                    <div id="modal">
+                        <div class="modal-box">
+                            <div class="modal-box-conteudo">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        Postagem
+                                    </div>
+                                    <div class="panel-body">
+                                        <form name="formularioPost" id="formPost" action="../Post/add-post.php" method="post" onsubmit="return validaPost()">
+                                            <div class="form-group">
+                                                <label>Post:</label>
+                                                <textarea name="conteudoPost" id="pt" class="form-control" rows="3"></textarea>
+                                                <label>Categoria:</label>
+                                            </div>
+
+                                            <div class="btn-group">
+                                                <select data-toggle="dropdown" id="catg" name=categoriaPost class="btn btn-primary dropdown-toggle"><span class="caret"></span>
+                                                    <ul class="dropdown-menu">
+                                                        <option value="1">Mini Curso</option>
+                                                        <option value="2">Palestra</option>
+                                                        <option value="3">Entretenimento</option>
+                                                        <option value="4">Estágio</option>
+                                                        <option value="5">Anúncio</option>
+                                                        <option value="6">Pesquisa e Extensão</option>
+                                                        <option value="7">Iniciacao Cientifica</option>
+                                                        <option value="8">Monitorias</option>
+                                                        <option value="9">Outros</option>
+                                                    </ul>
+                                                </select>
+                                                <br />
+                                                <br>                                                   
+                                                <div class="input-group">
+                                                    <label>Palavra Chave:</label>
+                                                    <input type="text" name="tagPost" id="tag" class="form-control" placeholder="Adicionar Tag" />
+                                                </div>
+                                            </div>
+
+
+                                            <button type="submit" id="post" class="btn btn-info">Postar</button>
+                                            <br>
+                                            <br>
+                                            <div class="btn-add-post">
+                                                <button type="button" id="fechar" class="btn btn-info">X</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--FIM JANELA MODAL ADD POST-->
                     <section id="footer-sec">
                         <div class="container">
                             <div class="row">

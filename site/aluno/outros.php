@@ -167,7 +167,7 @@ $stmt->execute();
                                 <div class="col-md-4 col-sm-4" id="largura">
                                     <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>   
                                         <div class="panel panel-default" >
-                                            <div class="panel-heading" style="background-color: #e6fff9">
+                                            <div class="panel-heading" style="background-color: #D9C8E3">
 
                                                 <div class="alert-link">
                                                     <b>
@@ -175,7 +175,7 @@ $stmt->execute();
                                                     </b>
                                                     <?php
                                                     if ($_SESSION["emailID"] == $post['idUsuario']) {
-                                                        echo "<a class='btn btn-default'style='background-color: #cc80ff'  href='../Post/delete.php?id=" . $post['idPost'] . "' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
+                                                        echo "<a class='btn btn-default' style='background-color: #ffffff'  href='../Post/delete.php?id=" . $post['idPost'] . "' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
                                                     }
                                                     ?>
 
@@ -229,22 +229,7 @@ $stmt->execute();
 
 
                                         </div>
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-bell fa-fw"></i>Tags
-                                            </div>
 
-                                            <div class="panel-body">
-                                                <div class="list-group">
-
-                                                    <a href="#" class="list-group-item">
-                                                        <i class="fa fa-twitter fa-fw"></i>Tag #01
-                                                        <span class="pull-right text-muted small"><em></em>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>

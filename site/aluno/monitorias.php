@@ -230,22 +230,7 @@ $stmt->execute();
 
 
                                         </div>
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-bell fa-fw"></i>Tags
-                                            </div>
-
-                                            <div class="panel-body">
-                                                <div class="list-group">
-
-                                                    <a href="#" class="list-group-item">
-                                                        <i class="fa fa-twitter fa-fw"></i>Tag #01
-                                                        <span class="pull-right text-muted small"><em></em>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

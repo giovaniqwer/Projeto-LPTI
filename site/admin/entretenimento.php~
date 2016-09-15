@@ -67,11 +67,11 @@ $stmt->execute();
                 </div>
                 <div class="navbar-collapse collapse move-me">
                     <ul class="nav navbar-nav navbar-right set-links">
-                        <li>
-                            <a href="inicio.php">INICIO</a>
+                         <li>
+                            <a href="inicio.php">INÍCIO</a>
                         </li>
                         <li>
-                            <a href="listaUsuario.php">USUARIOS</a>
+                            <a href="listaUsuario.php">USUÁRIOS</a>
                         </li>
                         <li>
                             <a href="listaContato.php">MENSAGENS</a>
@@ -223,22 +223,7 @@ $stmt->execute();
                                             <!-- /.list-group -->
 
                                         </div>
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-bell fa-fw"></i>Tags
-                                            </div>
-
-                                            <div class="panel-body">
-                                                <div class="list-group">
-
-                                                    <a href="#" class="list-group-item">
-                                                        <i class="fa fa-twitter fa-fw"></i>Tag #01
-                                                        <span class="pull-right text-muted small"><em></em>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

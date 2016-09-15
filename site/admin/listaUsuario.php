@@ -189,7 +189,10 @@ $stmt->execute();
                                                     </td>
                                                     <td>
                                                         <?php echo $usuario ['email'] ?> </td>
-                                                    <td><a class="btn btn-primary" onclick="return confirm('Deseja realmente desativar as atividades deste Usuario ?');"> Desativar</a></td>
+                                                    <td>
+                                                    <a class="btn btn-primary" onclick="return confirm('Deseja realmente DESATIVAR as atividades deste Usuario ?');"> Desativar</a>
+                                                    <a class="btn btn-primary" onclick="return confirm('Deseja realmente ATIVAR as atividades deste Usuario ?');"> Ativar</a>
+                                                    </td>
                                                 </tr>
                                             <?php endwhile; ?>
                                         </tbody>

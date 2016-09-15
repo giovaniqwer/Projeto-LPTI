@@ -47,7 +47,7 @@
                 <div class="navbar-collapse collapse move-me">
                     <ul class="nav navbar-nav navbar-right set-links">
                         <li>
-                            <a href="inicio.php">INICIO</a>
+                            <a href="inicio.php">INÍCIO</a>
                         </li>
                         
                         <li>

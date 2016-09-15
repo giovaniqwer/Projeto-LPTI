@@ -26,7 +26,7 @@ $stmt->execute();
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="">
-        <meta name="author" content="alunos">
+        <meta name="author" content="alunos" >
         <!--css forum -->
         <link href="../forum-calendario/assets/css/bootstrap.css" rel="stylesheet">
         <link href="../forum-calendario/assets/css/font-awesome.css" rel="stylesheet">
@@ -223,22 +223,7 @@ $stmt->execute();
                                             <!-- /.list-group -->
 
                                         </div>
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-bell fa-fw"></i>Tags
-                                            </div>
-
-                                            <div class="panel-body">
-                                                <div class="list-group">
-
-                                                    <a href="#" class="list-group-item">
-                                                        <i class="fa fa-twitter fa-fw"></i>Tag #01
-                                                        <span class="pull-right text-muted small"><em></em>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                     
                                     </div>
                                 </div>
                             </div>

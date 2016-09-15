@@ -67,12 +67,12 @@ $stmt->execute();
                 <div class="navbar-collapse collapse move-me">
                     <ul class="nav navbar-nav navbar-right set-links">
                         <li>
-                            <a href="inicio.php">INICIO</a>
+                            <a href="inicio.php">INÍCIO</a>
                         </li>
 
                         <li>
                             <form action="../logout.php" role="form" method="post" name="formLogin">
-                                <button type="submit" class="active btn btn-block btn-info btn-lg">Sair
+                                <button type="submit" class="active btn btn-block btn-primary btn-lg">Sair
                                     <i class="fa fa-fw fa-lg fa-sign-out"></i>
                                 </button>
                             </form>
@@ -89,50 +89,50 @@ $stmt->execute();
 
                 <!-- /. NAV TOP -->
                 <br>
-                <div class="conteudo">
+               <div class="conteudo">
 
                     <nav class="navbar-default navbar-side" role="navigation">
                         <div class="sidebar-collapse">
                             <ul class="nav" id="main-menu">
                                 <li>
-                                    <a class="active-menu" href="aluno.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                    <a class="active-menu" href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
                                 </li>
                                 <li>
-                                    <a hr ef="#"><i class="fa fa-align-justify"></i>Eventos<span class="fa arrow"></span></a>
+                                    <a href="#"><i class="fa fa-bell"></i>Eventos<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
 
-                                            <a href="minicurso.php"><i class="fa fa-play-circle">&nbsp;Mini Cursos</i></a>
+                                            <a href="minicurso.php"><i class="fa fa-graduation-cap">&nbsp;Mini Cursos</i></a>
 
                                         </li>
                                         <li>
-                                            <a href="palestra.php"><i class="fa fa-bell ">&nbsp;Palestras</i></a>
+                                            <a href="palestra.php"><i class="fa fa-cube">&nbsp;Palestras</i></a>
                                         </li>
                                         <li>
-                                            <a href="entreterimento.php"><i class="fa fa-circle-o"></i>Entreterimento</a>
+                                            <a href="entretenimento.php"><i class="fa fa-smile-o"></i>Entretenimento</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="estagio.php"><i class="fa fa-search"></i>Estágio </a>
+                                    <a href="estagio.php"><i class="fa fa-briefcase "></i>Estágio </a>
                                 </li>
                                 <li>
-                                    <a href="anuncio.php"><i class="fa fa-search"></i>Anuncio </a>
+                                    <a href="anuncio.php"><i class="fa fa-bullhorn"></i>Anúncio </a>
                                 </li>
                                 <li>
                                     <a href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
                                 </li>
                                 <li>
-                                    <a href="inicCient.php"><i class="fa fa-globe"></i>Iniciação Cientifica</a>
+                                    <a href="inicCient.php"><i class="fa fa-flask"></i>Iniciação Cientifica</a>
                                 </li>
                                 <li>
                                     <a href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
                                 </li>
-                                 <li>
+                                <li>
                                     <a href="outros.php"><i class="fa fa-archive"></i>Outros</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-align-justify"></i>GRADE CURRICULAR</a>
+                                    <a href="disciplinas.php"><i class="fa fa-align-justify"></i>Grade Curricular</a>
                                 </li>
                             </ul>
                         </div>
@@ -161,15 +161,15 @@ $stmt->execute();
                             <div class="row">
                                 <div class="col-md-4 col-sm-4" id="largura">
                                     <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>  
-                                        <div class="panel panel-default" >
-                                            <div class="panel-heading" style="background-color:#99ffe6">
+                                        <div class="panel panel-info" >
+                                            <div class="panel-heading" style="background-color:#CAEBE9">
 
                                                 <div class="alert-link"><b>
                                                     <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
                                                     </b>
                                                     <?php
                                                     if ($_SESSION["emailID"] == $post['idUsuario']) {
-                                                        echo "<a style='background-color: #66ffd9' class='btn btn-default' href='../Post/delete.php?id=" . $post['idPost'] . "' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
+                                                        echo "<a style='background-color: #ffffff' class='btn btn-default' href='../Post/delete.php?id=" . $post['idPost'] . "' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
                                                     }
                                                     ?>
                                                 </div>
@@ -222,22 +222,7 @@ $stmt->execute();
                                             <!-- /.list-group -->
 
                                         </div>
-                                        <div class="panel panel-info">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-bell fa-fw"></i>Tags
-                                            </div>
-
-                                            <div class="panel-body">
-                                                <div class="list-group">
-
-                                                    <a href="#" class="list-group-item">
-                                                        <i class="fa fa-twitter fa-fw"></i>Tag #01
-                                                        <span class="pull-right text-muted small"><em></em>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
