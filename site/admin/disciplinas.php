@@ -30,7 +30,6 @@
         <!-- SCRIPTS PARA OS DIAGRAMAS (GOOGLE CHARTS)-->
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 		  <script type="text/javascript">
-		  <!-- 
 		  
      	  google.charts.load('current', {packages:["orgchart"]});
         google.charts.setOnLoadCallback(drawChart);
@@ -50,11 +49,13 @@
           ['Bob', 'Jim', 'Bob Sponge'],
           ['Carol', 'Bob', '']
         ]);
-
+		  data.setRowProperty(1, 'style', 'background: #FF0000');
         // Create the chart.
         var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
         // Draw the chart, setting the allowHtml option to true for the tooltips.
         chart.draw(data, {allowHtml:true});
+        
+        
       }
       
       <!-- Função para mostrar o diagrama -->
@@ -184,6 +185,8 @@
                                                 </div>
                                                  <!-- DIAGRAMA -->
                                        			 <div id="chart_div" style='display:none'></div>
+                                       			 
+                                       			 
                                                 <div class="col-md-4 ">
                                                     <div class="alert alert-info text-center">
                                                         <h4> Humanas </h4>
