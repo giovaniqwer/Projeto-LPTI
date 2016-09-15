@@ -8,7 +8,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
 require_once '../init.php';
 $PDO = db_connect();
 $sql_count = "SELECT COUNT(*) AS total FROM Usuario ORDER BY nome ASC";
-$sql = "SELECT idUsuario, nome,sobrenome,senha, email, identificacao,TipoUsuario_idTipoUsuario FROM Usuario ORDER BY nome ASC";
+$sql = "SELECT idUsuario, nome, sobrenome, senha, email, identificacao, Atividade, TipoUsuario_idTipoUsuario FROM Usuario ORDER BY nome ASC";
 $stmt_count = $PDO->prepare($sql_count);
 $stmt_count->execute();
 $total = $stmt_count->fetchColumn();
@@ -170,7 +170,8 @@ $stmt->execute();
                                                 <th>#</th>
                                                 <th>Matricula</th>
                                                 <th>Nome</th>
-                                                <th>email</th>
+                                                <th>E-mail</th>
+																<th>Situação</th>
                                                 <th>Ação</th>
                                             </tr>
                                         </thead>
@@ -188,10 +189,20 @@ $stmt->execute();
                                                         <?php echo $usuario ['sobrenome'] ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $usuario ['email'] ?> </td>
+                                                        <?php echo $usuario ['email'] ?> 
+                                                    </td>
                                                     <td>
-                                                    <a class="btn btn-primary" onclick="return confirm('Deseja realmente DESATIVAR as atividades deste Usuario ?');"> Desativar</a>
-                                                    <a class="btn btn-primary" onclick="return confirm('Deseja realmente ATIVAR as atividades deste Usuario ?');"> Ativar</a>
+                                                    	 <?php 
+                                                    	 if(($usuario ['Atividade'])==0){
+	                                                       echo "Ativo";	
+                                                    	 }else if(($usuario ['Atividade'])==1) { 
+                                                    	 	 echo "Inativo";
+                                                    	 }
+                                                    	 ?>                                                
+                                                    </td>
+                                                    <td>
+                                                    <a href="block-user.php?id=<?php echo $usuario['idUsuario'] ?>" class="btn btn-primary" onclick="return confirm('Deseja realmente DESATIVAR as atividades deste Usuario ?');">Desativar</a>
+                                                    <a href="unblock-user.php?id=<?php echo $usuario['idUsuario'] ?>" class="btn btn-primary" onclick="return confirm('Deseja realmente ATIVAR as atividades deste Usuario ?');"> Ativar</a>
                                                     </td>
                                                 </tr>
                                             <?php endwhile; ?>
