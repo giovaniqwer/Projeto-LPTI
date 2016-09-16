@@ -95,7 +95,7 @@ $stmt->execute();
                         <div class="sidebar-collapse">
                             <ul class="nav" id="main-menu">
                                 <li>
-                                    <a class="active-menu" href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                    <a class="active-menu" href="inicio.php"><i class="fa fa-dashboard "></i>Principal<br></a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-bell"></i>Eventos<span class="fa arrow"></span></a>
@@ -183,12 +183,12 @@ $stmt->execute();
                                             <div class="panel-footer">
                                                 <div class="form-group">
                                                     <label>Comentario</label>
-                                                    <textarea class="form-control" rows="3"></textarea>
+                                                    <textarea class="form-control" rows="1"></textarea>
                                                 </div>
                                                 <button type="submit" class="btn btn-info">Enviar Comentario </button>
                                                 <br>
                                                 <br>
-                                                <div class="alert alert-info">
+                                                <div class="alert alert-info" id="cor-coment">
                                                     <div class="alert-link">
                                                         Nome Usuário Comentario
                                                     </div>

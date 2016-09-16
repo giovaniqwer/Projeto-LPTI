@@ -92,7 +92,7 @@ $stmt->execute();
             </div>
         </div>
         <br>
-      
+
         <div class="conteudo">
             <div id="wrapper">
                 <br>
@@ -153,27 +153,34 @@ $stmt->execute();
                             <div class="row">
                                 <div class="col-md-12">
                                     <h1 class="page-head-line">PRINCIPAL</h1>
+                                    <center>
+                                        <div id="divBusca">
+                                            <img src="img/search3.png" alt="Buscar..." />
+                                            <input type="text" id="txtBusca" placeholder="Buscar..." />
+                                            <button id="btnBusca">Buscar</button>
+                                        </div>
+                                    </center>
                                 </div>
-                            </div>
+                            </div><br>
                             <!-- /. ROW  -->
 
 
                              <!-- /. POSTAGENS -->
-                            
+
                             <div class="row">
                                 <div class="col-md-4 col-sm-4" id="largura">
-                                    <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>  
+                                    <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                                         <div class="panel panel-info" >
                                             <div class="panel-heading" style="background-color:#CAEBE9">
 
                                                 <div class="alert-link"><b>
-                                                    <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+                                                    <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                                     </b>
-                                                   
+
                                                    	<a class="btn btn-default" style="background-color: #ffffff" href="../Post/delete.php?id=<?php echo $post ['idPost']?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
 
-                                                    
-                                                   
+
+
                                                 </div>
 
                                             </div>
@@ -183,9 +190,10 @@ $stmt->execute();
                                             </div>
 
                                             <div class="panel-footer">
+                                              <form name="formularioComent" id="formComent" action="../Comentario/add-coment.php" method="post">
                                                 <div class="form-group">
                                                     <label>Comentario</label>
-                                                    <textarea class="form-control" rows="3"></textarea>
+                                                    <textarea class="form-control" name="textoComentario" rows="1"></textarea>
                                                 </div>
                                                 <button type="submit" class="btn btn-info">Enviar Comentario </button>
                                                 <br>
@@ -197,12 +205,12 @@ $stmt->execute();
                                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                     <a href="#" class="btn btn-info">Excluir</a>
                                                 </div>
-
+                                                </formname>
                                             </div>
                                         </div>
                                     <?php endwhile; ?>
                                 </div>
-                       
+
                                       <!-- /. FIM POSTAGENS -->
                                 <div class="col-md-6" id="boxlateral">
                                     <div class="panel panel-info">
@@ -225,9 +233,10 @@ $stmt->execute();
                                             <!-- /.list-group -->
 
                                         </div>
-                                        
+
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -264,7 +273,7 @@ $stmt->execute();
                                                     </ul>
                                                 </select>
                                                 <br />
-                                                <br>                                                   
+                                                <br>
                                                 <div class="input-group">
                                                     <label>Palavra Chave:</label>
                                                     <input type="text" name="tagPost" id="tag" class="form-control" placeholder="Adicionar Tag" />

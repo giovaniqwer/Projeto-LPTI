@@ -49,6 +49,7 @@ left: 30%;
   border-radius:10px;
   width:300px;
   height:32px;
+  color: white;
 }
 
 #txtBusca{
@@ -59,6 +60,7 @@ left: 30%;
   border:none;
   height:34px;
   width:191px;
+  
 }
 
 #btnBusca{
@@ -127,4 +129,7 @@ left: 20%;
 }
 .input-group{
 	float: left;
+}
+#cor-coment{
+    background-color: #fff;
 }
