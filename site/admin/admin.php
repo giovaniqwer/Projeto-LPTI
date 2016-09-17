@@ -2,8 +2,8 @@
 session_start();
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
-} else if ($_SESSION["emailTipo"] != 1) {
-    header("Location:../negado.html");
+}else if($_SESSION["emailTipo"]!=1){
+	header("Location:../negado.html");
 }
 require_once '../init.php';
 include_once '../cadastro-class.php';
@@ -12,6 +12,7 @@ $sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
 $sql = "SELECT Post.idPost, Post.idUsuario, Post.dataPost, Post.conteudoPost, Post.Tag, Post.Categoria_idCategoria, Usuario.nome, Usuario.sobrenome
 FROM Post
 LEFT JOIN Usuario ON Usuario.idUsuario = Post.idUsuario
+
 ORDER BY idPost DESC ";
 $stmt_count = $PDO->prepare($sql_count);
 $stmt_count->execute();
@@ -45,9 +46,9 @@ $stmt->execute();
         <link href="../assets/css/css.css" rel="stylesheet">
         <link href="css/estilo.css" rel="stylesheet">
         <!--SCRIPT VALIDACAO-->
-        <script type="text/javascript" src="assets/js/validacaodadoscadastro.js"></script>
-        <script type="text/javascript" src="assets/js/validacaodocontato.js"></script>
-        <script type="text/javascript" src="assets/js/validalogin.js"></script>
+         <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
+        <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
+        <script type="text/javascript" src="../assets/js/validalogin.js"></script>
 
 
     </head>
@@ -92,7 +93,6 @@ $stmt->execute();
             </div>
         </div>
         <br>
-
         <div class="conteudo">
             <div id="wrapper">
                 <br>
@@ -124,7 +124,7 @@ $stmt->execute();
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="estagio.php"><i class="fa fa-briefcase "></i>Estágio </a>
+                                    <a  href="estagio.php"><i class="fa fa-briefcase "></i>Estágio </a>
                                 </li>
                                 <li>
                                     <a href="anuncio.php"><i class="fa fa-bullhorn"></i>Anúncio </a>
@@ -152,7 +152,7 @@ $stmt->execute();
                         <div id="page-inner">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1 class="page-head-line">PRINCIPAL</h1>
+                                    <h1 class="page-head-line">Estágio</h1>
                                     <center>
                                         <div id="divBusca">
                                             <img src="img/search3.png" alt="Buscar..." />
@@ -161,26 +161,19 @@ $stmt->execute();
                                         </div>
                                     </center>
                                 </div>
-                            </div><br>
-                            <!-- /. ROW  -->
-
-
-                             <!-- /. POSTAGENS -->
+                            </div>
+                            <br>
+                            <!-- /. POSTAGENS -->
 
                             <div class="row">
                                 <div class="col-md-4 col-sm-4" id="largura">
                                     <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-                                        <div class="panel panel-info" >
-                                            <div class="panel-heading" style="background-color:#CAEBE9">
+                                        <div class="panel panel-info">
+                                            <div class="panel-heading" style="background-color:#bdded6">
 
                                                 <div class="alert-link"><b>
-                                                    <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                                    </b>
-
-                                                   	<a class="btn btn-default" style="background-color: #ffffff" href="../Post/delete.php?id=<?php echo $post ['idPost']?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
-
-
-
+                                                   <?php echo $post['nome'].' '.$post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-default" style="background-color: #ffffff" href="../Post/delete.php?id=<?php echo $post ['idPost']?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+                                                   <b>
                                                 </div>
 
                                             </div>
@@ -190,10 +183,9 @@ $stmt->execute();
                                             </div>
 
                                             <div class="panel-footer">
-                                              <form name="formularioComent" id="formComent" action="../Comentario/add-coment.php" method="post">
                                                 <div class="form-group">
                                                     <label>Comentario</label>
-                                                    <textarea class="form-control" name="textoComentario" rows="1"></textarea>
+                                                    <textarea class="form-control" rows="3"></textarea>
                                                 </div>
                                                 <button type="submit" class="btn btn-info">Enviar Comentario </button>
                                                 <br>
@@ -205,13 +197,12 @@ $stmt->execute();
                                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                                     <a href="#" class="btn btn-info">Excluir</a>
                                                 </div>
-                                                </formname>
+
                                             </div>
                                         </div>
                                     <?php endwhile; ?>
                                 </div>
-
-                                      <!-- /. FIM POSTAGENS -->
+                                <!-- /. FIM POSTAGENS -->
                                 <div class="col-md-6" id="boxlateral">
                                     <div class="panel panel-info">
                                         <div class="panel-heading">
@@ -236,13 +227,12 @@ $stmt->execute();
 
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
 
 
-                    <!--JANELA MODAL ADD POST-->
+                   <!--JANELA MODAL ADD POST-->
                     <div id="modal">
                         <div class="modal-box">
                             <div class="modal-box-conteudo">
@@ -297,6 +287,7 @@ $stmt->execute();
                         </div>
                     </div>
                     <!--FIM JANELA MODAL ADD POST-->
+
                     <section id="footer-sec">
                         <div class="container">
                             <div class="row">
@@ -316,8 +307,6 @@ $stmt->execute();
                                     </div>
                                 </div>
                             </div>
-</div>
-
                             <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
                     </section>
                     <!--FIM DO RODAPÉ-->
@@ -341,7 +330,7 @@ $stmt->execute();
                     <script src="../forum-calendario/assets/js/custom.js"></script>
                     <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
 
-                    <script src="../forum-calesndario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+                    <script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
                     <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
                     <script src="../assets/js/jquery-1.10.2.js"></script>
                     <!-- BOOTSTRAP SCRIPTS -->

@@ -30,7 +30,7 @@
         <!-- SCRIPTS PARA OS DIAGRAMAS (GOOGLE CHARTS)-->
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 		  <script type="text/javascript">
-		  
+
      	  google.charts.load('current', {packages:["orgchart"]});
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
@@ -54,10 +54,10 @@
         var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
         // Draw the chart, setting the allowHtml option to true for the tooltips.
         chart.draw(data, {allowHtml:true});
-        
-        
+
+
       }
-      
+
       <!-- Função para mostrar o diagrama -->
        function mostraDiagrama() {
        	document.getElementById('chart_div').style.display="block";
@@ -66,44 +66,50 @@
     </head>
 
     <body>
-        <!--TOPO DO SITE-->
-        <div class="navbar navbar-inverse navbar-fixed-top ">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"><img src="../assets/img/logo.png"></a>
-                </div>
-                <div class="navbar-collapse collapse move-me">
-                    <ul class="nav navbar-nav navbar-right set-links">
-                        <li>
-                            <a href="../index.php" class="active-menu-item">HOME</a>
-                        </li>
-                        <li>
-                            <a href="../links.php">LINKS</a>
-                        </li>
-                        <li>
-                            <a href="../contato.php">CONTATO</a>
-                        </li>
-                        <li>
-                            <a href="../cadastro.php">CADASTRE-SE</a>
-                        </li>
-                        <li>
-                            <a href="../login.php">LOGIN</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+      <!--TOPO DO SITE-->
+      <div class="navbar navbar-inverse navbar-fixed-top ">
+          <div class="container">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#"><img src="../assets/img/logo.png"></a>
+              </div>
+              <div class="navbar-collapse collapse move-me">
+                  <ul class="nav navbar-nav navbar-right set-links">
+                      <li>
+                          <a href="inicio.php">INÍCIO</a>
+                      </li>
+                      <li>
+                          <a href="listaUsuario.php">USUÁRIOS</a>
+                      </li>
+                      <li>
+                          <a href="listaContato.php">MENSAGENS</a>
+                      </li>
+                      <li>
+                          <a href="#">
+                              <?php echo $_SESSION["emailNome"] ?>
+                          </a>
+                      </li>
+                      <li>
+                          <form action="../logout.php" role="form" method="post" name="formLogin">
+                              <button type="submit" class="active btn btn-block btn-primary btn-lg">Sair
+                                  <i class="fa fa-fw fa-lg fa-sign-out"></i>
+                              </button>
+                          </form>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
         <br>
         <div class="conteudo">
             <div id="wrapper">
                 <br>
 
-                <!-- /. NAV TOP -->
+                <!-- /. MENU LATERAL -->
                 <br>
                 <div class="conteudo">
 
@@ -111,35 +117,35 @@
                         <div class="sidebar-collapse">
                             <ul class="nav" id="main-menu">
                                 <li>
-                                    <a href="forum.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                    <a href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
                                 </li>
                                 <li>
-                                    <a hr ef="#"><i class="fa fa-align-justify"></i>Eventos<span class="fa arrow"></span></a>
+                                    <a href="#"><i class="fa fa-bell"></i>Eventos<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
 
-                                            <a href="minicurso.php"><i class="fa fa-play-circle">&nbsp;Mini Cursos</i></a>
+                                            <a href="minicurso.php"><i class="fa fa-graduation-cap">&nbsp;Mini Cursos</i></a>
 
                                         </li>
                                         <li>
-                                            <a href="palestra.php"><i class="fa fa-bell ">&nbsp;Palestras</i></a>
+                                            <a href="palestra.php"><i class="fa fa-cube">&nbsp;Palestras</i></a>
                                         </li>
                                         <li>
-                                            <a href="entreterimento.php"><i class="fa fa-circle-o"></i>Entreterimento</a>
+                                            <a href="entretenimento.php"><i class="fa fa-smile-o"></i>Entretenimento</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="estagio.php"><i class="fa fa-search"></i>Estágio </a>
+                                    <a  href="estagio.php"><i class="fa fa-briefcase "></i>Estágio </a>
                                 </li>
                                 <li>
-                                    <a href="anuncio.php"><i class="fa fa-search"></i>Anuncio </a>
+                                    <a href="anuncio.php"><i class="fa fa-bullhorn"></i>Anúncio </a>
                                 </li>
                                 <li>
                                     <a href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
                                 </li>
                                 <li>
-                                    <a href="inicCient.php"><i class="fa fa-globe"></i>Iniciação Cientifica</a>
+                                    <a href="inicCient.php"><i class="fa fa-flask"></i>Iniciação Cientifica</a>
                                 </li>
                                 <li>
                                     <a href="monitorias.php"><i class="fa fa-book"></i>Monitorias</a>
@@ -148,11 +154,12 @@
                                     <a href="outros.php"><i class="fa fa-archive"></i>Outros</a>
                                 </li>
                                 <li>
-                                    <a class="active-menu" href="#"><i class="fa fa-align-justify"></i>Grade Curricular</a>
+                                    <a class="active-menu" href="disciplinas.php"><i class="fa fa-align-justify"></i>Grade Curricular</a>
                                 </li>
                             </ul>
                         </div>
                     </nav>
+                    <!--FIM MENU LATERAL-->
                     <div id="page-wrapper">
                         <div id="page-inner">
                             <div class="row">
@@ -174,8 +181,8 @@
                                             </div>
 
                                         </div>
-                                       
-                                     
+
+
                                         <!-- Descrição das disciplinas -->
                                         <div class="panel-body">
                                             <div class="row">
@@ -185,15 +192,15 @@
                                                 </div>
                                                  <!-- DIAGRAMA -->
                                        			 <div id="chart_div" style='display:none'></div>
-                                       			 
-                                       			 
+
+
                                                 <div class="col-md-4 ">
                                                     <div class="alert alert-info text-center">
                                                         <h4> Humanas </h4>
                                                         <hr/>
                                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
                                                         <hr/>
-                                               
+
                                                         <a href="Humanas.php" class="btn btn-info">Ver mais...</a>
                                                     </div>
                                                 </div>

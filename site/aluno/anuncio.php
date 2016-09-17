@@ -23,7 +23,7 @@ $stmt->execute();
 if ( $_SESSION['emailTipo']!=2) {
 	 unset($_SESSION['emailID'], $_SESSION['emailNome'], $_SESSION['emailLogin'], $_SESSION['emailSenha']);
     header("Location:../login.php");
-    
+
 }
 
 ?>
@@ -77,7 +77,7 @@ if ( $_SESSION['emailTipo']!=2) {
                         <li>
                             <a href="inicio.php">INÍCIO</a>
                         </li>
-                        
+
                         <li>
                             <a href="#">
                                 <?php echo $_SESSION["emailNome"] ?>
@@ -169,14 +169,15 @@ if ( $_SESSION['emailTipo']!=2) {
 
                             <div class="row">
                                 <div class="col-md-4 col-sm-4" id="largura">
-                                    <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>   
+                                    <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                                         <div class="panel panel-success">
                                             <div class="panel-heading">
 
-                                                <div class="alert-link">
-                                                    <?php echo $post['nome'].' '.$post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+                                                <div class="alert-link"><b>
+                                                    <?php echo $post['nome'].' '.$post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                  </b> 
                                                     <?php
-                                                    if($_SESSION["emailID"]==$post['idUsuario']){                                              
+                                                    if($_SESSION["emailID"]==$post['idUsuario']){
                                                        echo "<a class='btn btn-success' href='../Post/delete.php?id=".$post['idPost']."' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
                                                     }
                                                     ?>
@@ -230,7 +231,7 @@ if ( $_SESSION['emailTipo']!=2) {
                                             <!-- /.list-group -->
 
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -269,7 +270,7 @@ if ( $_SESSION['emailTipo']!=2) {
                                                     </ul>
                                                 </select>
                                                 <br />
-                                                <br>                                                   
+                                                <br>
                                                 <div class="input-group">
                                                     <label>Palavra Chave:</label>
                                                     <input type="text" name="tagPost" id="tag" class="form-control" placeholder="Adicionar Tag" />

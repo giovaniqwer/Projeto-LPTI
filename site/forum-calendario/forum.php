@@ -148,17 +148,17 @@ $stmt->execute();
                     <!-- /. ROW  -->
 
                    <!-- /. POSTAGENS -->
-                            
+
                             <div class="row">
                                 <div class="col-md-12 col-sm-12" id="largura" style="min-width: 100%">
-                                    <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>  
+                                    <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                                         <div class="panel panel-info" >
-                                            <div class="panel-heading" style="background-color:#CAEBE9">
+                                            <div class="panel-heading" style="background-color:#bdded6">
 
                                                 <div class="alert-link"><b>
-                                                    <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+                                                    <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                                     </b>
-                                                   
+
                                                 </div>
 
                                             </div>
@@ -169,7 +169,7 @@ $stmt->execute();
 
                                             <div class="panel-footer">
                                            	<div class="alert-link">
-                                                        
+
                                                 </div>
                                                 <br>
                                                 <br>
@@ -180,7 +180,7 @@ $stmt->execute();
                                                         Nome Usuário Comentario
                                                     </div>
                                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                   
+
                                                 </div>
 
                                             </div>
@@ -188,7 +188,7 @@ $stmt->execute();
                                     <?php endwhile; ?>
                                 </div>
                                 <!-- /. FIM POSTAGENS -->
-                                
+
                             </div>
                         </div>
                     </div>

@@ -167,12 +167,13 @@ $stmt->execute();
 
                             <div class="row">
                                 <div class="col-md-4 col-sm-4" id="largura">
-                                    <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>   
+                                    <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                                         <div class="panel panel-primary">
                                             <div class="panel-heading">
 
-                                                <div class="alert-link">
+                                                <div class="alert-link"><b>
                                                     <?php echo $post['nome'].' '.$post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-primary" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+                                                  </b>
                                                 </div>
 
                                             </div>
@@ -223,7 +224,7 @@ $stmt->execute();
                                             <!-- /.list-group -->
 
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -262,7 +263,7 @@ $stmt->execute();
                                                     </ul>
                                                 </select>
                                                 <br />
-                                                <br>                                                   
+                                                <br>
                                                 <div class="input-group">
                                                     <label>Palavra Chave:</label>
                                                     <input type="text" name="tagPost" id="tag" class="form-control" placeholder="Adicionar Tag" />
