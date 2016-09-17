@@ -75,7 +75,7 @@ $stmt->execute();
                             <a href="listaContato.php">MENSAGENS</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
                             </a>
                         </li>

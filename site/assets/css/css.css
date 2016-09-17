@@ -60,7 +60,7 @@ left: 30%;
   border:none;
   height:34px;
   width:191px;
-  
+
 }
 
 #btnBusca{
@@ -132,4 +132,8 @@ left: 20%;
 }
 #cor-coment{
     background-color: #fff;
+}
+#update{
+	position: relative;
+	left: 25%;
 }

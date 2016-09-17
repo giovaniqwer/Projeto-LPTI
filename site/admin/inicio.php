@@ -63,7 +63,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                         </li>
 	                     
                         <li>
-                            <a href="#">
+                            <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
                             </a>
                         </li>

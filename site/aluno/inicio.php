@@ -49,10 +49,15 @@
                         <li>
                             <a href="inicio.php">INÍCIO</a>
                         </li>
-                        
+
+                        <li>
+                            <a href="edit-user.php">
+                                <?php echo $_SESSION["emailNome"] ?>
+                            </a>
+                        </li>
                         <li>
                             <form action="../logout.php" role="form" method="post" name="formLogin">
-                                <button type="submit" class="active btn btn-block btn-info btn-lg">Sair
+                                <button type="submit" class="active btn btn-block btn-primary btn-lg">Sair
                                     <i class="fa fa-fw fa-lg fa-sign-out"></i>
                                 </button>
                             </form>

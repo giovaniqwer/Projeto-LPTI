@@ -79,7 +79,7 @@ if ( $_SESSION['emailTipo']!=2) {
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
                             </a>
                         </li>

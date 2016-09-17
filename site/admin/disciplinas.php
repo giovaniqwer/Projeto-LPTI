@@ -89,9 +89,9 @@
                           <a href="listaContato.php">MENSAGENS</a>
                       </li>
                       <li>
-                          <a href="#">
-                              <?php echo $_SESSION["emailNome"] ?>
-                          </a>
+                           <a href="edit-user.php">
+                                <?php echo $_SESSION["emailNome"] ?>
+                            </a>
                       </li>
                       <li>
                           <form action="../logout.php" role="form" method="post" name="formLogin">

@@ -70,7 +70,7 @@ $stmt->execute();
                             <a href="inicio.php">INÍCIO</a>
                         </li>
 						  <li>
-                            <a href="#">
+                            <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
                             </a>
                         </li>

@@ -77,7 +77,7 @@ $stmt->execute();
                             <a href="listaContato.php">MENSAGENS</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
                             </a>
                         </li>
@@ -173,7 +173,7 @@ $stmt->execute();
 
                                                 <div class="alert-link"><b>
                                                    <?php echo $post['nome'].' '.$post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-default" style="background-color: #ffffff" href="../Post/delete.php?id=<?php echo $post ['idPost']?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
-                                                   <b>
+                                                 </b>
                                                 </div>
 
                                             </div>

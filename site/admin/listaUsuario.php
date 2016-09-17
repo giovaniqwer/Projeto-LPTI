@@ -74,7 +74,7 @@ $stmt->execute();
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
                             </a>
                         </li>
@@ -189,16 +189,16 @@ $stmt->execute();
                                                         <?php echo $usuario ['sobrenome'] ?>
                                                     </td>
                                                     <td>
-                                                        <?php echo $usuario ['email'] ?> 
+                                                        <?php echo $usuario ['email'] ?>
                                                     </td>
                                                     <td>
-                                                    	 <?php 
+                                                    	 <?php
                                                     	 if(($usuario ['Atividade'])==0){
-	                                                       echo "Ativo";	
-                                                    	 }else if(($usuario ['Atividade'])==1) { 
+	                                                       echo "Ativo";
+                                                    	 }else if(($usuario ['Atividade'])==1) {
                                                     	 	 echo "Inativo";
                                                     	 }
-                                                    	 ?>                                                
+                                                    	 ?>
                                                     </td>
                                                     <td>
                                                     <a href="block-user.php?id=<?php echo $usuario['idUsuario'] ?>" class="btn btn-primary" onclick="return confirm('Deseja realmente DESATIVAR as atividades deste Usuario ?');">Desativar</a>
@@ -228,16 +228,7 @@ $stmt->execute();
                                                     <!-- /.list-group -->
 
                                                 </div>
-                                                <div class="panel-body">
-                                                    <div class="list-group">
-
-                                                        <a href="#" class="list-group-item">
-                                                            <i class="fa fa-twitter fa-fw"></i>Tag #01
-                                                            <span class="pull-right text-muted small"><em></em>
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                                              
                                             </div>
                                         </div>
                                 </div>
@@ -280,7 +271,7 @@ $stmt->execute();
                                             </ul>
                                         </select>
                                         <br />
-                                        <br>                                                   
+                                        <br>
                                         <div class="input-group">
                                             <label>Palavra Chave:</label>
                                             <input type="text" name="tagPost" class="form-control" placeholder="Adicionar Tag" />

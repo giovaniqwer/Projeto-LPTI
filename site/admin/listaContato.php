@@ -74,7 +74,7 @@ $stmt->execute();
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
                             </a>
                         </li>
@@ -207,22 +207,7 @@ $stmt->execute();
                                                     <!-- /.list-group -->
 
                                                 </div>
-                                                <div class="panel panel-info">
-                                                    <div class="panel-heading">
-                                                        <i class="fa fa-bell fa-fw"></i>Tags
-                                                    </div>
-
-                                                    <div class="panel-body">
-                                                        <div class="list-group">
-
-                                                            <a href="#" class="list-group-item">
-                                                                <i class="fa fa-twitter fa-fw"></i>Tag #01
-                                                                <span class="pull-right text-muted small"><em></em>
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -264,7 +249,7 @@ $stmt->execute();
                                                     </ul>
                                                 </select>
                                                 <br />
-                                                <br>                                                   
+                                                <br>
                                                 <div class="input-group">
                                                     <label>Palavra Chave:</label>
                                                     <input type="text" name="tagPost" class="form-control" placeholder="Adicionar Tag" />
