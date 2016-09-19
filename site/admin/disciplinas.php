@@ -1,5 +1,5 @@
-<html>
 
+<html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -31,37 +31,43 @@
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 		  <script type="text/javascript">
 
-     	  google.charts.load('current', {packages:["orgchart"]});
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Name');
-        data.addColumn('string', 'Manager');
-        data.addColumn('string', 'ToolTip');
+		google.charts.load('current', {packages:['wordtree']});
+      google.charts.setOnLoadCallback(drawSimpleNodeChart);
+      function drawSimpleNodeChart() {
+        var nodeListData = new google.visualization.arrayToDataTable([
+          ['id', 'childLabel', 'parent', 'Créditos', { role: 'style' }],
+          [0, 'Grade básica', -1, 1, 'black'],
+          [1, '1º SEMESTRE', 0, 1, 'green'],
+          [2, '2º SEMESTRE', 0, 1, 'red'],
+          [3, '3º SEMESTRE', 0, 1, 'purple'],
+          [4, '4º SEMESTRE', 0, 1, 'blue'],
+          [5, '5º SEMESTRE', 0, 1, 'blue'],
+          [6, '6º SEMESTRE', 0, 1, 'blue'],
+			 [7, 'Introdução à economia', 1, 4, 'green'],
+			 [8, 'Introdução à atuária', 1, 4, 'green'],
+			 [9, 'Introdução à administração', 1, 4, 'green'],
+			 [10,'Matemática I', 1, 6, 'green'],
+			 [11,'Filosofia da ciência', 1, 2, 'green'],
+			 [12,'Ciências sociais', 2, 4, 'red'],
+			 [13,'História econômica geral', 2, 4, 'red'],
+			 [14,'Matemática II', 2, 6, 'red'],
+			 [15,'Comunicação', 2, 4, 'red'],
+			 [16,'Metodologia de pesquisa', 2, 2, 'red'],
+			 [17,'Ciência política', 3, 4, 'purple']
+          ]);
 
-        // For each orgchart box, provide the name, manager, and tooltip to show.
-        data.addRows([
-          [{v:'Mike', f:'Mike<div style="color:red; font-style:italic">President</div>'},
-           '', 'The President'],
-          [{v:'Jim', f:'Jim<div style="color:red; font-style:italic">Vice President</div>'},
-           'Mike', 'VP'],
-          ['Alice', 'Mike', ''],
-          ['Bob', 'Jim', 'Bob Sponge'],
-          ['Carol', 'Bob', '']
-        ]);
-		  data.setRowProperty(1, 'style', 'background: #FF0000');
-        // Create the chart.
-        var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
-        // Draw the chart, setting the allowHtml option to true for the tooltips.
-        chart.draw(data, {allowHtml:true});
+        var options = {
+          colors: ['black', 'black', 'black'],
+          wordtree: {
+            format: 'explicit',
+            type: 'suffix'
+          }
+        };
 
-
+        var wordtree = new google.visualization.WordTree(document.getElementById('wordtree_explicit'));
+        wordtree.draw(nodeListData, options);
       }
-
-      <!-- Função para mostrar o diagrama -->
-       function mostraDiagrama() {
-       	document.getElementById('chart_div').style.display="block";
-       }
+       
    </script>
     </head>
 
@@ -191,7 +197,7 @@
                                                     <button onclick="mostraDiagrama()">Calma q eu te salvo, tiu</button>
                                                 </div>
                                                  <!-- DIAGRAMA -->
-                                       			 <div id="chart_div" style='display:none'></div>
+                                       			 <div id="wordtree_explicit" style="width: auto; height: auto;"></div>
 
 
                                                 <div class="col-md-4 ">
@@ -302,3 +308,5 @@
     </body>
 
 </html>
+
+ 
