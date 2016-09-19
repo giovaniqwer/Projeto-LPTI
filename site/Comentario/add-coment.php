@@ -10,7 +10,7 @@ $idUsuario = $_SESSION["emailID"];
 date_default_timezone_set('America/Sao_Paulo');
 $dataComentario = date('d/m/Y H:i');
 $textoComentario = isset($_POST['textoComentario']) ? $_POST['textoComentario'] : null;
-$idPost = $id;
+$idPost = isset($_POST['id_post']) ? $_POST['id_post'] : null;
 
 $coment = new Comentario($idPost, $idUsuario, $textoComentario, $dataComentario);
 

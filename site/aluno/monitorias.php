@@ -6,7 +6,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
     header("Location:../negado.html");
 }
 require_once '../init.php';
-include_once '../cadastro-class.php';
+include_once '../sql.php';
 $PDO = db_connect();
 $sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
 $sql = "SELECT Post.idPost, Post.idUsuario, Post.dataPost, Post.conteudoPost, Post.Tag, Post.Categoria_idCategoria, Usuario.nome, Usuario.sobrenome
@@ -188,22 +188,30 @@ $stmt->execute();
 
                                             </div>
 
-                                            <div class="panel-footer">
-                                                <div class="form-group">
-                                                    <label>Comentario</label>
-                                                    <textarea class="form-control" rows="3"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-info">Enviar Comentario </button>
-                                                <br>
-                                                <br>
-                                                <div class="alert alert-info">
-                                                    <div class="alert-link">
-                                                        Nome Usuário Comentario
-                                                    </div>
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                    <a href="#" class="btn btn-info">Excluir</a>
-                                                </div>
+                                             <div class="panel-footer">
+                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post">
+                                                    <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
+                                                    <div class="form-group">
+                                                        <label>Comentario</label>
 
+                                                        <textarea name="textoComentario" class="form-control" rows="1"></textarea>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-info">Enviar Comentario </button>
+                                                    <br>
+                                                    <br>
+                                                    <?php
+                                                    $stmt_comentario = sqlComentario($post ['idPost']);
+                                                    while ($coment = $stmt_comentario->fetch(PDO::FETCH_ASSOC)):
+                                                        ?>
+                                                        <div class="alert alert-info">
+                                                            <div class="alert-link">
+                                                                <?php echo $coment['nome'] . ' ' . $post['sobrenome'] ?>
+                                                            </div>
+                                                            <?php echo $coment ['textoComentario']; ?>
+                                                            <a href="#" class="btn btn-info">Excluir</a>
+                                                        </div>
+                                                    <?php endwhile; ?>
+                                                </form>
                                             </div>
                                         </div>
                                     <?php endwhile; ?>

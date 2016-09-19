@@ -2,18 +2,29 @@
 session_start();
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
-}else if($_SESSION["emailTipo"]!=1){
-	header("Location:../negado.html");
+} else if ($_SESSION["emailTipo"] != 1) {
+    header("Location:../negado.html");
 }
 require_once '../init.php';
-include_once '../cadastro-class.php';
+include_once '../sql.php';
+
 $PDO = db_connect();
 $sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
-$sql = "SELECT Post.idPost, Post.idUsuario, Post.dataPost, Post.conteudoPost, Post.Tag, Post.Categoria_idCategoria, Usuario.nome, Usuario.sobrenome
-FROM Post
+$sql = "SELECT 
+    Post.idPost, 
+    Post.idUsuario, 
+    Post.dataPost, 
+    Post.conteudoPost, 
+    Post.Tag, 
+    Post.Categoria_idCategoria, 
+    Usuario.nome, 
+    Usuario.sobrenome
+FROM 
+    Post
 LEFT JOIN Usuario ON Usuario.idUsuario = Post.idUsuario
 WHERE Categoria_idCategoria =9
-ORDER BY idPost DESC ";
+ORDER BY 
+    idPost DESC ";
 $stmt_count = $PDO->prepare($sql_count);
 $stmt_count->execute();
 $total = $stmt_count->fetchColumn();
@@ -46,7 +57,7 @@ $stmt->execute();
         <link href="../assets/css/css.css" rel="stylesheet">
         <link href="css/estilo.css" rel="stylesheet">
         <!--SCRIPT VALIDACAO-->
-         <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
+        <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
         <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
         <script type="text/javascript" src="../assets/js/validalogin.js"></script>
         <!--JANELA MODAL-->
@@ -175,8 +186,8 @@ $stmt->execute();
                                             <div class="panel-heading" style="background-color: #D9C8E3">
 
                                                 <div class="alert-link"><b>
-                                                    <?php echo $post['nome'].' '.$post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-default" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
-                                                  </b>
+                                                        <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-default" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+                                                    </b>
 
                                                 </div>
 
@@ -187,21 +198,28 @@ $stmt->execute();
                                             </div>
 
                                             <div class="panel-footer">
-                                                <div class="form-group">
-                                                    <label>Comentario</label>
-                                                    <textarea class="form-control" rows="3"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-info">Enviar Comentario </button>
-                                                <br>
-                                                <br>
-                                                <div class="alert alert-info">
-                                                    <div class="alert-link">
-                                                        Nome Usuário Comentario
+                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post">
+                                                    <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
+                                                    <div class="form-group">
+                                                        <label>Comentario</label>
+                                                        <textarea name="textoComentario" class="form-control" rows="1"></textarea>
                                                     </div>
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                    <a href="#" class="btn btn-info">Excluir</a>
-                                                </div>
-
+                                                    <button type="submit" class="btn btn-info">Enviar Comentario </button>
+                                                    <br>
+                                                    <br>
+                                                    <?php
+                                                    $stmt_comentario = sqlComentario($post ['idPost']);
+                                                    while ($coment = $stmt_comentario->fetch(PDO::FETCH_ASSOC)):
+                                                        ?>
+                                                        <div class="alert alert-info">
+                                                            <div class="alert-link">
+                                                                <?php echo $coment['nome'] . ' ' . $post['sobrenome'] ?>
+                                                            </div>
+                                                            <?php echo $coment ['textoComentario']; ?>
+                                                            <a href="#" class="btn btn-info">Excluir</a>
+                                                        </div>
+                                                    <?php endwhile; ?>
+                                                </form>
                                             </div>
                                         </div>
                                     <?php endwhile; ?>
@@ -238,7 +256,7 @@ $stmt->execute();
 
 
 
-                   <!--JANELA MODAL ADD POST-->
+                    <!--JANELA MODAL ADD POST-->
                     <div id="modal">
                         <div class="modal-box">
                             <div class="modal-box-conteudo">
