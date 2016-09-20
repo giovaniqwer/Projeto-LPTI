@@ -2,10 +2,10 @@
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tempo de Geração: 15/09/2016 às 18:37
--- Versão do servidor: 5.5.50-0ubuntu0.14.04.1
--- Versão do PHP: 5.5.9-1ubuntu4.19
+-- Máquina: localhost
+-- Data de Criação: 20-Set-2016 às 18:04
+-- Versão do servidor: 5.5.47-0ubuntu0.14.04.1
+-- versão do PHP: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de dados: `LPTI`
+-- Base de Dados: `LPTI`
 --
 CREATE DATABASE IF NOT EXISTS `LPTI` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `LPTI`;
@@ -25,7 +25,7 @@ USE `LPTI`;
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Categoria`
+-- Estrutura da tabela `Categoria`
 --
 
 CREATE TABLE IF NOT EXISTS `Categoria` (
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `Categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `Categoria`
+-- Extraindo dados da tabela `Categoria`
 --
 
 INSERT INTO `Categoria` (`idCategoria`, `nome`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `Categoria` (`idCategoria`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Comentario`
+-- Estrutura da tabela `Comentario`
 --
 
 CREATE TABLE IF NOT EXISTS `Comentario` (
@@ -64,12 +64,40 @@ CREATE TABLE IF NOT EXISTS `Comentario` (
   PRIMARY KEY (`idComentario`),
   KEY `fk_ComentPost_PostPost_idx` (`idPost`),
   KEY `fk_ComentUsr_UserUsr_idx` (`idUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=30 ;
+
+--
+-- Extraindo dados da tabela `Comentario`
+--
+
+INSERT INTO `Comentario` (`idComentario`, `idPost`, `idUsuario`, `textoComentario`, `dataComentario`) VALUES
+(6, 59, 8, 'comentario 1', '20/09/2016 13:46'),
+(7, 58, 8, 'comentario 2', '20/09/2016 13:47'),
+(8, 56, 8, 'teste', '20/09/2016 13:56'),
+(9, 59, 8, 'oi', '20/09/2016 14:23'),
+(10, 59, 8, 'rea', '20/09/2016 14:23'),
+(12, 58, 8, 'hha', '20/09/2016 14:35'),
+(13, 48, 8, 'teste', '20/09/2016 15:46'),
+(14, 48, 9, 'oioi gente', '20/09/2016 15:48'),
+(15, 48, 9, 'teste', '20/09/2016 15:48'),
+(16, 48, 9, 'teste5', '20/09/2016 15:48'),
+(17, 60, 8, 'oioi gente\r\n', '20/09/2016 15:51'),
+(18, 60, 9, 'teste comentario grande', '20/09/2016 16:04'),
+(19, 60, 9, 'gags', '20/09/2016 16:05'),
+(20, 59, 9, 'fdsa', '20/09/2016 16:05'),
+(21, 60, 8, 'jhfd', '20/09/2016 16:06'),
+(22, 60, 9, 'hahahaha', '20/09/2016 16:07'),
+(23, 60, 9, 'vssfg', '20/09/2016 16:09'),
+(24, 48, 9, 'hfs', '20/09/2016 16:09'),
+(25, 47, 9, 'teste', '20/09/2016 16:11'),
+(26, 60, 9, 'fads', '20/09/2016 16:13'),
+(27, 60, 9, 'fdsa', '20/09/2016 16:13'),
+(29, 54, 9, 'haha', '20/09/2016 16:21');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `contatos`
+-- Estrutura da tabela `contatos`
 --
 
 CREATE TABLE IF NOT EXISTS `contatos` (
@@ -82,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `contatos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Fazendo dump de dados para tabela `contatos`
+-- Extraindo dados da tabela `contatos`
 --
 
 INSERT INTO `contatos` (`idcontato`, `nomeContato`, `emailContato`, `comentarioContato`, `data`) VALUES
@@ -93,7 +121,7 @@ INSERT INTO `contatos` (`idcontato`, `nomeContato`, `emailContato`, `comentarioC
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Curso`
+-- Estrutura da tabela `Curso`
 --
 
 CREATE TABLE IF NOT EXISTS `Curso` (
@@ -105,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `Curso` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Disciplina`
+-- Estrutura da tabela `Disciplina`
 --
 
 CREATE TABLE IF NOT EXISTS `Disciplina` (
@@ -123,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `Disciplina` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Evento`
+-- Estrutura da tabela `Evento`
 --
 
 CREATE TABLE IF NOT EXISTS `Evento` (
@@ -144,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `Evento` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Post`
+-- Estrutura da tabela `Post`
 --
 
 CREATE TABLE IF NOT EXISTS `Post` (
@@ -157,28 +185,28 @@ CREATE TABLE IF NOT EXISTS `Post` (
   PRIMARY KEY (`idPost`),
   KEY `fk_Post_1_idx` (`idUsuario`),
   KEY `fk_Post_Categoria1_idx` (`Categoria_idCategoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=60 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=62 ;
 
 --
--- Fazendo dump de dados para tabela `Post`
+-- Extraindo dados da tabela `Post`
 --
 
 INSERT INTO `Post` (`idPost`, `idUsuario`, `dataPost`, `conteudoPost`, `Tag`, `Categoria_idCategoria`) VALUES
 (47, 9, '13/09/2016 22:55', 'Nesta segunda-feira haverá jogo de volei as 8:30 na universidade, conto com a presenca de todos', 'volei', 3),
 (48, 9, '13/09/2016 22:56', 'Vendo 900000000 xerox por apenas 30 reais, quem tiver interesse favor liga para o numero 5555-5555', 'xerox', 5),
 (49, 9, '13/09/2016 22:59', 'quarta feira dia 32/13/1999 haverá mini curso na sala 111 sobre "Vender artes na praia"', 'vender artes na praia', 1),
-(51, 8, '13/09/2016 23:04', 'Vaga de estágio no banco itau', 'itau', 4),
 (52, 8, '13/09/2016 23:07', 'Iniciacao cientifica: descobrir que vem primeiro o ovo ou a galinha', 'ovo', 7),
 (54, 9, '13/09/2016 23:13', 'Galera amanha dia 15/01/2051 havera monitoria de calculo 2 na sala 555', 'calculo', 8),
 (55, 8, '13/09/2016 23:15', 'Projeto de pesquisa e extensao para alunos de economia, professora maria da silva, email: maria@silva.com', 'economia', 6),
 (56, 9, '13/09/2016 23:18', 'Estou fazendo uma pesquisa do projeto de pesquisa e extensao do prof joao da costa, e preciso que respondam o seguinte formulario.. xxxxx.com, obrigada', 'formulario', 6),
 (58, 9, '13/09/2016 23:31', 'Carona para universidade todos os dias', 'carona', 9),
-(59, 9, '13/09/2016 23:50', 'Palestra; Como ser um jovem empreendedor', 'jovem', 2);
+(59, 9, '13/09/2016 23:50', 'Palestra; Como ser um jovem empreendedor', 'jovem', 2),
+(60, 8, '20/09/2016 15:51', 'Uma linguagem de programação é um método padronizado para comunicar instruções para um computador.[1] É um conjunto de regras sintáticas e semânticas usadas para definir um programa de computador.[2][Nota 1] Permite que um programador especifique precisamente sobre quais dados um computador vai atuar, como estes dados serão armazenados ou transmitidos e quais ações devem ser tomadas sob várias circunstâncias. Linguagens de programação podem ser usadas para expressar algoritmos com precisão.\r\n\r\nO conjunto de palavras (lexemas classificados em tokens), compostos de acordo com essas regras, constituem o código fonte de um software.[3] Esse código fonte é depois traduzido para código de máquina, que é executado pelo processador.[3]\r\n\r\nUma das principais metas das linguagens de programação é que programadores tenham uma maior produtividade, permitindo expressar suas intenções mais facilmente do que quando comparado com a linguagem que um computador entende nativamente (código de máquina).[4] Assim, linguagens de programação são projetadas para adotar uma sintaxe de nível mais alto, que pode ser mais facilmente entendida por programadores humanos. Linguagens de programação são ferramentas importantes para que programadores e engenheiros de software possam escrever programas mais organizados e com maior rapidez.\r\n\r\nLinguagens de programação também tornam os programas menos dependentes de computadores ou ambientes computacionais específicos (propriedade chamada de portabilidade[5]). Isto acontece porque programas escritos em linguagens de programação são traduzidos para o código de máquina do computador no qual será executado em vez de ser diretamente executado. Uma meta ambiciosa do Fortran, uma das primeiras linguagens de programação, era esta independência da máquina onde seria executada.[6][7]', 'haha', 4);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `TipoUsuario`
+-- Estrutura da tabela `TipoUsuario`
 --
 
 CREATE TABLE IF NOT EXISTS `TipoUsuario` (
@@ -188,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `TipoUsuario` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Fazendo dump de dados para tabela `TipoUsuario`
+-- Extraindo dados da tabela `TipoUsuario`
 --
 
 INSERT INTO `TipoUsuario` (`idTipoUsuario`, `tipo`) VALUES
@@ -198,7 +226,7 @@ INSERT INTO `TipoUsuario` (`idTipoUsuario`, `tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Usuario`
+-- Estrutura da tabela `Usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `Usuario` (
@@ -214,46 +242,46 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
--- Fazendo dump de dados para tabela `Usuario`
+-- Extraindo dados da tabela `Usuario`
 --
 
 INSERT INTO `Usuario` (`idUsuario`, `nome`, `sobrenome`, `senha`, `email`, `identificacao`, `TipoUsuario_idTipoUsuario`) VALUES
-(8, 'Rafaela', 'Admin', '123456', 'admin@email.com', 201010, 1),
-(9, 'Rafaela', 'Aluno', '123456', 'aluno@email.com', 201301, 2);
+(8, 'Rafaela Custódio', 'Admin', '123456', 'admin@email.com', 201010, 1),
+(9, 'Rafaela', 'Aluno', '1234566', 'aluno@gmail.com', 201301, 2);
 
 --
--- Restrições para dumps de tabelas
+-- Constraints for dumped tables
 --
 
 --
--- Restrições para tabelas `Comentario`
+-- Limitadores para a tabela `Comentario`
 --
 ALTER TABLE `Comentario`
-  ADD CONSTRAINT `fk_ComentPost_PostPost` FOREIGN KEY (`idPost`) REFERENCES `Post` (`idPost`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_ComentPost_PostPost` FOREIGN KEY (`idPost`) REFERENCES `Post` (`idPost`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_ComentUsr_UserUsr` FOREIGN KEY (`idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `Disciplina`
+-- Limitadores para a tabela `Disciplina`
 --
 ALTER TABLE `Disciplina`
   ADD CONSTRAINT `fk_Disciplina_Curso1` FOREIGN KEY (`Curso_idCurso`) REFERENCES `Curso` (`idCurso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Disciplina_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `Evento`
+-- Limitadores para a tabela `Evento`
 --
 ALTER TABLE `Evento`
   ADD CONSTRAINT `fk_Evento_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `Post`
+-- Limitadores para a tabela `Post`
 --
 ALTER TABLE `Post`
   ADD CONSTRAINT `fk_PostUsr_UserUsr` FOREIGN KEY (`idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Post_Categoria1` FOREIGN KEY (`Categoria_idCategoria`) REFERENCES `Categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `Usuario`
+-- Limitadores para a tabela `Usuario`
 --
 ALTER TABLE `Usuario`
   ADD CONSTRAINT `fk_Usuario_TipoUsuario1` FOREIGN KEY (`TipoUsuario_idTipoUsuario`) REFERENCES `TipoUsuario` (`idTipoUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
