@@ -10,7 +10,15 @@ require_once '../init.php';
 include_once '../sql.php';
 $PDO = db_connect();
 $sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
-$sql = "SELECT Post.idPost, Post.idUsuario, Post.dataPost, Post.conteudoPost, Post.Tag, Post.Categoria_idCategoria, Usuario.nome, Usuario.sobrenome
+$sql = "SELECT
+  Post.idPost,
+  Post.idUsuario,
+  Post.dataPost,
+  Post.conteudoPost,
+  Post.Tag,
+  Post.Categoria_idCategoria,
+  Usuario.nome,
+  Usuario.sobrenome
 FROM Post
 LEFT JOIN Usuario ON Usuario.idUsuario = Post.idUsuario
 WHERE Categoria_idCategoria =5
@@ -175,7 +183,7 @@ if ( $_SESSION['emailTipo']!=2) {
 
                                                 <div class="alert-link"><b>
                                                     <?php echo $post['nome'].' '.$post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                                  </b> 
+                                                  </b>
                                                     <?php
                                                     if($_SESSION["emailID"]==$post['idUsuario']){
                                                        echo "<a class='btn btn-success' href='../Post/delete.php?id=".$post['idPost']."' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
@@ -190,12 +198,12 @@ if ( $_SESSION['emailTipo']!=2) {
                                             </div>
 
                                              <div class="panel-footer">
-                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post">
+                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" onsubmit="return validaComent()">
                                                     <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
                                                     <div class="form-group">
                                                         <label>Comentario</label>
 
-                                                        <textarea name="textoComentario" class="form-control" rows="1"></textarea>
+                                                        <textarea id="comentario_id" name="textoComentario" class="form-control" rows="1"></textarea>
                                                     </div>
                                                     <button type="submit" class="btn btn-info">Enviar Comentario </button>
                                                     <br>

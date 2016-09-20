@@ -10,20 +10,20 @@ include_once '../sql.php';
 
 $PDO = db_connect();
 $sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
-$sql = "SELECT 
-    Post.idPost, 
-    Post.idUsuario, 
-    Post.dataPost, 
-    Post.conteudoPost, 
-    Post.Tag, 
-    Post.Categoria_idCategoria, 
-    Usuario.nome, 
+$sql = "SELECT
+    Post.idPost,
+    Post.idUsuario,
+    Post.dataPost,
+    Post.conteudoPost,
+    Post.Tag,
+    Post.Categoria_idCategoria,
+    Usuario.nome,
     Usuario.sobrenome
-FROM 
+FROM
     Post
 LEFT JOIN Usuario ON Usuario.idUsuario = Post.idUsuario
 WHERE Categoria_idCategoria =9
-ORDER BY 
+ORDER BY
     idPost DESC ";
 $stmt_count = $PDO->prepare($sql_count);
 $stmt_count->execute();
@@ -198,11 +198,11 @@ $stmt->execute();
                                             </div>
 
                                             <div class="panel-footer">
-                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post">
+                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" onsubmit="return validaComent()">
                                                     <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
                                                     <div class="form-group">
                                                         <label>Comentario</label>
-                                                        <textarea name="textoComentario" class="form-control" rows="1"></textarea>
+                                                        <textarea id="comentario_id" name="textoComentario" class="form-control" rows="1"></textarea>
                                                     </div>
                                                     <button type="submit" class="btn btn-info">Enviar Comentario </button>
                                                     <br>

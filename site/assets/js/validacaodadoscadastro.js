@@ -46,7 +46,17 @@ function validaPost() {
     } else {
         tPost = true;
     }
+  }
+    function validaComent() {
+
+        var comentario = document.querySelector("#comentario_id").value;
+        var tComentario = false;
+        alert(comentario);
+        if (comentario == ""){
+            alert("Não é possivel enviar um comentario vazio!")
+
+            return false;
+        } else {
+            tComentario = true;
+        }
 }
-
-
-//Verifica campos em branco - Rafaela

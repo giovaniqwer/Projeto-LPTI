@@ -9,7 +9,15 @@ require_once '../init.php';
 include_once '../sql.php';
 $PDO = db_connect();
 $sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
-$sql = "SELECT Post.idPost, Post.idUsuario, Post.dataPost, Post.conteudoPost, Post.Tag, Post.Categoria_idCategoria, Usuario.nome, Usuario.sobrenome
+$sql = "SELECT
+  Post.idPost,
+  Post.idUsuario,
+  Post.dataPost,
+  Post.conteudoPost,
+  Post.Tag,
+  Post.Categoria_idCategoria,
+  Usuario.nome,
+  Usuario.sobrenome
 FROM Post
 LEFT JOIN Usuario ON Usuario.idUsuario = Post.idUsuario
 WHERE Categoria_idCategoria =8
@@ -165,14 +173,14 @@ $stmt->execute();
 
                             <div class="row">
                                 <div class="col-md-4 col-sm-4" id="largura">
-                                    <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>   
+                                    <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
 
                                                 <div class="alert-link">
                                                     <b>
-                                                    <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> 
-                                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+                                                    <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?>
+                                                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                                     </b>
                                                     <?php
                                                     if ($_SESSION["emailID"] == $post['idUsuario']) {
@@ -189,12 +197,12 @@ $stmt->execute();
                                             </div>
 
                                              <div class="panel-footer">
-                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post">
+                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" onsubmit="return validaComent()">
                                                     <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
                                                     <div class="form-group">
                                                         <label>Comentario</label>
 
-                                                        <textarea name="textoComentario" class="form-control" rows="1"></textarea>
+                                                        <textarea id="comentario_id" name="textoComentario" class="form-control" rows="1"></textarea>
                                                     </div>
                                                     <button type="submit" class="btn btn-info">Enviar Comentario </button>
                                                     <br>
@@ -238,7 +246,7 @@ $stmt->execute();
 
 
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -279,7 +287,7 @@ $stmt->execute();
                                                     </ul>
                                                 </select>
                                                 <br />
-                                                <br>                                                   
+                                                <br>
                                                 <div class="input-group">
                                                     <label>Palavra Chave:</label>
                                                     <input type="text" name="tagPost" id="tag" class="form-control" placeholder="Adicionar Tag" />
