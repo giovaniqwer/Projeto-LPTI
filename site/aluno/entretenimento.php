@@ -6,7 +6,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
     header("Location:../negado.html");
 }
 require_once '../init.php';
-include_once '../cadastro-class.php';
+include_once '../sql.php';
 $PDO = db_connect();
 $sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
 $sql = "SELECT
@@ -191,32 +191,41 @@ $stmt->execute();
 
                                             </div>
 
+                                            
                                             <div class="panel-footer">
-                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" onsubmit="return validaComent()">
+                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" >
                                                     <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
                                                     <div class="form-group">
-                                                        <label>Comentario</label>
-
-                                                        <textarea id="comentario_id"  name="textoComentario" class="form-control" rows="1"></textarea>
+                                                       <label>Comentario</label>                                                     
+                                                              <textarea id="comentario_id" name="textoComentario" class="form-control" rows="1"  required=""></textarea>
                                                     </div>
                                                     <button type="submit" class="btn btn-info">Enviar Comentario </button>
+                                                    <div class="maisComent">
+                                                      <a onclick="return hideandshow();" href="#">Ver comentários</a>
+                                                    </div>
+
                                                     <br>
                                                     <br>
+                                                    <div id="comments">
                                                     <?php
                                                     $stmt_comentario = sqlComentario($post ['idPost']);
                                                     while ($coment = $stmt_comentario->fetch(PDO::FETCH_ASSOC)):
                                                         ?>
-                                                        <div class="alert alert-info">
-                                                            <div class="alert-link">
-                                                                <?php echo $coment['nome'] . ' ' . $post['sobrenome'] ?>
-                                                            </div>
-                                                            <?php echo $coment ['textoComentario']; ?>
-                                                            <a href="#" class="btn btn-info">Excluir</a>
-                                                        </div>
+                                                        
+															<div class="alert alert-info">
+																<div class="alert-link">
+																	<?php echo $coment['nome'] . ' ' . $post['sobrenome'] ?>
+																</div>
+																<?php echo $coment ['textoComentario']; ?>
+															</div>
+                                                        
                                                     <?php endwhile; ?>
+                                                    
                                                 </form>
                                             </div>
+                                            </div>
                                         </div>
+									<br><br>
                                     <?php endwhile; ?>
                                 </div>
                                 <!-- /. FIM POSTAGENS -->

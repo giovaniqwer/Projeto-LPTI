@@ -1,10 +1,23 @@
 <?php
+include_once '../init.php';
+include_once '../cadastro-class.php';
 session_start();
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
 }else if($_SESSION["emailTipo"]!=1){
 	header("Location:../negado.html");
 }
+
+	$id = $_SESSION["emailID"];
+	// busca os dados do usuário a ser editado
+	$PDO = db_connect();
+	$sql_count = "SELECT COUNT(*) AS total FROM Usuario ORDER BY nome ASC";
+	$sql = "SELECT nome, sobrenome, senha, email FROM Usuario WHERE idUsuario = :id";
+	$stmt = $PDO->prepare($sql);
+	$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+	$stmt->execute();
+	$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+	
 ?>
 <html>
 
@@ -151,24 +164,30 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                              Alterar Perfil
                           </div>
                           <div class="panel-body">
-                              <form role="form">
+                              <form role="form" method="post" name="formAltera" action="edit.php" enctype="multipart/form-data">
                                           <div class="form-group">
                                               <label>Nome:</label>
-                                              <input class="form-control" type="text">
+                                              <input name="editNome" value="<?php echo $usuario['nome']?>" class="form-control" type="text" required="">
 
                                           </div>
-                                   <div class="form-group">
-                                              <label>Senha Atual</label>
-                                              <input class="form-control" type="text">
+									<div class="form-group">
+                                              <label>Sobrenome:</label>
+                                              <input name="editSobrenome" value="<?php echo $usuario['sobrenome']?>" class="form-control" type="text" required="">
 
                                           </div>
+									<div class="form-group">
+                                              <label>Email:</label>
+                                              <input name="editEmail" value="<?php echo $usuario['email']?>" class="form-control" type="text" required="">
+
+                                          </div>
+                                
                                               <div class="form-group">
                                               <label>Nova Senha</label>
-                                              <input class="form-control"></input>
+                                              <input name="editSenha" value="<?php echo $usuario['senha']?>" class="form-control" required=""></input>
                                           </div>
+										<input type="hidden" name="id" value="<?php echo $id ?>">
 
-
-                                          <button type="submit" class="btn-lg btn-info">Salvar </button>
+                                          <button type="submit" class="btn-lg btn-info" href="edit-user.php" name="btnEnviar" value="Cadastrar">Salvar </button>
 
                                       </form>
                               </div>

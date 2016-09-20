@@ -4,10 +4,18 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
     header("Location:../login.php");
 }
 require_once '../init.php';
-include_once '../cadastro-class.php';
+include_once '../sql.php';
 $PDO = db_connect();
 $sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
-$sql = "SELECT Post.idPost, Post.idUsuario, Post.dataPost, Post.conteudoPost, Post.Tag, Post.Categoria_idCategoria, Usuario.nome, Usuario.sobrenome
+$sql = "SELECT
+    Post.idPost,
+    Post.idUsuario,
+    Post.dataPost,
+    Post.conteudoPost,
+    Post.Tag,
+    Post.Categoria_idCategoria,
+    Usuario.nome,
+    Usuario.sobrenome
 FROM Post
 LEFT JOIN Usuario ON Usuario.idUsuario = Post.idUsuario
 WHERE Categoria_idCategoria =6
@@ -44,7 +52,7 @@ $stmt->execute();
         <link href="../assets/css/css.css" rel="stylesheet">
         <link href="css/estilo.css" rel="stylesheet">
         <!--SCRIPT VALIDACAO-->
-         <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
+        <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
         <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
         <script type="text/javascript" src="../assets/js/validalogin.js"></script>
 
@@ -75,7 +83,7 @@ $stmt->execute();
                             <a href="listaContato.php">MENSAGENS</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
                             </a>
                         </li>
@@ -165,12 +173,13 @@ $stmt->execute();
 
                             <div class="row">
                                 <div class="col-md-4 col-sm-4" id="largura">
-                                    <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>   
+                                    <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                                         <div class="panel panel-info">
                                             <div class="panel-heading">
 
-                                                <div class="alert-link">
-                                                    <?php echo $post['nome'].' '.$post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-info" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+                                                <div class="alert-link"><b>
+                                                        <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-info" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+                                                    </b>
                                                 </div>
 
                                             </div>
@@ -179,24 +188,41 @@ $stmt->execute();
 
                                             </div>
 
-                                            <div class="panel-footer">
-                                                <div class="form-group">
-                                                    <label>Comentario</label>
-                                                    <textarea class="form-control" rows="3"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-info">Enviar Comentario </button>
-                                                <br>
-                                                <br>
-                                                <div class="alert alert-info">
-                                                    <div class="alert-link">
-                                                        Nome Usuário Comentario
+                                           
+                                             <div class="panel-footer">
+                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" >
+                                                    <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
+                                                    <div class="form-group">
+                                                       <label>Comentario</label>                                                     
+                                                              <textarea id="comentario_id" name="textoComentario" class="form-control" rows="1"  required=""></textarea>
                                                     </div>
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                    <a href="#" class="btn btn-info">Excluir</a>
-                                                </div>
+                                                    <button type="submit" class="btn btn-info">Enviar Comentario </button>
+                                                    <div class="maisComent">
+                                                      <a onclick="return hideandshow();" href="#">Ver comentários</a>
+                                                    </div>
 
+                                                    <br>
+                                                    <br>
+                                                    <div id="comments">
+                                                    <?php
+                                                    $stmt_comentario = sqlComentario($post ['idPost']);
+                                                    while ($coment = $stmt_comentario->fetch(PDO::FETCH_ASSOC)):
+                                                        ?>
+                                                        
+															<div class="alert alert-info">
+																<div class="alert-link">
+																	<?php echo $coment['nome'] . ' ' . $post['sobrenome'] ?>
+																</div>
+																<?php echo $coment ['textoComentario']; ?>
+															</div>
+                                                        
+                                                    <?php endwhile; ?>
+                                                    
+                                                </form>
+                                            </div>
                                             </div>
                                         </div>
+									<br><br>
                                     <?php endwhile; ?>
                                 </div>
                                 <!-- /. FIM POSTAGENS -->
@@ -221,7 +247,7 @@ $stmt->execute();
                                             <!-- /.list-group -->
 
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +255,7 @@ $stmt->execute();
                     </div>
 
 
-                   <!--JANELA MODAL ADD POST-->
+                    <!--JANELA MODAL ADD POST-->
                     <div id="modal">
                         <div class="modal-box">
                             <div class="modal-box-conteudo">
@@ -260,7 +286,7 @@ $stmt->execute();
                                                     </ul>
                                                 </select>
                                                 <br />
-                                                <br>                                                   
+                                                <br>
                                                 <div class="input-group">
                                                     <label>Palavra Chave:</label>
                                                     <input type="text" name="tagPost" id="tag" class="form-control" placeholder="Adicionar Tag" />

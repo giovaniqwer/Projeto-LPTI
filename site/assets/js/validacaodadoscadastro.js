@@ -47,16 +47,11 @@ function validaPost() {
         tPost = true;
     }
   }
-    function validaComent() {
-
-        var comentario = document.querySelector("#comentario_id").value;
-        var tComentario = false;
-        alert(comentario);
-        if (comentario == ""){
-            alert("Não é possivel enviar um comentario vazio!")
-
-            return false;
-        } else {
-            tComentario = true;
-        }
-}
+   
+function hideandshow(){ 
+	 if(document.getElementById('comments').style.display == 'inline'){
+	 document.getElementById('comments').style.display = 'none';
+	 }else{
+	 document.getElementById('comments').style.display = 'inline';
+	 }
+ }

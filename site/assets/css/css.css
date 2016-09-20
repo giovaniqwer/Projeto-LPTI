@@ -140,4 +140,7 @@ left: 20%;
 .maisComent{
 	float: right;
 }
+#comments{
+display:none; /* Estado inicial da div / Iticial state for the div */
+}
 
