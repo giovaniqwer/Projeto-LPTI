@@ -216,8 +216,18 @@ $stmt->execute();
 															<div class="alert alert-info">
 																<div class="alert-link">
 																	<?php echo $coment['nome'] . ' ' . $post['sobrenome'] ?>
+																	
 																</div>
+																
 																<?php echo $coment ['textoComentario']; ?>
+																<div id="dropExcluirComentario">
+																<div class="btn-group">												
+																		<button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle"><span class="caret"></span></button>
+																		  <ul class="dropdown-menu">
+																			<li><a href="../Comentario/delete.php?id=<?php echo $post ['idComentario'] ?>" onclick="return confirm('Deseja realmente excluir este Comentario ?');">Excluir</a></li>
+																		  </ul>
+																		</div>
+																	</div>
 															</div>
                                                         
                                                     <?php endwhile; ?>

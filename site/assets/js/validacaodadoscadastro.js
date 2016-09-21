@@ -47,7 +47,7 @@ function validaPost() {
         tPost = true;
     }
   }
-   
+
 function hideandshow(){ 
 	 if(document.getElementById('comments').style.display == 'inline'){
 	 document.getElementById('comments').style.display = 'none';
@@ -55,3 +55,4 @@ function hideandshow(){
 	 document.getElementById('comments').style.display = 'inline';
 	 }
  }
+ 

@@ -8,14 +8,16 @@ class Usuario {
     private $email;
     private $matricula;
     private $tipo;
+    private $atividade;
 
-    public function __construct($nome, $sobrenome, $senha, $email, $matricula, $tipo) {
+    public function __construct($nome, $sobrenome, $senha, $email, $matricula, $tipo, $atividade) {
         $this->setNome($nome);
         $this->setSobrenome($sobrenome);
         $this->setSenha($senha);
         $this->setEmail($email);
         $this->setIdentificacao($matricula);
         $this->setTipo($tipo);
+         $this->setAtividade($atividade);
     }
 
     public function getNome() {
@@ -64,6 +66,13 @@ class Usuario {
 
     public function setTipo($tipo) {
         $this->tipo = $tipo;
+    }
+	 public function getAtividade() {
+        return $this->tipo;
+    }
+
+    public function setAtividade($atividade) {
+        $this->atividade = $atividade;
     }
 
 }

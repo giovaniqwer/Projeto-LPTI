@@ -175,7 +175,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                                 
                                               <div class="form-group">
                                               <label>Nova Senha</label>
-                                              <input name="editSenha" value="<?php echo $usuario['senha']?>" class="form-control" required=""></input>
+                                              <input type="password" name="editSenha" value="<?php echo $usuario['senha']?>" class="form-control" required=""></input>
                                           </div>
 										<input type="hidden" name="id" value="<?php echo $id ?>">
 

@@ -33,19 +33,23 @@ function validaEmail($email, $senha) {
     $nemail = addslashes($email);
     $nsenha = addslashes($senha);
     // Monta uma consulta SQL (query) para procurar um usuário
-    $sql = "SELECT `idUsuario`, `nome`, `TipoUsuario_idTipoUsuario` FROM `" . $_SG['tabela'] . "` WHERE " . $cS . " `email` = '" . $nemail . "' AND " . $cS . " `senha` = '" . $nsenha . "' LIMIT 1";
+    $sql = "SELECT `idUsuario`, `nome`, `TipoUsuario_idTipoUsuario`, `Atividade` FROM `" . $_SG['tabela'] . "` WHERE " . $cS . " `email` = '" . $nemail . "' AND " . $cS . " `senha` = '" . $nsenha . "' LIMIT 1";
     $query = mysqli_query($_SG['link'], $sql);
     $resultado = mysqli_fetch_assoc($query);
     // Verifica se encontrou algum registro
     if (empty($resultado)) {
         // Nenhum registro foi encontrado => o usuário é inválido
         return false;
-    } else {
+    }elseif($atividade==1) {
+    	 return false;
+    }
+    else {
         echo $resultado['TipoUsuario_idTipoUsuario'];
         // Definimos dois valores na sessão com os dados do usuário
         $_SESSION['emailID'] = $resultado['idUsuario']; // Pega o valor da coluna 'id do registro encontrado no MySQL
         $_SESSION['emailNome'] = utf8_encode($resultado['nome']); // Pega o valor da coluna 'nome' do registro encontrado no MySQL
         $_SESSION['emailTipo'] = $resultado['TipoUsuario_idTipoUsuario'];
+        $_SESSION['emailAtividade'] = $resultado['Atividade'];
         // Verifica a opção se sempre validar o login
 
         return true;
@@ -79,7 +83,7 @@ function protegePagina() {
 function expulsaVisitante() {
     global $_SG;
     // Remove as variáveis da sessão (caso elas existam)
-    unset($_SESSION['emailID'], $_SESSION['emailNome'], $_SESSION['emailLogin'], $_SESSION['emailSenha']);
+    unset($_SESSION['emailID'], $_SESSION['emailNome'], $_SESSION['emailLogin'], $_SESSION['emailSenha'], $_SESSION['emailAtividade']);
     // Manda pra tela de login
     header("Location: " . $_SG['paginaLogin']);
 }

@@ -27,18 +27,18 @@ else {
     $nome = utf8_decode($nome);
     $sobrenome = utf8_decode($sobrenome);
     $email = utf8_decode($email);
-    
+    $atividade =0;
     if($matricula % 2 == 0){
    	 $tipo = 1;
 	 }else if($matricula % 2 != 0){
 	    $tipo = 2;	 
-	 {
+	 }
 	 
-    $usuario = new Usuario($nome, $sobrenome, $senha, $email, $matricula, $tipo);
+    $usuario = new Usuario($nome, $sobrenome, $senha, $email, $matricula, $tipo,$atividade);
 	
     // insere no BD
 	// $PDO = db_connect();
-    $sql = "INSERT INTO Usuario(nome,sobrenome, senha, email,identificacao, TipoUsuario_idTipoUsuario) VALUES(:nome, :sobrenome, :senha, :email, :matricula, :tipo)";
+    $sql = "INSERT INTO Usuario(nome,sobrenome, senha, email,identificacao, TipoUsuario_idTipoUsuario,Atividade) VALUES(:nome, :sobrenome, :senha, :email, :matricula, :tipo, :atividade
     $stmt = $pdo->prepare($sql);
     @$stmt->bindParam(':nome', $usuario->getNome());
     @$stmt->bindParam(':sobrenome', $usuario->getSobrenome());
@@ -46,6 +46,7 @@ else {
     @$stmt->bindParam(':email', $usuario->getEmail());
     @$stmt->bindParam(':matricula', $usuario->getIdentificacao());
     @$stmt->bindParam(':tipo', $usuario->getTipo());
+    @$stmt->bindParam(':atividade', $usuario->getAtividade());
 
     if ($stmt->execute()) {
         echo "<script>alert('Cadastro realizado com sucesso');location.href='login.php'</script>";

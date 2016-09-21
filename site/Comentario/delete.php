@@ -10,7 +10,7 @@ if (empty($id)) {
 }
 // remove do BD
 $PDO = db_connect();
-$sql = "DELETE FROM Post WHERE idPost = :id";
+$sql = "DELETE FROM Comentario WHERE idComentario = :id";
 $stmt = $PDO->prepare($sql);
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 if ($stmt->execute()) {

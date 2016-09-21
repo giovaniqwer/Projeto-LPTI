@@ -49,6 +49,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
         <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
         <script type="text/javascript" src="../assets/js/validalogin.js"></script>
 
+
     </head>
 
     <body>
@@ -183,7 +184,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                                 
                                               <div class="form-group">
                                               <label>Nova Senha</label>
-                                              <input name="editSenha" value="<?php echo $usuario['senha']?>" class="form-control" required=""></input>
+                                              <input type="password" name="editSenha" value="<?php echo $usuario['senha']?>" class="form-control" required=""></input>
                                           </div>
 										<input type="hidden" name="id" value="<?php echo $id ?>">
 
@@ -249,7 +250,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                     <script src="../assets/js/jquery.metisMenu.js"></script>
                     <!-- CUSTOM SCRIPTS -->
                     <script src="../assets/js/custom.js"></script>
-
+					
 
                     </body>
 

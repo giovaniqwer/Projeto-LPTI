@@ -53,9 +53,9 @@ $stmt->execute();
         <link href="../assets/css/css.css" rel="stylesheet">
         <link href="css/estilo.css" rel="stylesheet">
         <!--SCRIPT VALIDACAO-->
-        <script type="text/javascript" src="assets/js/validacaodadoscadastro.js"></script>
-        <script type="text/javascript" src="assets/js/validacaodocontato.js"></script>
-        <script type="text/javascript" src="assets/js/validalogin.js"></script>
+        <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
+        <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
+        <script type="text/javascript" src="../assets/js/validalogin.js"></script>
 
 
     </head>
@@ -77,7 +77,8 @@ $stmt->execute();
                         <li>
                             <a href="inicio.php">INÍCIO</a>
                         </li>
-						  <li>
+
+                        <li>
                             <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
                             </a>
@@ -94,20 +95,19 @@ $stmt->execute();
             </div>
         </div>
         <br>
-
         <div class="conteudo">
             <div id="wrapper">
                 <br>
 
-                <!-- /. NAV TOP -->
+                <!-- /. MENU LATERAL -->
                 <br>
-               <div class="conteudo">
+                <div class="conteudo">
 
                     <nav class="navbar-default navbar-side" role="navigation">
                         <div class="sidebar-collapse">
                             <ul class="nav" id="main-menu">
                                 <li>
-                                    <a class="active-menu" href="inicio.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                    <a class="active-menu" href="aluno.php"><i class="fa fa-dashboard "></i>Principal<br></a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-bell"></i>Eventos<span class="fa arrow"></span></a>
@@ -129,7 +129,7 @@ $stmt->execute();
                                     <a href="estagio.php"><i class="fa fa-briefcase "></i>Estágio </a>
                                 </li>
                                 <li>
-                                    <a href="anuncio.php"><i class="fa fa-bullhorn"></i>Anúncio </a>
+                                    <a  href="anuncio.php"><i class="fa fa-bullhorn"></i>Anúncio </a>
                                 </li>
                                 <li>
                                     <a href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
@@ -149,11 +149,12 @@ $stmt->execute();
                             </ul>
                         </div>
                     </nav>
+                    <!--FIM MENU LATERAL-->
                     <div id="page-wrapper">
                         <div id="page-inner">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1 class="page-head-line">PRINCIPAL</h1>
+                                    <h1 class="page-head-line">Anúncio</h1>
                                     <center>
                                         <div id="divBusca">
                                             <img src="img/search3.png" alt="Buscar..." />
@@ -164,25 +165,21 @@ $stmt->execute();
                                 </div>
                             </div>
                             <br>
-                            <!-- /. ROW  -->
-
-
-                            <!-- /. ROW  -->
                             <!-- /. POSTAGENS -->
 
                             <div class="row">
                                 <div class="col-md-4 col-sm-4" id="largura">
                                     <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
-										
-                                        <div class="panel panel-info" >
-                                            <div class="panel-heading" style="background-color:#bdded6">
+                                        <div class="panel panel-info">
+											<div class="panel-heading" style="background-color:#bdded6">
+
 
                                                 <div class="alert-link"><b>
-                                                    <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                                    </b>
+                                                    <?php echo $post['nome'].' '.$post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                  </b>
                                                     <?php
-                                                    if ($_SESSION["emailID"] == $post['idUsuario']) {
-                                                        echo "<a style='background-color: #ffffff' class='btn btn-default' href='../Post/delete.php?id=" . $post['idPost'] . "' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
+                                                    if($_SESSION["emailID"]==$post['idUsuario']){
+                                                       echo "<a class='btn btn-default' href='../Post/delete.php?id=".$post['idPost']."' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
                                                     }
                                                     ?>
                                                 </div>
@@ -193,7 +190,7 @@ $stmt->execute();
 
                                             </div>
 
-                                             <div class="panel-footer">
+                                            <div class="panel-footer">
                                                 <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" >
                                                     <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
                                                     <div class="form-group">
@@ -320,12 +317,10 @@ $stmt->execute();
                             <div class="row">
                                 <div class="col-md-4">
                                     <h4>UNIFAL - GRUPO PET</h4>
-                                    <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA
-                                        – UNIFAL/MG Rede Social</p>
+                                    <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
                                 </div>
                                 <div class="col-md-4">
-                                    <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar,
-                                    Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
+                                    <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
                                     <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
                                 </div>
                                 <div class="col-md-4">
@@ -359,7 +354,7 @@ $stmt->execute();
                     <script src="../forum-calendario/assets/js/custom.js"></script>
                     <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
 
-                    <script src="../forum-calesndario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+                    <script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
                     <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
                     <script src="../assets/js/jquery-1.10.2.js"></script>
                     <!-- BOOTSTRAP SCRIPTS -->
@@ -371,4 +366,6 @@ $stmt->execute();
 
 
                     </body>
+
                     </html>
+
