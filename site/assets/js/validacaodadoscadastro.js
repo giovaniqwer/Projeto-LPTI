@@ -48,11 +48,11 @@ function validaPost() {
     }
   }
 
-function hideandshow(){ 
+/*function hideandshow(){ 
 	 if(document.getElementById('comments').style.display == 'inline'){
 	 document.getElementById('comments').style.display = 'none';
 	 }else{
 	 document.getElementById('comments').style.display = 'inline';
 	 }
- }
+ }*/
  

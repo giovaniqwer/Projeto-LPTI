@@ -177,16 +177,15 @@ $stmt->execute();
                                         <div class="panel panel-default" >
                                             <div class="panel-heading" style="background-color: #D9C8E3">
 
-                                                <div class="alert-link">
-                                                    <b>
+                                                
+                                                <div class="alert-link"><b>
                                                         <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                                     </b>
                                                     <?php
                                                     if ($_SESSION["emailID"] == $post['idUsuario']) {
-                                                        echo "<a class='btn btn-default' style='background-color: #ffffff'  href='../Post/delete.php?id=" . $post['idPost'] . "' onclick='return confirm(Deseja realmente remover este Post?);' >Excluir Postagem</a>";
+                                                        echo "<div id='dropdownExcluir'><div class='btn-group'><button data-toggle='dropdown' class='btn btn-inverse dropdown-toggle'><span class='caret'></span></button><ul class='dropdown-menu'><li><a href='../Post/delete.php?id=" . $post ['idPost'] . "' onclick='return confirm('Deseja realmente excluir este Post ?');'>Excluir</a></li></ul></div></div>";
                                                     }
                                                     ?>
-
                                                 </div>
 
                                             </div>
@@ -195,42 +194,47 @@ $stmt->execute();
 
                                             </div>
 
-                                              <div class="panel-footer">
+                                            <div class="panel-footer">
                                                 <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" >
                                                     <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
                                                     <div class="form-group">
-                                                       <label>Comentario</label>                                                     
-                                                              <textarea id="comentario_id" name="textoComentario" class="form-control" rows="1"  required=""></textarea>
+                                                        <label>Comentario</label>                                                     
+                                                        <textarea id="comentario_id" name="textoComentario" class="form-control" rows="1"  required=""></textarea>
                                                     </div>
                                                     <button type="submit" class="btn btn-info">Enviar Comentario </button>
                                                     <div class="maisComent">
-                                                      <a onclick="return hideandshow();" href="#">Ver comentários</a>
+                                                        <a onclick="return hideandshow();" href="#">Ver comentários</a>
                                                     </div>
 
                                                     <br>
                                                     <br>
                                                     <div id="comments">
-                                                    <?php
-                                                    $stmt_comentario = sqlComentario($post ['idPost']);
-                                                    while ($coment = $stmt_comentario->fetch(PDO::FETCH_ASSOC)):
-                                                        ?>
-                                                        
-															<div class="alert alert-info">
-																<div class="alert-link">
-																	<?php echo $coment['nome'] . ' ' . $post['sobrenome'] ?>
-																</div>
-																<?php echo $coment ['textoComentario']; ?>
-															</div>
-                                                        
-                                                    <?php endwhile; ?>
-                                                    
+                                                        <?php
+                                                        $stmt_comentario = sqlComentario($post ['idPost']);
+                                                        while ($coment = $stmt_comentario->fetch(PDO::FETCH_ASSOC)):
+                                                            ?>
+
+                                                            <div class="alert alert-info">
+                                                                <div class="alert-link">
+                                                                    <?php echo $coment['nome'] . ' ' . $post['sobrenome'] ?>
+                                                                    <?php
+                                                                    if ($_SESSION["emailID"] == $post['idUsuario']) {
+                                                                        echo "<div id='dropdownExcluir'><div class='btn-group'><button data-toggle='dropdown' class='btn btn-inverse dropdown-toggle'><span class='caret'></span></button><ul class='dropdown-menu'><li><a href='../Comentario/delete.php?id=" . $coment ['idComentario'] . "' onclick='return confirm('Deseja realmente excluir este Comentario ?');'>Excluir</a></li></ul></div></div>";
+                                                                    }
+                                                                    ?>
+                                                                </div>
+                                                                <?php echo $coment ['textoComentario']; ?>
+                                                            </div>
+
+                                                        <?php endwhile; ?>
+
                                                 </form>
                                             </div>
-                                            </div>
                                         </div>
-									<br><br>
-                                    <?php endwhile; ?>
-                                </div>
+                                    </div>
+                                    <br><br>
+                                <?php endwhile; ?>
+                            </div>
                                 <!-- /. FIM POSTAGENS -->
                                 <div class="col-md-6" id="boxlateral">
                                     <div class="panel panel-info">

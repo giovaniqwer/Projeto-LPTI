@@ -2,8 +2,8 @@
 session_start();
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
-}else if($_SESSION["emailTipo"]!=1){
-	header("Location:../negado.html");
+} else if ($_SESSION["emailTipo"] != 1) {
+    header("Location:../negado.html");
 }
 require_once '../init.php';
 $PDO = db_connect();
@@ -19,7 +19,7 @@ $stmt->execute();
 <html>
 
     <head>
-       <meta charset="utf-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="">
         <meta name="author" content="alunos" >
@@ -42,7 +42,7 @@ $stmt->execute();
         <link href="../assets/css/css.css" rel="stylesheet">
         <link href="css/estilo.css" rel="stylesheet">
         <!--SCRIPT VALIDACAO-->
-       <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
+        <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
         <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
         <script type="text/javascript" src="../assets/js/validalogin.js"></script>
 
@@ -171,7 +171,7 @@ $stmt->execute();
                                                 <th>Matricula</th>
                                                 <th>Nome</th>
                                                 <th>E-mail</th>
-																<th>Situação</th>
+                                                <th>Situação</th>
                                                 <th>Ação</th>
                                             </tr>
                                         </thead>
@@ -192,17 +192,17 @@ $stmt->execute();
                                                         <?php echo $usuario ['email'] ?>
                                                     </td>
                                                     <td>
-                                                    	 <?php
-                                                    	 if(($usuario ['Atividade'])==0){
-	                                                       echo "Ativo";
-                                                    	 }else if(($usuario ['Atividade'])==1) {
-                                                    	 	 echo "Inativo";
-                                                    	 }
-                                                    	 ?>
+                                                        <?php
+                                                        if (($usuario ['Atividade']) == 0) {
+                                                            echo "Ativo";
+                                                        } else if (($usuario ['Atividade']) == 1) {
+                                                            echo "Inativo";
+                                                        }
+                                                        ?>
                                                     </td>
                                                     <td>
-                                                    <a href="block-user.php?id=<?php echo $usuario['idUsuario'] ?>" class="btn btn-primary" onclick="return confirm('Deseja realmente DESATIVAR as atividades deste Usuario ?');">Desativar</a>
-                                                    <a href="unblock-user.php?id=<?php echo $usuario['idUsuario'] ?>" class="btn btn-primary" onclick="return confirm('Deseja realmente ATIVAR as atividades deste Usuario ?');"> Ativar</a>
+                                                        <a href="block-user.php?id=<?php echo $usuario['idUsuario'] ?>" class="btn btn-sm btn-primary" onclick="return confirm('Deseja realmente DESATIVAR as atividades deste Usuario ?');">Desativar</a>
+                                                        <a href="unblock-user.php?id=<?php echo $usuario['idUsuario'] ?>" class="btn btn-sm btn-primary" onclick="return confirm('Deseja realmente ATIVAR as atividades deste Usuario ?');"> Ativar</a>
                                                     </td>
                                                 </tr>
                                             <?php endwhile; ?>
@@ -228,7 +228,7 @@ $stmt->execute();
                                                     <!-- /.list-group -->
 
                                                 </div>
-                                              
+
                                             </div>
                                         </div>
                                 </div>

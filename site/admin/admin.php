@@ -181,8 +181,16 @@ $stmt->execute();
                                         <div class="panel panel-info">
                                             <div class="panel-heading" style="background-color:#bdded6">
 
-                                                <div class="alert-link"><b>
-                                                        <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="btn btn-default" style="background-color: #ffffff" href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente remover este Post ?');" >Excluir Postagem</a>
+                                                 <div class="alert-link"><b>
+                                                        <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
+                                                         <div id="dropdownExcluir">
+                                                                    <div class="btn-group">												
+                                                                        <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle"><span class="caret"></span></button>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente excluir este Post ?');">Excluir</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
                                                     </b>
                                                 </div>
 
@@ -192,192 +200,193 @@ $stmt->execute();
 
                                             </div>
 
-                                          
-                                             <div class="panel-footer">
+
+                                            <div class="panel-footer">
                                                 <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" >
                                                     <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
                                                     <div class="form-group">
-                                                       <label>Comentario</label>                                                     
-                                                              <textarea id="comentario_id" name="textoComentario" class="form-control" rows="1"  required=""></textarea>
+                                                        <label>Comentario</label>                                                     
+                                                        <textarea id="comentario_id" name="textoComentario" class="form-control" rows="1"  required=""></textarea>
                                                     </div>
                                                     <button type="submit" class="btn btn-info">Enviar Comentario </button>
                                                     <div class="maisComent">
-                                                      <a onclick="return hideandshow();" href="#">Ver comentários</a>
+                                                        <a onclick="return hideandshow();" href="#">Ver comentários</a>
                                                     </div>
 
                                                     <br>
                                                     <br>
                                                     <div id="comments">
-                                                    <?php
-                                                    $stmt_comentario = sqlComentario($post ['idPost']);
-                                                    while ($coment = $stmt_comentario->fetch(PDO::FETCH_ASSOC)):
-                                                        ?>
-                                                        
-															<div class="alert alert-info">
-																<div class="alert-link">
-																	<?php echo $coment['nome'] . ' ' . $post['sobrenome'] ?>
-																	
-																</div>
-																
-																<?php echo $coment ['textoComentario']; ?>
-																<div id="dropExcluirComentario">
-																<div class="btn-group">												
-																		<button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle"><span class="caret"></span></button>
-																		  <ul class="dropdown-menu">
-																			<li><a href="../Comentario/delete.php?id=<?php echo $post ['idComentario'] ?>" onclick="return confirm('Deseja realmente excluir este Comentario ?');">Excluir</a></li>
-																		  </ul>
-																		</div>
-																	</div>
-															</div>
-                                                        
-                                                    <?php endwhile; ?>
-                                                    
+                                                        <?php
+                                                        $stmt_comentario = sqlComentario($post ['idPost']);
+                                                        while ($coment = $stmt_comentario->fetch(PDO::FETCH_ASSOC)):
+                                                            ?>
+
+                                                            <div class="alert alert-info">
+                                                                <div class="alert-link">
+                                                                    <?php echo $coment['nome'] . ' ' . $coment['sobrenome'] ?>
+                                                                    <div id="dropdownExcluir">
+                                                                    <div class="btn-group">												
+                                                                        <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle"><span class="caret"></span></button>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a href="../Comentario/delete.php?id=<?php echo $coment ['idComentario'] ?>" onclick="return confirm('Deseja realmente excluir este Comentario ?');">Excluir</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+
+                                                                </div>
+
+                                                                <?php echo $coment ['textoComentario']; ?>
+                                                                
+                                                            </div>
+
+                                                        <?php endwhile; ?>
+
                                                 </form>
                                             </div>
-                                            </div>
                                         </div>
-									<br><br>
-                                    <?php endwhile; ?>
-                                </div>
-                                <!-- /. FIM POSTAGENS -->
-                                <div class="col-md-6" id="boxlateral">
-                                    <div class="panel panel-info">
-                                        <div class="panel-heading">
-                                            <i class="fa fa-bars fa-fw"></i>Menu
-                                        </div>
-
-                                        <div class="panel-body">
-                                            <div class="list-group">
-
-                                                <a href="#" class="list-group-item">
-                                                    <div class="add-post">
-                                                        <i class="fa fa-plus fa-fw"></i> Adicionar Postagem
-                                                    </div>
-                                                    <span class="pull-right text-muted small"><em></em>
-                                                    </span>
-                                                </a>
-                                            </div>
-
-                                            <!-- /.list-group -->
-
-                                        </div>
-
                                     </div>
-                                </div>
+                                    <br><br>
+                                <?php endwhile; ?>
                             </div>
-                        </div>
-                    </div>
-
-
-                    <!--JANELA MODAL ADD POST-->
-                    <div id="modal">
-                        <div class="modal-box">
-                            <div class="modal-box-conteudo">
+                            <!-- /. FIM POSTAGENS -->
+                            <div class="col-md-6" id="boxlateral">
                                 <div class="panel panel-info">
                                     <div class="panel-heading">
-                                        Postagem
+                                        <i class="fa fa-bars fa-fw"></i>Menu
                                     </div>
+
                                     <div class="panel-body">
-                                        <form name="formularioPost" id="formPost" action="../Post/add-post.php" method="post" onsubmit="return validaPost()">
-                                            <div class="form-group">
-                                                <label>Post:</label>
-                                                <textarea name="conteudoPost" id="pt" class="form-control" rows="3"></textarea>
-                                                <label>Categoria:</label>
-                                            </div>
+                                        <div class="list-group">
 
-                                            <div class="btn-group">
-                                                <select data-toggle="dropdown" id="catg" name=categoriaPost class="btn btn-primary dropdown-toggle"><span class="caret"></span>
-                                                    <ul class="dropdown-menu">
-                                                        <option value="1">Mini Curso</option>
-                                                        <option value="2">Palestra</option>
-                                                        <option value="3">Entretenimento</option>
-                                                        <option value="4">Estágio</option>
-                                                        <option value="5">Anúncio</option>
-                                                        <option value="6">Pesquisa e Extensão</option>
-                                                        <option value="7">Iniciacao Cientifica</option>
-                                                        <option value="8">Monitorias</option>
-                                                        <option value="9">Outros</option>
-                                                    </ul>
-                                                </select>
-                                                <br />
-                                                <br>
-                                                <div class="input-group">
-                                                    <label>Palavra Chave:</label>
-                                                    <input type="text" name="tagPost" id="tag" class="form-control" placeholder="Adicionar Tag" />
+                                            <a href="#" class="list-group-item">
+                                                <div class="add-post">
+                                                    <i class="fa fa-plus fa-fw"></i> Adicionar Postagem
                                                 </div>
-                                            </div>
+                                                <span class="pull-right text-muted small"><em></em>
+                                                </span>
+                                            </a>
+                                        </div>
 
-
-                                            <button type="submit" id="post" class="btn btn-info">Postar</button>
-                                            <br>
-                                            <br>
-                                            <div class="btn-add-post">
-                                                <button type="button" id="fechar" class="btn btn-info">X</button>
-                                            </div>
-                                        </form>
+                                        <!-- /.list-group -->
 
                                     </div>
-                                </div>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--JANELA MODAL ADD POST-->
+                <div id="modal">
+                    <div class="modal-box">
+                        <div class="modal-box-conteudo">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Postagem
+                                </div>
+                                <div class="panel-body">
+                                    <form name="formularioPost" id="formPost" action="../Post/add-post.php" method="post" onsubmit="return validaPost()">
+                                        <div class="form-group">
+                                            <label>Post:</label>
+                                            <textarea name="conteudoPost" id="pt" class="form-control" rows="3"></textarea>
+                                            <label>Categoria:</label>
+                                        </div>
+
+                                        <div class="btn-group">
+                                            <select data-toggle="dropdown" id="catg" name=categoriaPost class="btn btn-primary dropdown-toggle"><span class="caret"></span>
+                                                <ul class="dropdown-menu">
+                                                    <option value="1">Mini Curso</option>
+                                                    <option value="2">Palestra</option>
+                                                    <option value="3">Entretenimento</option>
+                                                    <option value="4">Estágio</option>
+                                                    <option value="5">Anúncio</option>
+                                                    <option value="6">Pesquisa e Extensão</option>
+                                                    <option value="7">Iniciacao Cientifica</option>
+                                                    <option value="8">Monitorias</option>
+                                                    <option value="9">Outros</option>
+                                                </ul>
+                                            </select>
+                                            <br />
+                                            <br>
+                                            <div class="input-group">
+                                                <label>Palavra Chave:</label>
+                                                <input type="text" name="tagPost" id="tag" class="form-control" placeholder="Adicionar Tag" />
+                                            </div>
+                                        </div>
+
+
+                                        <button type="submit" id="post" class="btn btn-info">Postar</button>
+                                        <br>
+                                        <br>
+                                        <div class="btn-add-post">
+                                            <button type="button" id="fechar" class="btn btn-info">X</button>
+                                        </div>
+                                    </form>
+
+                                </div>
                             </div>
 
                         </div>
-                    </div>
-                    <!--FIM JANELA MODAL ADD POST-->
 
-                    <section id="footer-sec">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h4>UNIFAL - GRUPO PET</h4>
-                                    <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
-                                    <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>SOCIAL LINKS</h4>
-                                    <div class="social-links">
-                                        <a href="#"> <i class="fa fa-facebook fa-2x"></i></a>
-                                        <a href="#"> <i class="fa fa-twitter fa-2x"></i></a>
-                                    </div>
+                    </div>
+                </div>
+                <!--FIM JANELA MODAL ADD POST-->
+
+                <section id="footer-sec">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4>UNIFAL - GRUPO PET</h4>
+                                <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
+                                <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
+                            </div>
+                            <div class="col-md-4">
+                                <h4>SOCIAL LINKS</h4>
+                                <div class="social-links">
+                                    <a href="#"> <i class="fa fa-facebook fa-2x"></i></a>
+                                    <a href="#"> <i class="fa fa-twitter fa-2x"></i></a>
                                 </div>
                             </div>
-                            <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
-                    </section>
-                    <!--FIM DO RODAPÉ-->
+                        </div>
+                        <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
+                </section>
+                <!--FIM DO RODAPÉ-->
 
-                    <script src="../assets/js/jquery-1.11.1.js"></script>
-                    <!-- BOOTSTRAP SCRIPTS -->
-                    <script src="../assets/js/bootstrap.js"></script>
-                    <!-- CUSTOM SCRIPTS -->
-                    <script src="../assets/js/custom.js"></script>
+                <script src="../assets/js/jquery-1.11.1.js"></script>
+                <!-- BOOTSTRAP SCRIPTS -->
+                <script src="../assets/js/bootstrap.js"></script>
+                <!-- CUSTOM SCRIPTS -->
+                <script src="../assets/js/custom.js"></script>
 
-                    <!--forum js-->
-                    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-                    <!-- JQUERY SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
+                <!--forum js-->
+                <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+                <!-- JQUERY SCRIPTS -->
+                <script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
 
-                    <!-- BOOTSTRAP SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/bootstrap.js"></script>
-                    <!-- METISMENU SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
-                    <!-- CUSTOM SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/custom.js"></script>
-                    <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
+                <!-- BOOTSTRAP SCRIPTS -->
+                <script src="../forum-calendario/assets/js/bootstrap.js"></script>
+                <!-- METISMENU SCRIPTS -->
+                <script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
+                <!-- CUSTOM SCRIPTS -->
+                <script src="../forum-calendario/assets/js/custom.js"></script>
+                <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
 
-                    <script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
-                    <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
-                    <script src="../assets/js/jquery-1.10.2.js"></script>
-                    <!-- BOOTSTRAP SCRIPTS -->
-                    <script src="../assets/js/bootstrap.js"></script>
-                    <!-- METISMENU SCRIPTS -->
-                    <script src="../assets/js/jquery.metisMenu.js"></script>
-                    <!-- CUSTOM SCRIPTS -->
-                    <script src="../assets/js/custom.js"></script>
+                <script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+                <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
+                <script src="../assets/js/jquery-1.10.2.js"></script>
+                <!-- BOOTSTRAP SCRIPTS -->
+                <script src="../assets/js/bootstrap.js"></script>
+                <!-- METISMENU SCRIPTS -->
+                <script src="../assets/js/jquery.metisMenu.js"></script>
+                <!-- CUSTOM SCRIPTS -->
+                <script src="../assets/js/custom.js"></script>
 
 
-                    </body>
+                </body>
 
-                    </html>
+                </html>
