@@ -2,7 +2,7 @@
 
 require_once '../init.php';
 
-function teste() {
+
     // pega o ID da URL
     $id = isset($_GET['id']) ? $_GET['id'] : null;
     // valida o ID
@@ -23,6 +23,6 @@ function teste() {
         echo " Erro ao excluir";
         print_r($stmt->errorInfo());
     }
-}
+
 
 ?>

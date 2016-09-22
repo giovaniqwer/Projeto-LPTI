@@ -1,8 +1,6 @@
 //Giovani E Rafaela
 //Javascript para fazer validação dos dados digitados durante o cadastro
 
-
-
 function verificadadoscadastro() {
 
 //VERIFICA CAMPOS EM BRANCO

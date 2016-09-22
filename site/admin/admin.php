@@ -210,16 +210,16 @@ $stmt->execute();
                                                     </div>
                                                     <button type="submit" class="btn btn-info">Enviar Comentario </button>
                                                     <div class="maisComent">
-                                                        <a onclick="return hideandshow();" href="#">Ver comentários</a>
+                                                        <a onclick="return hideandshow('<?php echo 'comments'.$post['idPost']?>');" href="#comments<?php echo $post['idPost']?>">Ver comentários</a>                                          
                                                     </div>
 
                                                     <br>
                                                     <br>
-                                                    <div id="comments">
+                                                    <div id="comments<?php echo $post['idPost']?>" class="teste">
                                                         <?php
                                                         $stmt_comentario = sqlComentario($post ['idPost']);
                                                         while ($coment = $stmt_comentario->fetch(PDO::FETCH_ASSOC)):
-                                                            ?>
+                                                        ?>
 
                                                             <div class="alert alert-info">
                                                                 <div class="alert-link">
@@ -238,9 +238,8 @@ $stmt->execute();
                                                                 <?php echo $coment ['textoComentario']; ?>
                                                                 
                                                             </div>
-
-                                                        <?php endwhile; ?>
-
+																		
+                                                        <?php endwhile; ?>                                                   
                                                 </form>
                                             </div>
                                         </div>
