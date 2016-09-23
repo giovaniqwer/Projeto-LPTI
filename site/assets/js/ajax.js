@@ -36,7 +36,7 @@ jQuery(document).ready(function(){
    });
  });
 
- jQuery(document).ready(function(){
+ /*jQuery(document).ready(function(){
       jQuery('#ajax_coment').submit(function(){
         var dados = jQuery( this ).serialize();
 
@@ -53,5 +53,5 @@ jQuery(document).ready(function(){
 
       return false;
     });
-  });
+  });*/
   

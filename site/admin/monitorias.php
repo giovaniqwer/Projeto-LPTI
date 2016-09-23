@@ -203,7 +203,7 @@ $stmt->execute();
 
 
                                             <div class="panel-footer">
-                                                <form name="formularioComentario" id="ajax_coment" action="" method="post" >
+                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" >
                                                     <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
                                                     <div class="form-group">
                                                         <label>Comentario</label>

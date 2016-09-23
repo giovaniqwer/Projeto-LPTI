@@ -14,9 +14,7 @@ $sql = "DELETE FROM Post WHERE idPost = :id";
 $stmt = $PDO->prepare($sql);
 $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 if ($stmt->execute()) {
-    echo "<script language='JavaScript'> 
-window.location='".$_SERVER['HTTP_REFERER']."'; 
-</script> ";
+    echo "<script> alert('Excluido com sucesso'); window.history.go(-1); </SCRIPT>\n";
 } else {
     echo " Erro ao excluir";
     print_r($stmt->errorInfo());

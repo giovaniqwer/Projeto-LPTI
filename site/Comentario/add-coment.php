@@ -24,7 +24,9 @@ $stmt = $PDO->prepare($sql);
 @$stmt->bindParam(':dataComentario', $coment->getDataComentario());
 
 if ($stmt->execute()) {
-	echo "Comentario enviado com secesso!";
+		echo "<script> alert('Adicionado com sucesso!'); window.history.go(-1); </SCRIPT>\n";
+
+	/*echo "Comentario enviado com secesso!";*/
 
 } else {
 
