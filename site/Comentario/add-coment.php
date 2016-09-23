@@ -24,9 +24,7 @@ $stmt = $PDO->prepare($sql);
 @$stmt->bindParam(':dataComentario', $coment->getDataComentario());
 
 if ($stmt->execute()) {
-	echo "<script language='JavaScript'>
-window.location='".$_SERVER['HTTP_REFERER']."';
-</script> ";
+	echo "Comentario enviado com secesso!";
 
 } else {
 

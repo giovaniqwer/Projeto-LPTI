@@ -199,7 +199,7 @@ if ($_SESSION['emailTipo'] != 2) {
                                                 <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" >
                                                     <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
                                                     <div class="form-group">
-                                                        <label>Comentario</label>                                                     
+                                                        <label>Comentario</label>
                                                         <textarea id="comentario_id" name="textoComentario" class="form-control" rows="1"  required=""></textarea>
                                                     </div>
                                                     <button type="submit" class="btn btn-info">Enviar Comentario </button>

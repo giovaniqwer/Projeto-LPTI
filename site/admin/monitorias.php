@@ -181,16 +181,17 @@ $stmt->execute();
                                     <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                                         <div class="panel panel-default">
                                             <div class="panel-heading">
-                                                <div class="alert-link"><b>
-                                                        <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
-                                                        <div id="dropdownExcluir">
-                                                            <div class="btn-group">												
-                                                                <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle"><span class="caret"></span></button>
-                                                                <ul class="dropdown-menu">
-                                                                    <li><a href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente excluir este Post ?');">Excluir</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
+
+                                                 <div class="alert-link"><b>
+                                                        <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                         <div id="dropdownExcluir">
+                                                                    <div class="btn-group">
+                                                                        <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle"><span class="caret"></span></button>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente excluir este Post ?');" id="exclui_post">Excluir</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
                                                     </b>
                                                 </div>
 
@@ -202,45 +203,47 @@ $stmt->execute();
 
 
                                             <div class="panel-footer">
-                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" >
+                                                <form name="formularioComentario" id="ajax_coment" action="" method="post" >
                                                     <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
                                                     <div class="form-group">
-                                                        <label>Comentario</label>                                                     
+                                                        <label>Comentario</label>
                                                         <textarea id="comentario_id" name="textoComentario" class="form-control" rows="1"  required=""></textarea>
                                                     </div>
                                                     <button type="submit" class="btn btn-info">Enviar Comentario </button>
                                                     <div class="maisComent">
-                                                        <a onclick="return hideandshow();" href="#">Ver comentários</a>
+                                                        <a onclick="return hideandshow('<?php echo 'comments'.$post['idPost']?>');" href="#comments<?php echo $coment['idComentario']?>">Ver comentários</a>
                                                     </div>
 
                                                     <br>
                                                     <br>
-                                                    <div id="comments">
+                                                    <div id="comments<?php echo $post['idPost']?>" class="teste">
                                                         <?php
                                                         $stmt_comentario = sqlComentario($post ['idPost']);
                                                         while ($coment = $stmt_comentario->fetch(PDO::FETCH_ASSOC)):
-                                                            ?>
+                                                        ?>
 
                                                             <div class="alert alert-info">
                                                                 <div class="alert-link">
                                                                     <?php echo $coment['nome'] . ' ' . $coment['sobrenome'] ?>
+
                                                                     <div id="dropdownExcluir">
-                                                                        <div class="btn-group">												
-                                                                            <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle"><span class="caret"></span></button>
-                                                                            <ul class="dropdown-menu">
-                                                                                <li><a href="../Comentario/delete.php?id=<?php echo $coment ['idComentario'] ?>" onclick="return confirm('Deseja realmente excluir este Comentario ?');">Excluir</a></li>
-                                                                            </ul>
-                                                                        </div>
+
+                                                                    <div class="btn-group">
+
+                                                                        <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle"><span class="caret"></span></button>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a href="../Comentario/delete.php?id=<?php echo $coment ['idComentario'] ?>" onclick="return confirm('Deseja realmente excluir este Comentario ?');" id="exclui_coment">Excluir</a></li>
+                                                                        </ul>
                                                                     </div>
+                                                                </div>
 
                                                                 </div>
 
                                                                 <?php echo $coment ['textoComentario']; ?>
-
+                                                                <h6><?php echo $coment ['dataComentario']; ?></h6>
                                                             </div>
 
                                                         <?php endwhile; ?>
-
                                                 </form>
                                             </div>
                                         </div>
@@ -257,17 +260,17 @@ $stmt->execute();
 
                                     <div class="panel-body">
                                         <div class="list-group">
-                                            <a href="#0" class="list-group-item">
+
+                                            <a href="#" class="list-group-item">
                                                 <div class="add-post">
                                                     <i class="fa fa-plus fa-fw"></i> Adicionar Postagem
                                                 </div>
-
                                                 <span class="pull-right text-muted small"><em></em>
                                                 </span>
                                             </a>
                                         </div>
 
-
+                                        <!-- /.list-group -->
 
                                     </div>
 
@@ -276,8 +279,6 @@ $stmt->execute();
                         </div>
                     </div>
                 </div>
-
-
 
 
                 <!--JANELA MODAL ADD POST-->
@@ -289,7 +290,7 @@ $stmt->execute();
                                     Postagem
                                 </div>
                                 <div class="panel-body">
-                                    <form name="formularioPost" id="formPost" action="../Post/add-post.php" method="post" onsubmit="return validaPost()">
+                                    <form name="formularioPost" id="ajax_post" action="" method="post" onsubmit="return validaPost()">
                                         <div class="form-group">
                                             <label>Post:</label>
                                             <textarea name="conteudoPost" id="pt" class="form-control" rows="3"></textarea>
@@ -336,8 +337,6 @@ $stmt->execute();
                 </div>
                 <!--FIM JANELA MODAL ADD POST-->
 
-
-
                 <section id="footer-sec">
                     <div class="container">
                         <div class="row">
@@ -346,7 +345,7 @@ $stmt->execute();
                                 <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
                             </div>
                             <div class="col-md-4">
-                                <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar,Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
+                                <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
                                 <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
                             </div>
                             <div class="col-md-4">
@@ -358,10 +357,8 @@ $stmt->execute();
                             </div>
                         </div>
                         <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
-                    <!--FIM DO RODAPÉ-->
                 </section>
-
-
+                <!--FIM DO RODAPÉ-->
                 <script src="../assets/js/jquery-1.11.1.js"></script>
                 <!-- BOOTSTRAP SCRIPTS -->
                 <script src="../assets/js/bootstrap.js"></script>
@@ -380,6 +377,7 @@ $stmt->execute();
                 <!-- CUSTOM SCRIPTS -->
                 <script src="../forum-calendario/assets/js/custom.js"></script>
                 <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
+
                 <script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
                 <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
                 <script src="../assets/js/jquery-1.10.2.js"></script>
@@ -389,6 +387,8 @@ $stmt->execute();
                 <script src="../assets/js/jquery.metisMenu.js"></script>
                 <!-- CUSTOM SCRIPTS -->
                 <script src="../assets/js/custom.js"></script>
+
+
                 </body>
 
                 </html>

@@ -178,16 +178,16 @@ $stmt->execute();
                                         <div class="panel panel-warning">
                                             <div class="panel-heading">
 
-                                                <div class="alert-link"><b>
-                                                        <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 
-                                                        <div id="dropdownExcluir">
-                                                            <div class="btn-group">												
-                                                                <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle"><span class="caret"></span></button>
-                                                                <ul class="dropdown-menu">
-                                                                    <li><a href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente excluir este Post ?');">Excluir</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
+                                                 <div class="alert-link"><b>
+                                                        <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                         <div id="dropdownExcluir">
+                                                                    <div class="btn-group">
+                                                                        <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle"><span class="caret"></span></button>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a href="../Post/delete.php?id=<?php echo $post ['idPost'] ?>" onclick="return confirm('Deseja realmente excluir este Post ?');" id="exclui_post">Excluir</a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
                                                     </b>
                                                 </div>
 
@@ -199,45 +199,47 @@ $stmt->execute();
 
 
                                             <div class="panel-footer">
-                                                <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" >
+                                                <form name="formularioComentario" id="ajax_coment" action="" method="post" >
                                                     <input type="hidden" name="id_post" value="<?php echo $post ['idPost']; ?>">
                                                     <div class="form-group">
-                                                        <label>Comentario</label>                                                     
+                                                        <label>Comentario</label>
                                                         <textarea id="comentario_id" name="textoComentario" class="form-control" rows="1"  required=""></textarea>
                                                     </div>
                                                     <button type="submit" class="btn btn-info">Enviar Comentario </button>
                                                     <div class="maisComent">
-                                                        <a onclick="return hideandshow();" href="#">Ver comentários</a>
+                                                        <a onclick="return hideandshow('<?php echo 'comments'.$post['idPost']?>');" href="#comments<?php echo $coment['idComentario']?>">Ver comentários</a>
                                                     </div>
 
                                                     <br>
                                                     <br>
-                                                    <div id="comments">
+                                                    <div id="comments<?php echo $post['idPost']?>" class="teste">
                                                         <?php
                                                         $stmt_comentario = sqlComentario($post ['idPost']);
                                                         while ($coment = $stmt_comentario->fetch(PDO::FETCH_ASSOC)):
-                                                            ?>
+                                                        ?>
 
                                                             <div class="alert alert-info">
                                                                 <div class="alert-link">
                                                                     <?php echo $coment['nome'] . ' ' . $coment['sobrenome'] ?>
+
                                                                     <div id="dropdownExcluir">
-                                                                        <div class="btn-group">												
-                                                                            <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle"><span class="caret"></span></button>
-                                                                            <ul class="dropdown-menu">
-                                                                                <li><a href="../Comentario/delete.php?id=<?php echo $coment ['idComentario'] ?>" onclick="return confirm('Deseja realmente excluir este Comentario ?');">Excluir</a></li>
-                                                                            </ul>
-                                                                        </div>
+
+                                                                    <div class="btn-group">
+
+                                                                        <button data-toggle="dropdown" class="btn btn-inverse dropdown-toggle"><span class="caret"></span></button>
+                                                                        <ul class="dropdown-menu">
+                                                                            <li><a href="../Comentario/delete.php?id=<?php echo $coment ['idComentario'] ?>" onclick="return confirm('Deseja realmente excluir este Comentario ?');" id="exclui_coment">Excluir</a></li>
+                                                                        </ul>
                                                                     </div>
+                                                                </div>
 
                                                                 </div>
 
                                                                 <?php echo $coment ['textoComentario']; ?>
-
+                                                                <h6><?php echo $coment ['dataComentario']; ?></h6>
                                                             </div>
 
                                                         <?php endwhile; ?>
-
                                                 </form>
                                             </div>
                                         </div>
@@ -246,7 +248,6 @@ $stmt->execute();
                                 <?php endwhile; ?>
                             </div>
                             <!-- /. FIM POSTAGENS -->
-
                             <div class="col-md-6" id="boxlateral">
                                 <div class="panel panel-info">
                                     <div class="panel-heading">
@@ -285,7 +286,7 @@ $stmt->execute();
                                     Postagem
                                 </div>
                                 <div class="panel-body">
-                                    <form name="formularioPost" id="formPost" action="../Post/add-post.php" method="post" onsubmit="return validaPost()">
+                                    <form name="formularioPost" id="ajax_post" action="" method="post" onsubmit="return validaPost()">
                                         <div class="form-group">
                                             <label>Post:</label>
                                             <textarea name="conteudoPost" id="pt" class="form-control" rows="3"></textarea>

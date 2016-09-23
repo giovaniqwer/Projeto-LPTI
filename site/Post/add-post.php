@@ -28,9 +28,7 @@ $stmt = $PDO->prepare($sql);
 
 
 if ($stmt->execute()) {
-	echo "<script language='JavaScript'> 
-window.location='".$_SERVER['HTTP_REFERER']."'; 
-</script> ";
+	echo "Postado com sucesso!";
  
 } else {
 
