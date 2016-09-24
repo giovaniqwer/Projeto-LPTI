@@ -32,28 +32,62 @@
 		  <script type="text/javascript">
 
 		google.charts.load('current', {packages:['wordtree']});
-      google.charts.setOnLoadCallback(drawSimpleNodeChart);
+      /*google.charts.setOnLoadCallback(drawSimpleNodeChart);*/
       function drawSimpleNodeChart() {
         var nodeListData = new google.visualization.arrayToDataTable([
-          ['id', 'childLabel', 'parent', 'Créditos', { role: 'style' }],
-          [0, 'Grade básica', -1, 1, 'black'],
-          [1, '1º SEMESTRE', 0, 1, 'green'],
-          [2, '2º SEMESTRE', 0, 1, 'red'],
-          [3, '3º SEMESTRE', 0, 1, 'purple'],
-          [4, '4º SEMESTRE', 0, 1, 'blue'],
-          [5, '5º SEMESTRE', 0, 1, 'blue'],
-          [6, '6º SEMESTRE', 0, 1, 'blue'],
-			 [7, 'Introdução à economia', 1, 4, 'green'],
-			 [8, 'Introdução à atuária', 1, 4, 'green'],
-			 [9, 'Introdução à administração', 1, 4, 'green'],
-			 [10,'Matemática I', 1, 6, 'green'],
-			 [11,'Filosofia da ciência', 1, 2, 'green'],
-			 [12,'Ciências sociais', 2, 4, 'red'],
-			 [13,'História econômica geral', 2, 4, 'red'],
-			 [14,'Matemática II', 2, 6, 'red'],
-			 [15,'Comunicação', 2, 4, 'red'],
-			 [16,'Metodologia de pesquisa', 2, 2, 'red'],
-			 [17,'Ciência política', 3, 4, 'purple']
+          ['id', 'childLabel', 'parent', 'Créditos', 'Curso', { role: 'style' }],
+          [0, 'Grade básica', -96, 1, 'Comum', 'black'],
+          [1, '1º SEMESTRE', 0, 1, 'Comum', 'grey'],
+          [2, '2º SEMESTRE', 0, 1, 'Comum', 'grey'],
+          [3, '3º SEMESTRE', 0, 1, 'Comum', 'grey'],
+          [4, '4º SEMESTRE', 0, 1, 'Comum', 'black'],
+          [5, '5º SEMESTRE', 0, 1, 'Comum', 'black'],
+          [6, '6º SEMESTRE', 0, 1, 'Comum', 'black'],
+			 [7, 'Introdução à economia', 1, 4, 'Comum', 'black'],
+			 [8, 'Introdução à atuária', 1, 4, 'Comum', 'black'],
+			 [9, 'Introdução à administração', 1, 4, 'Comum', 'black'],
+			 [10,'Matemática I', 1, 6, 'Comum', 'black'],
+			 [11,'Filosofia da ciência', 1, 2, 'Comum', 'black'],
+			 [12,'Ciências sociais', 2, 4, 'Comum', 'black'],
+			 [13,'História econômica geral', 2, 4, 'Comum', 'black'],
+			 [14,'Matemática II', 2, 6, 'Comum', 'black'],
+			 [15,'Comunicação', 2, 4, 'Comum', 'black'],
+			 [16,'Metodologia de pesquisa', 2, 2, 'Comum', 'black'],
+			 [17,'Ciência política', 3, 4, 'Comum', 'black'],
+			 [18,'História do Pensamento Econômico', 3, 4, 'Comum', 'black'],
+			 [19,'Estatística', 3, 6, 'Comum', 'black'],
+			 [20,'Teoria das Organizações', 3, 4, 'Comum', 'black'],
+			 [21,'Fundamentos do Estado', 3, 2, 'Comum', 'black'],
+			 [22,'Matemática Financeira', 4, 4, 'Comum', 'black'],
+			 [23,'Microeconomia I', 4, 4, 'Comum', 'black'],
+			 [24,'Fundamentos da Administração Pública', 4, 4, 'Adm. Púb.', 'blue'],
+			 [25,'Demografia', 4, 4, 'Atuárias', 'green'],
+			 [26,'Contabilidade Social', 4, 4, 'Economia', 'red'],
+			 [27,'Opcionais', 4, 4,'Todos' , 'grey'],
+			     [28, 'Tópicos Especiais em Adm. Púb.', 27, 4, 'Adm. Púb.', 'blue'],
+			     [29, 'Tópicos Especiais em C. Atuárias', 27, 4, 'Atuárias', 'green'],
+			     [30, 'Tópicos Especiais em Economia', 27, 4, 'Economia', 'red'],
+			 [31,'Introdução à Contabilidade', 5, 4, 'Comum', 'black'],
+			 [32,'Macroeconomia I', 5, 4, 'Comum', 'black'],
+			 [33,'Direito Constitucional', 5, 2, 'Adm. Púb', 'blue'],
+			 [34,'Psicologia', 5, 2, 'Adm. Púb', 'blue'],
+			 [35,'Cálculo de Probabilidade', 5, 4, 'Atuárias', 'green'],
+			 [36,'Microeconomia II', 5, 4, 'Economia', 'red'],
+			 [37,'Opcionais', 5, 4,'Todos', 'grey'],
+			     [38,'Tópicos Especiais em Adm. Púb. II', 37, 4, 'Adm. Púb.', 'blue'],
+			     [39,'Tópicos Especiais em C. Atuárias II', 37, 4, 'Atuárias', 'green'],
+			     [40,'Tópicos Especiais em Economia II', 37, 4, 'Economia', 'red'],
+			 [41,'Gestão de Custos', 6, 4, 'Comum', 'black'],
+			 [42,'Instituições de Direito Privado', 6, 2, 'Comum', 'black'],
+			 [43,'Análise de Demonstrações Contábeis', 6, 2, 'Comum', 'black'],
+			 [44,'Sistemas de Informação', 6, 4, 'Adm. Púb.', 'blue'],
+			 [45,'Matemática Atuarial I', 6, 4, 'Atuárias', 'green'],
+			 [46,'Macroeconomia II', 6, 4, 'Economia', 'red'],
+			 [47,'Opcionais', 6, 4,'Todos', 'grey'],
+			     [48,'Tópicos Especiais em Adm. Púb. III', 47, 4, 'Adm. Púb.', 'blue'],
+			     [49,'Tópicos Especiais em C. Atuárias III', 47, 4, 'Atuárias', 'green'],
+			     [50,'Tópicos Especiais em Economia III', 47, 4, 'Economia', 'red']
+			 
           ]);
 
         var options = {
@@ -183,7 +217,7 @@
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
                                             <div class="alert-link">
-                                                <p>De qual curso estamos falando?</p>
+                                                <p>De qual curso estamos falando?<button onclick="drawSimpleNodeChart()" class="btn btn-secondary" style="float: right;"><strong>Todos</strong></button></p>
                                             </div>
 
                                         </div>
@@ -192,40 +226,35 @@
                                         <!-- Descrição das disciplinas -->
                                         <div class="panel-body">
                                             <div class="row">
-                                                <div class="panel-body">
-                                                    <span> Ow wow wow, calmae, qq se ta falano? eu n escolhi curso nenhum nao vei. </span>
-                                                    <button onclick="mostraDiagrama()">Calma q eu te salvo, tiu</button>
-                                                </div>
                                                  <!-- DIAGRAMA -->
-                                       			 <div id="wordtree_explicit" style="width: auto; height: auto;"></div>
-
-
+                                       			 <div id="wordtree_explicit" style="width: 100%; height: auto;"></div>
+                                       			 
                                                 <div class="col-md-4 ">
                                                     <div class="alert alert-info text-center">
-                                                        <h4> Humanas </h4>
+                                                        <h4> Administração Pública </h4>
                                                         <hr/>
                                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
                                                         <hr/>
 
-                                                        <a href="Humanas.php" class="btn btn-info">Ver mais...</a>
+                                                        <button onclick="drawSimpleNodeChart()" class="btn btn-info">Ver mais...</button>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 ">
-                                                    <div class="alert alert-info text-center">
-                                                        <h4> Exatas </h4>
+                                                    <div class="alert alert-success text-center">
+                                                        <h4> Ciências Atuárias </h4>
                                                         <hr/>
                                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.</p>
                                                         <hr/>
-                                                        <a href="exatas.php" class="btn btn-info">Ver mais...</a>
+                                                        <button onclick="drawSimpleNodeChart()" class="btn btn-success">Ver mais...</button>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 ">
-                                                    <div class="alert alert-info text-center">
-                                                        <h4>QQ euto faseno</h4>
+                                                    <div class="alert alert-danger text-center">
+                                                        <h4> Economia </h4>
                                                         <hr/>
                                                         <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.</p>
                                                         <hr/>
-                                                        <a href="qqeutofaseno.php" class="btn btn-success">Ver mais...</a>
+                                                        <button onclick="drawSimpleNodeChart()" class="btn btn-danger">Ver mais...</button>
                                                     </div>
                                                 </div>
                                             </div>
