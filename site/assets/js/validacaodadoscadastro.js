@@ -42,19 +42,19 @@ function validaPost() {
     var tag = document.querySelector("#tag").value;
     var tPost = false;
 
-    if ((post == "") || (categoria =="") || (tag == "") ){
+    if ((post == "") || (categoria == "") || (tag == "")) {
         alert("Campo em Branco");
         return false;
     } else {
         tPost = true;
     }
-  }
+}
 
-function hideandshow(id){ 
-	 if(document.getElementById(id).style.display == 'inline'){
-	 	document.getElementById(id).style.display = 'none';
-	 }else{
-	 	document.getElementById(id).style.display = 'inline';
-	 }
- }
- 
+function hideandshow(id) {
+    if (document.getElementById(id).style.display == 'inline') {
+        document.getElementById(id).style.display = 'none';
+    } else {
+        document.getElementById(id).style.display = 'inline';
+    }
+}
+

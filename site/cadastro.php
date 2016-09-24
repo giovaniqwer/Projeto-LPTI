@@ -1,21 +1,20 @@
 <?php
 require 'init.php';
 ?>
-<!--CONTEUDO-FORMULARIO CADASTRO-->
-<html lang="pt-br">
 
+<html lang="pt-br">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="">
         <meta name="author" content="alunos">
-        <!--css forum -->
+        <!--CSS FORUM-->
         <link href="forum-calendario/assets/css/bootstrap.css" rel="stylesheet">
         <link href="forum-calendario/assets/css/font-awesome.css" rel="stylesheet">
         <link href="forum-calendario/assets/css/basic.css" rel="stylesheet">
         <link href="forum-calendario/assets/css/custom.css" rel="stylesheet">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-        <!--fim css forum-->
+        <!--BIBLIOTECAS JS -->
         <link href="assets/img/favicon.png" rel="shortcut icon">
         <script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="assets/js/jquery-ui.js"></script>
@@ -32,10 +31,7 @@ require 'init.php';
         <script type="text/javascript" src="assets/js/validacaodadoscadastro.js"></script>
         <script type="text/javascript" src="assets/js/validacaodocontato.js"></script>
         <script type="text/javascript" src="assets/js/validalogin.js"></script>
-
-
     </head>
-
     <body>
         <!--TOPO DO SITE-->
         <div class="navbar navbar-inverse navbar-fixed-top ">
@@ -70,15 +66,13 @@ require 'init.php';
             </div>
         </div>
         <br>
+        <!--CONTEUDO-FORMULARIO CADASTRO-->
         <div class="conteudo">
             <div class="ok">
-
                 <body data-spy="scroll">
-
                     <div id="titulo">
                         <h3>Cadastre-se</h3>
                     </div>
-
                     <div class="container">
                         <div class="row">
                             <div class=" text-center">
@@ -129,6 +123,7 @@ require 'init.php';
                     </div>
             </div>
         </div>
+        <!--RODA PE -->
         <section id="footer-sec">
             <div class="container">
                 <div class="row">
@@ -150,30 +145,16 @@ require 'init.php';
                 </div>
                 <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
         </section>
+        <!--SCRIPTS JS-->
         <script src="assets/js/jquery-1.11.1.js"></script>
-        <!-- BOOTSTRAP SCRIPTS -->
         <script src="assets/js/bootstrap.js"></script>
-        <!-- CUSTOM SCRIPTS -->
         <script src="assets/js/custom.js"></script>
-
-        <!--forum js-->
-        <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-        <!-- JQUERY SCRIPTS -->
         <script src="forum-calendario/assets/js/wizard/jquery.steps.js"></script>
-
-        <!-- BOOTSTRAP SCRIPTS -->
         <script src="forum-calendario/assets/js/bootstrap.js"></script>
-        <!-- METISMENU SCRIPTS -->
         <script src="forum-calendario/assets/js/jquery.metisMenu.js"></script>
-        <!-- CUSTOM SCRIPTS -->
         <script src="forum-calendario/assets/js/custom.js"></script>
         <script src="forum-calendario/assets/js/jquery.mixitup.min.js"></script>
-
         <script src="forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
         <script src="forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
-
-
-
     </body>
-
 </html>

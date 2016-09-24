@@ -2,7 +2,6 @@
 
 class Comentario {
 
-
     private $idPost;
     private $idUsuario;
     private $textoComentario;
@@ -14,7 +13,7 @@ class Comentario {
 
         $this->setIdUsuario($idUsuario);
         $this->setTextoComentario($textoComentario);
-         $this->setDataComentario($dataComentario);
+        $this->setDataComentario($dataComentario);
     }
 
     public function getIdPost() {
@@ -48,18 +47,20 @@ class Comentario {
     public function setDataComentario($dataComentario) {
         $this->dataComentario = $dataComentario;
     }
-    public function informaPost(){
-      $id = isset($_GET['id']) ? $_GET['id'] : null;
-      // valida o ID
-      if (empty($id)) {
-          echo " ID não informado";
-          exit;
-      }
-      $PDO = db_connect();
-      $sql = "INSERT INTO Comentario(idPost) VALUES(:id)";
-      $stmt = $PDO->prepare($sql);
-      $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+    public function informaPost() {
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+        // valida o ID
+        if (empty($id)) {
+            echo " ID não informado";
+            exit;
+        }
+        $PDO = db_connect();
+        $sql = "INSERT INTO Comentario(idPost) VALUES(:id)";
+        $stmt = $PDO->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     }
+
 }
 
 ?>

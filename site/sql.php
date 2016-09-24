@@ -1,9 +1,11 @@
 <?php
-	require_once '../init.php';
-	
-	function sqlComentario ($idPost){
-			
-            $sql_comentario = "SELECT 
+
+//Consulta de comentarios no banco de dados
+require_once '../init.php';
+
+function sqlComentario($idPost) {
+
+    $sql_comentario = "SELECT 
                    Comentario.idComentario, 
                    Comentario.idPost, 
                    Comentario.idUsuario, 
@@ -17,11 +19,11 @@
                    LEFT JOIN Usuario ON Comentario.idUsuario = Usuario.idUsuario
                    WHERE 
                      Comentario.idPost =" . $idPost .
-                     " ORDER BY Comentario.idComentario DESC ";
-            $PDO = db_connect();
-            $stmt_comentario = $PDO->prepare($sql_comentario);
-            $stmt_comentario->execute();
-            return $stmt_comentario;
-	}
-        
+            " ORDER BY Comentario.idComentario DESC ";
+    $PDO = db_connect();
+    $stmt_comentario = $PDO->prepare($sql_comentario);
+    $stmt_comentario->execute();
+    return $stmt_comentario;
+}
+
 ?>

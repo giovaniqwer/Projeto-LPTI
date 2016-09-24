@@ -183,9 +183,9 @@ $stmt->execute();
                                 <div class="col-md-4 col-sm-4" id="largura">
                                     <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                                       <div class="panel panel-default">
-                                          <div class="panel-heading" style="background-color: #D9C8E3">
+                                          <div class="panel-heading" style="background-color:#EED2EE">
 
-                                                 <div class="alert-link"><b>
+                                                 <div class="alert-link"  style="color:#9665a2"><b>
                                                         <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?>&nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp<?php echo $post ['dataPost']; ?>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                                          <div id="dropdownExcluir">
                                                                     <div class="btn-group">

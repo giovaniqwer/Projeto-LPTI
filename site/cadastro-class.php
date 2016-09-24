@@ -17,7 +17,7 @@ class Usuario {
         $this->setEmail($email);
         $this->setIdentificacao($matricula);
         $this->setTipo($tipo);
-         $this->setAtividade($atividade);
+        $this->setAtividade($atividade);
     }
 
     public function getNome() {
@@ -67,8 +67,9 @@ class Usuario {
     public function setTipo($tipo) {
         $this->tipo = $tipo;
     }
-	 public function getAtividade() {
-        return $this->tipo;
+
+    public function getAtividade() {
+        return $this->atividade;
     }
 
     public function setAtividade($atividade) {

@@ -5,13 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="">
         <meta name="author" content="alunos" >
-        <!--css forum -->
+        <!--CSS FORUM-->
         <link href="forum-calendario/assets/css/bootstrap.css" rel="stylesheet">
         <link href="forum-calendario/assets/css/font-awesome.css" rel="stylesheet">
         <link href="forum-calendario/assets/css/basic.css" rel="stylesheet">
         <link href="forum-calendario/assets/css/custom.css" rel="stylesheet">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-        <!--fim css forum-->
+        <!--BIBLIOTECAS JS -->
         <link href="assets/img/favicon.png" rel="shortcut icon">
         <script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="assets/js/jquery-ui.js"></script>
@@ -66,6 +66,8 @@
             </div>
         </div>
         <br>
+        <!--FIM TOPO SITE-->
+        <!--FORMULARIO LOGIN-->
         <div class="conteudo">
             <div class="ok">
 
@@ -120,7 +122,9 @@
                         </div>
                     </div>
             </div>
-        </div>
+        </div>      
+        <!--FIM FORMULARIO LOGIN-->
+        <!--INICIO RODAPE-->
         <section id="footer-sec">
             <div class="container">
                 <div class="row">
@@ -143,33 +147,15 @@
                 <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
         </section>
         <!--FIM DO RODAPÉ-->
-
-
-        <!-- COPY TEXT SECTION END-->
-        <!-- JAVASCRIPT FILES PLACED AT THE BOTTOM TO REDUCE THE LOADING TIME
-        -->
-
-
-        <!-- CORE JQUERY -->
+        <!--SCRIPTS JS-->
         <script src="assets/js/jquery-1.11.1.js"></script>
-        <!-- BOOTSTRAP SCRIPTS -->
         <script src="assets/js/bootstrap.js"></script>
-        <!-- CUSTOM SCRIPTS -->
         <script src="assets/js/custom.js"></script>
-
-        <!--forum js-->
-        <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-        <!-- JQUERY SCRIPTS -->
         <script src="forum-calendario/assets/js/wizard/jquery.steps.js"></script>
-
-        <!-- BOOTSTRAP SCRIPTS -->
         <script src="forum-calendario/assets/js/bootstrap.js"></script>
-        <!-- METISMENU SCRIPTS -->
         <script src="forum-calendario/assets/js/jquery.metisMenu.js"></script>
-        <!-- CUSTOM SCRIPTS -->
         <script src="forum-calendario/assets/js/custom.js"></script>
         <script src="forum-calendario/assets/js/jquery.mixitup.min.js"></script>
-
         <script src="forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
         <script src="forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
 

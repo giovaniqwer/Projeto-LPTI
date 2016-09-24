@@ -7,6 +7,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
 }
 require_once '../init.php';
 include_once '../sql.php';
+
 $PDO = db_connect();
 $sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
 $sql = "SELECT
@@ -18,9 +19,11 @@ $sql = "SELECT
     Post.Categoria_idCategoria,
     Usuario.nome,
     Usuario.sobrenome
-FROM Post
+FROM
+    Post
 LEFT JOIN Usuario ON Usuario.idUsuario = Post.idUsuario
-ORDER BY idPost DESC ";
+ORDER BY
+    idPost DESC ";
 $stmt_count = $PDO->prepare($sql_count);
 $stmt_count->execute();
 $total = $stmt_count->fetchColumn();
@@ -77,7 +80,12 @@ $stmt->execute();
                         <li>
                             <a href="inicio.php">INÍCIO</a>
                         </li>
-
+                        <li>
+                            <a href="listaUsuario.php">USUÁRIOS</a>
+                        </li>
+                        <li>
+                            <a href="listaContato.php">MENSAGENS</a>
+                        </li>
                         <li>
                             <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
@@ -107,7 +115,7 @@ $stmt->execute();
                         <div class="sidebar-collapse">
                             <ul class="nav" id="main-menu">
                                 <li>
-                                    <a class="active-menu" href="aluno.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                    <a class="active-menu" href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-bell"></i>Eventos<span class="fa arrow"></span></a>
@@ -126,10 +134,10 @@ $stmt->execute();
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="estagio.php"><i class="fa fa-briefcase "></i>Estágio </a>
+                                    <a  href="estagio.php"><i class="fa fa-briefcase "></i>Estágio </a>
                                 </li>
                                 <li>
-                                    <a  href="anuncio.php"><i class="fa fa-bullhorn"></i>Anúncio </a>
+                                    <a href="anuncio.php"><i class="fa fa-bullhorn"></i>Anúncio </a>
                                 </li>
                                 <li>
                                     <a href="pesqext.php"><i class="fa fa-search"></i>Pesquisa e Extensão </a>
@@ -154,7 +162,7 @@ $stmt->execute();
                         <div id="page-inner">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1 class="page-head-line">Anúncio</h1>
+                                    <h1 class="page-head-line">Principal</h1>
                                     <center>
                                         <div id="divBusca">
                                             <img src="img/search3.png" alt="Buscar..." />
@@ -171,25 +179,22 @@ $stmt->execute();
                                 <div class="col-md-4 col-sm-4" id="largura">
                                     <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                                         <div class="panel panel-info">
-											<div class="panel-heading" style="background-color:#bdded6">
-
-
-
-                                                <div class="alert-link"><b>
-                                                        <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                                                    </b>
-                                                    <?php
+                                            <div class="panel-heading" style="background-color:#cafbef">
+                                              <div class="alert-link" style="color:#6ea697"><b>
+                                                  <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                                  </b>
+                                                  <?php
                                                     if ($_SESSION["emailID"] == $post['idUsuario']) {
                                                         echo "<div id='dropdownExcluir'><div class='btn-group'><button data-toggle='dropdown' class='btn btn-inverse dropdown-toggle'><span class='caret'></span></button><ul class='dropdown-menu'><li><a href='../Post/delete.php?id=" . $post ['idPost'] . "' onclick='return confirm('Deseja realmente excluir este Post ?');'>Excluir</a></li></ul></div></div>";
                                                     }
-                                                    ?>
-                                                </div>
-
-                                            </div>
+                                                  ?>
+                                                    </div>
+                                                    </div>
                                             <div class="panel-body">
                                                 <?php echo $post ['conteudoPost']; ?>
 
                                             </div>
+
 
                                             <div class="panel-footer">
                                                 <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" >
@@ -200,31 +205,31 @@ $stmt->execute();
                                                     </div>
                                                     <button type="submit" class="btn btn-info">Enviar Comentario </button>
                                                     <div class="maisComent">
-                                                        <a onclick="return hideandshow();" href="#">Ver comentários</a>
+                                                        <a onclick="return hideandshow('<?php echo 'comments'.$post['idPost']?>');" href="#comments<?php echo $coment['idComentario']?>">Ver comentários</a>
                                                     </div>
 
                                                     <br>
                                                     <br>
-                                                    <div id="comments">
+                                                    <div id="comments<?php echo $post['idPost']?>" class="teste">
                                                         <?php
                                                         $stmt_comentario = sqlComentario($post ['idPost']);
                                                         while ($coment = $stmt_comentario->fetch(PDO::FETCH_ASSOC)):
-                                                            ?>
+                                                        ?>
 
                                                             <div class="alert alert-info">
-                                                                <div class="alert-link">
-                                                                    <?php echo $coment['nome'] . ' ' . $post['sobrenome'] ?>
-                                                                    <?php
-                                                                    if ($_SESSION["emailID"] == $post['idUsuario']) {
-                                                                        echo "<div id='dropdownExcluir'><div class='btn-group'><button data-toggle='dropdown' class='btn btn-inverse dropdown-toggle'><span class='caret'></span></button><ul class='dropdown-menu'><li><a href='../Comentario/delete.php?id=" . $coment ['idComentario'] . "' onclick='return confirm('Deseja realmente excluir este Comentario ?');'>Excluir</a></li></ul></div></div>";
-                                                                    }
-                                                                    ?>
-                                                                </div>
+                                                              <div class="alert-link">
+                                                                  <?php echo $coment['nome'] . ' ' . $coment['sobrenome'] ?>
+                                                                  <?php
+                                                                  if ($_SESSION["emailID"] == $coment['idUsuario']) {
+                                                                      echo "<div id='dropdownExcluir'><div class='btn-group'><button data-toggle='dropdown' class='btn btn-inverse dropdown-toggle'><span class='caret'></span></button><ul class='dropdown-menu'><li><a href='../Comentario/delete.php?id=" . $coment ['idComentario'] . "' onclick='return confirm('Deseja realmente excluir este Comentario ?');'>Excluir</a></li></ul></div></div>";
+                                                                  }
+                                                                  ?>
+                                                              </div>
                                                                 <?php echo $coment ['textoComentario']; ?>
+                                                                <h6><?php echo $coment ['dataComentario']; ?></h6>
                                                             </div>
 
                                                         <?php endwhile; ?>
-
                                                 </form>
                                             </div>
                                         </div>
@@ -232,145 +237,145 @@ $stmt->execute();
                                     <br><br>
                                 <?php endwhile; ?>
                             </div>
-                                <!-- /. FIM POSTAGENS -->
-                                <div class="col-md-6" id="boxlateral">
-                                    <div class="panel panel-info">
-                                        <div class="panel-heading">
-                                            <i class="fa fa-bars fa-fw"></i>Menu
-                                        </div>
-
-                                        <div class="panel-body">
-                                            <div class="list-group">
-
-                                                <a href="#" class="list-group-item">
-                                                    <div class="add-post">
-                                                        <i class="fa fa-plus fa-fw"></i> Adicionar Postagem
-                                                    </div>
-                                                    <span class="pull-right text-muted small"><em></em>
-                                                    </span>
-                                                </a>
-                                            </div>
-
-                                            <!-- /.list-group -->
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <!--JANELA MODAL ADD POST-->
-                    <div id="modal">
-                        <div class="modal-box">
-                            <div class="modal-box-conteudo">
+                            <!-- /. FIM POSTAGENS -->
+                            <div class="col-md-6" id="boxlateral">
                                 <div class="panel panel-info">
                                     <div class="panel-heading">
-                                        Postagem
+                                        <i class="fa fa-bars fa-fw"></i>Menu
                                     </div>
+
                                     <div class="panel-body">
-                                        <form name="formularioPost" id="formPost" action="../Post/add-post.php" method="post" onsubmit="return validaPost()">
-                                            <div class="form-group">
-                                                <label>Post:</label>
-                                                <textarea name="conteudoPost" id="pt" class="form-control" rows="3"></textarea>
-                                                <label>Categoria:</label>
-                                            </div>
+                                        <div class="list-group">
 
-                                            <div class="btn-group">
-                                                <select data-toggle="dropdown" id="catg" name=categoriaPost class="btn btn-primary dropdown-toggle"><span class="caret"></span>
-                                                    <ul class="dropdown-menu">
-                                                        <option value="1">Mini Curso</option>
-                                                        <option value="2">Palestra</option>
-                                                        <option value="3">Entretenimento</option>
-                                                        <option value="4">Estágio</option>
-                                                        <option value="5">Anúncio</option>
-                                                        <option value="6">Pesquisa e Extensão</option>
-                                                        <option value="7">Iniciacao Cientifica</option>
-                                                        <option value="8">Monitorias</option>
-                                                        <option value="9">Outros</option>
-                                                    </ul>
-                                                </select>
-                                                <br />
-                                                <br>
-                                                <div class="input-group">
-                                                    <label>Palavra Chave:</label>
-                                                    <input type="text" name="tagPost" id="tag" class="form-control" placeholder="Adicionar Tag" />
+                                            <a href="#" class="list-group-item">
+                                                <div class="add-post">
+                                                    <i class="fa fa-plus fa-fw"></i> Adicionar Postagem
                                                 </div>
-                                            </div>
+                                                <span class="pull-right text-muted small"><em></em>
+                                                </span>
+                                            </a>
+                                        </div>
 
-
-                                            <button type="submit" id="post" class="btn btn-info">Postar</button>
-                                            <br>
-                                            <br>
-                                            <div class="btn-add-post">
-                                                <button type="button" id="fechar" class="btn btn-info">X</button>
-                                            </div>
-                                        </form>
+                                        <!-- /.list-group -->
 
                                     </div>
-                                </div>
 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--JANELA MODAL ADD POST-->
+                <div id="modal">
+                    <div class="modal-box">
+                        <div class="modal-box-conteudo">
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    Postagem
+                                </div>
+                                <div class="panel-body">
+                                    <form name="formularioPost" id="ajax_post" action="" method="post" onsubmit="return validaPost()">
+                                        <div class="form-group">
+                                            <label>Post:</label>
+                                            <textarea name="conteudoPost" id="pt" class="form-control" rows="3"></textarea>
+                                            <label>Categoria:</label>
+                                        </div>
+
+                                        <div class="btn-group">
+                                            <select data-toggle="dropdown" id="catg" name=categoriaPost class="btn btn-primary dropdown-toggle"><span class="caret"></span>
+                                                <ul class="dropdown-menu">
+                                                    <option value="1">Mini Curso</option>
+                                                    <option value="2">Palestra</option>
+                                                    <option value="3">Entretenimento</option>
+                                                    <option value="4">Estágio</option>
+                                                    <option value="5">Anúncio</option>
+                                                    <option value="6">Pesquisa e Extensão</option>
+                                                    <option value="7">Iniciacao Cientifica</option>
+                                                    <option value="8">Monitorias</option>
+                                                    <option value="9">Outros</option>
+                                                </ul>
+                                            </select>
+                                            <br />
+                                            <br>
+                                            <div class="input-group">
+                                                <label>Palavra Chave:</label>
+                                                <input type="text" name="tagPost" id="tag" class="form-control" placeholder="Adicionar Tag" />
+                                            </div>
+                                        </div>
+
+
+                                        <button type="submit" id="post" class="btn btn-info">Postar</button>
+                                        <br>
+                                        <br>
+                                        <div class="btn-add-post">
+                                            <button type="button" id="fechar" class="btn btn-info">X</button>
+                                        </div>
+                                    </form>
+
+                                </div>
                             </div>
 
                         </div>
-                    </div>
-                    <!--FIM JANELA MODAL ADD POST-->
 
-                    <section id="footer-sec">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h4>UNIFAL - GRUPO PET</h4>
-                                    <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
-                                    <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>SOCIAL LINKS</h4>
-                                    <div class="social-links">
-                                        <a href="#"> <i class="fa fa-facebook fa-2x"></i></a>
-                                        <a href="#"> <i class="fa fa-twitter fa-2x"></i></a>
-                                    </div>
+                    </div>
+                </div>
+                <!--FIM JANELA MODAL ADD POST-->
+
+                <section id="footer-sec">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h4>UNIFAL - GRUPO PET</h4>
+                                <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
+                            </div>
+                            <div class="col-md-4">
+                                <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
+                                <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
+                            </div>
+                            <div class="col-md-4">
+                                <h4>SOCIAL LINKS</h4>
+                                <div class="social-links">
+                                    <a href="#"> <i class="fa fa-facebook fa-2x"></i></a>
+                                    <a href="#"> <i class="fa fa-twitter fa-2x"></i></a>
                                 </div>
                             </div>
-                            <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
-                    </section>
-                    <!--FIM DO RODAPÉ-->
+                        </div>
+                        <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
+                </section>
+                <!--FIM DO RODAPÉ-->
 
-                    <script src="../assets/js/jquery-1.11.1.js"></script>
-                    <!-- BOOTSTRAP SCRIPTS -->
-                    <script src="../assets/js/bootstrap.js"></script>
-                    <!-- CUSTOM SCRIPTS -->
-                    <script src="../assets/js/custom.js"></script>
+                <script src="../assets/js/jquery-1.11.1.js"></script>
+                <!-- BOOTSTRAP SCRIPTS -->
+                <script src="../assets/js/bootstrap.js"></script>
+                <!-- CUSTOM SCRIPTS -->
+                <script src="../assets/js/custom.js"></script>
 
-                    <!--forum js-->
-                    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-                    <!-- JQUERY SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
+                <!--forum js-->
+                <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+                <!-- JQUERY SCRIPTS -->
+                <script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
 
-                    <!-- BOOTSTRAP SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/bootstrap.js"></script>
-                    <!-- METISMENU SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
-                    <!-- CUSTOM SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/custom.js"></script>
-                    <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
+                <!-- BOOTSTRAP SCRIPTS -->
+                <script src="../forum-calendario/assets/js/bootstrap.js"></script>
+                <!-- METISMENU SCRIPTS -->
+                <script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
+                <!-- CUSTOM SCRIPTS -->
+                <script src="../forum-calendario/assets/js/custom.js"></script>
+                <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
 
-                    <script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
-                    <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
-                    <script src="../assets/js/jquery-1.10.2.js"></script>
-                    <!-- BOOTSTRAP SCRIPTS -->
-                    <script src="../assets/js/bootstrap.js"></script>
-                    <!-- METISMENU SCRIPTS -->
-                    <script src="../assets/js/jquery.metisMenu.js"></script>
-                    <!-- CUSTOM SCRIPTS -->
-                    <script src="../assets/js/custom.js"></script>
+                <script src="../forum-calendario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+                <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
+                <script src="../assets/js/jquery-1.10.2.js"></script>
+                <!-- BOOTSTRAP SCRIPTS -->
+                <script src="../assets/js/bootstrap.js"></script>
+                <!-- METISMENU SCRIPTS -->
+                <script src="../assets/js/jquery.metisMenu.js"></script>
+                <!-- CUSTOM SCRIPTS -->
+                <script src="../assets/js/custom.js"></script>
 
 
-                    </body>
+                </body>
 
-                    </html>
+                </html>

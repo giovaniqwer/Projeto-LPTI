@@ -37,12 +37,13 @@ class contatos {
     public function setEmail($email) {
         $this->email = $email;
     }
+
     public function getData() {
         return $this->data;
     }
 
     public function setData($data) {
-        $this->data=$data;
+        $this->data = $data;
     }
 
 }

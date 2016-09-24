@@ -1,6 +1,5 @@
 <?php
 session_start();
-echo $_SESSION["emailTipo"];
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
 } else if ($_SESSION["emailTipo"] != 2) {
@@ -8,30 +7,29 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
 }
 require_once '../init.php';
 include_once '../sql.php';
+
 $PDO = db_connect();
 $sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
 $sql = "SELECT
-  Post.idPost,
-  Post.idUsuario,
-  Post.dataPost,
-  Post.conteudoPost,
-  Post.Tag,
-  Post.Categoria_idCategoria,
-  Usuario.nome,
-  Usuario.sobrenome
-FROM Post
+    Post.idPost,
+    Post.idUsuario,
+    Post.dataPost,
+    Post.conteudoPost,
+    Post.Tag,
+    Post.Categoria_idCategoria,
+    Usuario.nome,
+    Usuario.sobrenome
+FROM
+    Post
 LEFT JOIN Usuario ON Usuario.idUsuario = Post.idUsuario
 WHERE Categoria_idCategoria =5
-ORDER BY idPost DESC ";
+ORDER BY
+    idPost DESC ";
 $stmt_count = $PDO->prepare($sql_count);
 $stmt_count->execute();
 $total = $stmt_count->fetchColumn();
 $stmt = $PDO->prepare($sql);
 $stmt->execute();
-if ($_SESSION['emailTipo'] != 2) {
-    unset($_SESSION['emailID'], $_SESSION['emailNome'], $_SESSION['emailLogin'], $_SESSION['emailSenha']);
-    header("Location:../login.php");
-}
 ?>
 <html>
 
@@ -83,7 +81,12 @@ if ($_SESSION['emailTipo'] != 2) {
                         <li>
                             <a href="inicio.php">INÍCIO</a>
                         </li>
-
+                        <li>
+                            <a href="listaUsuario.php">USUÁRIOS</a>
+                        </li>
+                        <li>
+                            <a href="listaContato.php">MENSAGENS</a>
+                        </li>
                         <li>
                             <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
@@ -113,7 +116,7 @@ if ($_SESSION['emailTipo'] != 2) {
                         <div class="sidebar-collapse">
                             <ul class="nav" id="main-menu">
                                 <li>
-                                    <a href="aluno.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                    <a  href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-bell"></i>Eventos<span class="fa arrow"></span></a>
@@ -132,7 +135,7 @@ if ($_SESSION['emailTipo'] != 2) {
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="estagio.php"><i class="fa fa-briefcase "></i>Estágio </a>
+                                    <a  href="estagio.php"><i class="fa fa-briefcase "></i>Estágio </a>
                                 </li>
                                 <li>
                                     <a class="active-menu" href="anuncio.php"><i class="fa fa-bullhorn"></i>Anúncio </a>
@@ -160,7 +163,7 @@ if ($_SESSION['emailTipo'] != 2) {
                         <div id="page-inner">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1 class="page-head-line">Anúncio</h1>
+                                    <h1 class="page-head-line">Principal</h1>
                                     <center>
                                         <div id="divBusca">
                                             <img src="img/search3.png" alt="Buscar..." />
@@ -178,7 +181,6 @@ if ($_SESSION['emailTipo'] != 2) {
                                     <?php while ($post = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
                                         <div class="panel panel-success">
                                             <div class="panel-heading">
-
                                                 <div class="alert-link"><b>
                                                         <?php echo $post['nome'] . ' ' . $post['sobrenome'] ?> &nbsp&nbsp&nbsp&nbsp - &nbsp&nbsp&nbsp&nbsp <?php echo $post ['dataPost']; ?> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                                                     </b>
@@ -188,12 +190,12 @@ if ($_SESSION['emailTipo'] != 2) {
                                                     }
                                                     ?>
                                                 </div>
-
                                             </div>
                                             <div class="panel-body">
                                                 <?php echo $post ['conteudoPost']; ?>
 
                                             </div>
+
 
                                             <div class="panel-footer">
                                                 <form name="formularioComentario" id="formComentario" action="../Comentario/add-coment.php" method="post" >
@@ -204,12 +206,12 @@ if ($_SESSION['emailTipo'] != 2) {
                                                     </div>
                                                     <button type="submit" class="btn btn-info">Enviar Comentario </button>
                                                     <div class="maisComent">
-                                                        <a onclick="return hideandshow();" href="#">Ver comentários</a>
+                                                        <a onclick="return hideandshow('<?php echo 'comments' . $post['idPost'] ?>');" href="#comments<?php echo $coment['idComentario'] ?>">Ver comentários</a>
                                                     </div>
 
                                                     <br>
                                                     <br>
-                                                    <div id="comments">
+                                                    <div id="comments<?php echo $post['idPost'] ?>" class="teste">
                                                         <?php
                                                         $stmt_comentario = sqlComentario($post ['idPost']);
                                                         while ($coment = $stmt_comentario->fetch(PDO::FETCH_ASSOC)):
@@ -217,18 +219,18 @@ if ($_SESSION['emailTipo'] != 2) {
 
                                                             <div class="alert alert-info">
                                                                 <div class="alert-link">
-                                                                    <?php echo $coment['nome'] . ' ' . $post['sobrenome'] ?>
+                                                                    <?php echo $coment['nome'] . ' ' . $coment['sobrenome'] ?>
                                                                     <?php
-                                                                    if ($_SESSION["emailID"] == $post['idUsuario']) {
+                                                                    if ($_SESSION["emailID"] == $coment['idUsuario']) {
                                                                         echo "<div id='dropdownExcluir'><div class='btn-group'><button data-toggle='dropdown' class='btn btn-inverse dropdown-toggle'><span class='caret'></span></button><ul class='dropdown-menu'><li><a href='../Comentario/delete.php?id=" . $coment ['idComentario'] . "' onclick='return confirm('Deseja realmente excluir este Comentario ?');'>Excluir</a></li></ul></div></div>";
                                                                     }
                                                                     ?>
                                                                 </div>
                                                                 <?php echo $coment ['textoComentario']; ?>
+                                                                <h6><?php echo $coment ['dataComentario']; ?></h6>
                                                             </div>
 
                                                         <?php endwhile; ?>
-
                                                 </form>
                                             </div>
                                         </div>
@@ -275,7 +277,7 @@ if ($_SESSION['emailTipo'] != 2) {
                                     Postagem
                                 </div>
                                 <div class="panel-body">
-                                    <form name="formularioPost" id="formPost" action="../Post/add-post.php" method="post" onsubmit="return validaPost()">
+                                    <form name="formularioPost" id="ajax_post" action="" method="post" onsubmit="return validaPost()">
                                         <div class="form-group">
                                             <label>Post:</label>
                                             <textarea name="conteudoPost" id="pt" class="form-control" rows="3"></textarea>

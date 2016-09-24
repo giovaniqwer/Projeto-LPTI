@@ -8,7 +8,7 @@ $email = isset($_POST['txtEmail']) ? $_POST['txtEmail'] : null;
 $comentario = isset($_POST['txtComentario']) ? $_POST['txtComentario'] : null;
 date_default_timezone_set('America/Sao_Paulo');
 $data = date('d/m/Y H:i');
-$contato = new contatos($nome, $email, $comentario,$data);
+$contato = new contatos($nome, $email, $comentario, $data);
 
 // insere no BD
 $PDO = db_connect();

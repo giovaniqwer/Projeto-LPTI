@@ -28,8 +28,7 @@ $stmt = $PDO->prepare($sql);
 
 
 if ($stmt->execute()) {
-	echo "Postado com sucesso!";
- 
+    echo "Postado com sucesso!";
 } else {
 
     echo "Erro ao cadastrar postagem!!";

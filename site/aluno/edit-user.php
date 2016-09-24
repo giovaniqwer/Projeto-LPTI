@@ -4,25 +4,24 @@ include_once '../cadastro-class.php';
 session_start();
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
-}else if($_SESSION["emailTipo"]!=2){
-	header("Location:../negado.html");
+} else if ($_SESSION["emailTipo"] != 2) {
+    header("Location:../negado.html");
 }
 
-	$id = $_SESSION["emailID"];
-	// busca os dados do usuário a ser editado
-	$PDO = db_connect();
-	$sql_count = "SELECT COUNT(*) AS total FROM Usuario ORDER BY nome ASC";
-	$sql = "SELECT nome, sobrenome, senha, email FROM Usuario WHERE idUsuario = :id";
-	$stmt = $PDO->prepare($sql);
-	$stmt->bindParam(':id', $id, PDO::PARAM_INT);
-	$stmt->execute();
-	$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-	
+$id = $_SESSION["emailID"];
+// busca os dados do usuário a ser editado
+$PDO = db_connect();
+$sql_count = "SELECT COUNT(*) AS total FROM Usuario ORDER BY nome ASC";
+$sql = "SELECT nome, sobrenome, senha, email FROM Usuario WHERE idUsuario = :id";
+$stmt = $PDO->prepare($sql);
+$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+$stmt->execute();
+$usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 <html>
 
     <head>
-       <meta charset="utf-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="">
         <meta name="author" content="alunos" >
@@ -45,14 +44,14 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
         <link href="../assets/css/css.css" rel="stylesheet">
         <link href="css/estilo.css" rel="stylesheet">
         <!--SCRIPT VALIDACAO-->
-       <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
+        <script type="text/javascript" src="../assets/js/validacaodadoscadastro.js"></script>
         <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
         <script type="text/javascript" src="../assets/js/validalogin.js"></script>
 
     </head>
 
     <body>
-           <!--TOPO DO SITE-->
+        <!--TOPO DO SITE-->
         <div class="navbar navbar-inverse navbar-fixed-top ">
             <div class="container">
                 <div class="navbar-header">
@@ -68,7 +67,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                         <li>
                             <a href="inicio.php">INÍCIO</a>
                         </li>
-						  <li>
+                        <li>
                             <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
                             </a>
@@ -148,101 +147,101 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                                 </div>
                             </div>
                             <!--EDIT USER -->
-                   <!--EDIT USER -->
-                  <div class="row" id="update">
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                 <div class="panel panel-info">
-                          <div class="panel-heading">
-                             Alterar Perfil
-                          </div>
-                          <div class="panel-body">
-                              <form role="form" method="post" name="formAltera" action="edit.php" enctype="multipart/form-data">
-                                          <div class="form-group">
-                                              <label>Nome:</label>
-                                              <input name="editNome" value="<?php echo $usuario['nome']?>" class="form-control" type="text" required="">
+                            <!--EDIT USER -->
+                            <div class="row" id="update">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            Alterar Perfil
+                                        </div>
+                                        <div class="panel-body">
+                                            <form role="form" method="post" name="formAltera" action="edit.php" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <label>Nome:</label>
+                                                    <input name="editNome" value="<?php echo $usuario['nome'] ?>" class="form-control" type="text" required="">
 
-                                          </div>
-									<div class="form-group">
-                                              <label>Sobrenome:</label>
-                                              <input name="editSobrenome" value="<?php echo $usuario['sobrenome']?>" class="form-control" type="text" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Sobrenome:</label>
+                                                    <input name="editSobrenome" value="<?php echo $usuario['sobrenome'] ?>" class="form-control" type="text" required="">
 
-                                          </div>
-									<div class="form-group">
-                                              <label>Email:</label>
-                                              <input name="editEmail" value="<?php echo $usuario['email']?>" class="form-control" type="text" required="">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Email:</label>
+                                                    <input name="editEmail" value="<?php echo $usuario['email'] ?>" class="form-control" type="text" required="">
 
-                                          </div>
-                                
-                                              <div class="form-group">
-                                              <label>Nova Senha</label>
-                                              <input type="password" name="editSenha" value="<?php echo $usuario['senha']?>" class="form-control" required=""></input>
-                                          </div>
-										<input type="hidden" name="id" value="<?php echo $id ?>">
+                                                </div>
 
-                                          <button type="submit" class="btn-lg btn-info" href="edit-user.php" name="btnEnviar" value="Cadastrar">Salvar </button>
+                                                <div class="form-group">
+                                                    <label>Nova Senha</label>
+                                                    <input type="password" name="editSenha" value="<?php echo $usuario['senha'] ?>" class="form-control" required=""></input>
+                                                </div>
+                                                <input type="hidden" name="id" value="<?php echo $id ?>">
 
-                                      </form>
-                              </div>
-                          </div>
-                              </div>
+                                                <button type="submit" class="btn-lg btn-info" href="edit-user.php" name="btnEnviar" value="Cadastrar">Salvar </button>
 
-
-                        </div>
-                    </div>
-                    <section id="footer-sec">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h4>UNIFAL - GRUPO PET</h4>
-                                    <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
-                                </div>
-                                <div class="col-md-4">
-                                 <?php echo $_SESSION["emailNome"] ?>
-                                    <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
-                                    <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>SOCIAL LINKS</h4>
-                                    <div class="social-links">
-                                        <a href="#"> <i class="fa fa-facebook fa-2x"></i></a>
-                                        <a href="#"> <i class="fa fa-twitter fa-2x"></i></a>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
+
+
                             </div>
-                            <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
-                    </section>
-                    <!--FIM DO RODAPÉ-->
+                        </div>
+                        <section id="footer-sec">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4>UNIFAL - GRUPO PET</h4>
+                                        <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <?php echo $_SESSION["emailNome"] ?>
+                                        <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
+                                        <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h4>SOCIAL LINKS</h4>
+                                        <div class="social-links">
+                                            <a href="#"> <i class="fa fa-facebook fa-2x"></i></a>
+                                            <a href="#"> <i class="fa fa-twitter fa-2x"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
+                        </section>
+                        <!--FIM DO RODAPÉ-->
 
-                    <script src="../assets/js/jquery-1.11.1.js"></script>
-                    <!-- BOOTSTRAP SCRIPTS -->
-                    <script src="../assets/js/bootstrap.js"></script>
-                    <!-- CUSTOM SCRIPTS -->
-                    <script src="../assets/js/custom.js"></script>
+                        <script src="../assets/js/jquery-1.11.1.js"></script>
+                        <!-- BOOTSTRAP SCRIPTS -->
+                        <script src="../assets/js/bootstrap.js"></script>
+                        <!-- CUSTOM SCRIPTS -->
+                        <script src="../assets/js/custom.js"></script>
 
-                    <!--forum js-->
-                    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-                    <!-- JQUERY SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
+                        <!--forum js-->
+                        <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+                        <!-- JQUERY SCRIPTS -->
+                        <script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
 
-                    <!-- BOOTSTRAP SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/bootstrap.js"></script>
-                    <!-- METISMENU SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
-                    <!-- CUSTOM SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/custom.js"></script>
-                    <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
+                        <!-- BOOTSTRAP SCRIPTS -->
+                        <script src="../forum-calendario/assets/js/bootstrap.js"></script>
+                        <!-- METISMENU SCRIPTS -->
+                        <script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
+                        <!-- CUSTOM SCRIPTS -->
+                        <script src="../forum-calendario/assets/js/custom.js"></script>
+                        <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
 
-                    <script src="../forum-calesndario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
-                    <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
-                    <script src="../assets/js/jquery-1.10.2.js"></script>
-                    <!-- BOOTSTRAP SCRIPTS -->
-                    <script src="../assets/js/bootstrap.js"></script>
-                    <!-- METISMENU SCRIPTS -->
-                    <script src="../assets/js/jquery.metisMenu.js"></script>
-                    <!-- CUSTOM SCRIPTS -->
-                    <script src="../assets/js/custom.js"></script>
+                        <script src="../forum-calesndario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+                        <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
+                        <script src="../assets/js/jquery-1.10.2.js"></script>
+                        <!-- BOOTSTRAP SCRIPTS -->
+                        <script src="../assets/js/bootstrap.js"></script>
+                        <!-- METISMENU SCRIPTS -->
+                        <script src="../assets/js/jquery.metisMenu.js"></script>
+                        <!-- CUSTOM SCRIPTS -->
+                        <script src="../assets/js/custom.js"></script>
 
 
-                    </body>
+                        </body>
 
-                    </html>
+                        </html>
