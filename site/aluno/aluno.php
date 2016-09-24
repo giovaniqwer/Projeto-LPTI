@@ -64,7 +64,7 @@ $stmt->execute();
     </head>
 
     <body>
-        <!--TOPO DO SITE-->
+               <!--TOPO DO SITE-->
         <div class="navbar navbar-inverse navbar-fixed-top ">
             <div class="container">
                 <div class="navbar-header">
@@ -80,12 +80,7 @@ $stmt->execute();
                         <li>
                             <a href="inicio.php">INÍCIO</a>
                         </li>
-                        <li>
-                            <a href="listaUsuario.php">USUÁRIOS</a>
-                        </li>
-                        <li>
-                            <a href="listaContato.php">MENSAGENS</a>
-                        </li>
+
                         <li>
                             <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
