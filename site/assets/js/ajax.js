@@ -35,7 +35,18 @@ jQuery(document).ready(function () {
         return false;
     });
 });
+$(document).ready(function (e) {
+    $(".ementa").click(function () {
+        $("#modal").fadeIn(50);
+    });
+    $("#fechar, #modal").click(function (e) {
+        if (e.target !== this) {
+            return;
+        }
+        $("#modal").fadeOut(50);
+    });
 
+});
 /*jQuery(document).ready(function(){
  jQuery('#ajax_coment').submit(function(){
  var dados = jQuery( this ).serialize();

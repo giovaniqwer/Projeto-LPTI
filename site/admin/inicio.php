@@ -171,7 +171,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                                                 <div class="col-md-3 ">
                                                     <div class="alert alert-danger text-center">
                                                         <i class="fa fa-5x fa-graduation-cap"></i>
-                                                        <a href="disciplinas.php"><h3>Disciplinas</h3></a>
+                                                        <a href="materias.php"><h3>Disciplinas</h3></a>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3 ">
@@ -196,7 +196,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                                     <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
                                 </div>
                                 <div class="col-md-4">
-                                    <?php echo $_SESSION["emailNome"] ?>
+
                                     <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
                                     <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
                                 </div>

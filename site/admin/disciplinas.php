@@ -1,4 +1,33 @@
-
+<?php
+session_start();
+if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
+    header("Location:../login.php");
+} else if ($_SESSION["emailTipo"] != 1) {
+    header("Location:../negado.html");
+}
+require_once '../init.php';
+include_once '../sql.php';
+$PDO = db_connect();
+$sql_count = "SELECT COUNT(*) AS total FROM Post ORDER BY idPost ASC";
+$sql = "SELECT
+    Post.idPost,
+    Post.idUsuario,
+    Post.dataPost,
+    Post.conteudoPost,
+    Post.Tag,
+    Post.Categoria_idCategoria,
+    Usuario.nome,
+    Usuario.sobrenome
+FROM Post
+LEFT JOIN Usuario ON Usuario.idUsuario = Post.idUsuario
+WHERE Categoria_idCategoria =5
+ORDER BY idPost DESC ";
+$stmt_count = $PDO->prepare($sql_count);
+$stmt_count->execute();
+$total = $stmt_count->fetchColumn();
+$stmt = $PDO->prepare($sql);
+$stmt->execute();
+?>
 <html>
     <head>
         <meta charset="utf-8">
@@ -29,80 +58,7 @@
         <script type="text/javascript" src="assets/js/validalogin.js"></script>
         <!-- SCRIPTS PARA OS DIAGRAMAS (GOOGLE CHARTS)-->
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-		  <script type="text/javascript">
-
-		google.charts.load('current', {packages:['wordtree']});
-      /*google.charts.setOnLoadCallback(drawSimpleNodeChart);*/
-      function drawSimpleNodeChart() {
-        var nodeListData = new google.visualization.arrayToDataTable([
-          ['id', 'childLabel', 'parent', 'Créditos', 'Curso', { role: 'style' }],
-          [0, 'Grade básica', -96, 1, 'Comum', 'black'],
-          [1, '1º SEMESTRE', 0, 1, 'Comum', 'grey'],
-          [2, '2º SEMESTRE', 0, 1, 'Comum', 'grey'],
-          [3, '3º SEMESTRE', 0, 1, 'Comum', 'grey'],
-          [4, '4º SEMESTRE', 0, 1, 'Comum', 'black'],
-          [5, '5º SEMESTRE', 0, 1, 'Comum', 'black'],
-          [6, '6º SEMESTRE', 0, 1, 'Comum', 'black'],
-			 [7, 'Introdução à economia', 1, 4, 'Comum', 'black'],
-			 [8, 'Introdução à atuária', 1, 4, 'Comum', 'black'],
-			 [9, 'Introdução à administração', 1, 4, 'Comum', 'black'],
-			 [10,'Matemática I', 1, 6, 'Comum', 'black'],
-			 [11,'Filosofia da ciência', 1, 2, 'Comum', 'black'],
-			 [12,'Ciências sociais', 2, 4, 'Comum', 'black'],
-			 [13,'História econômica geral', 2, 4, 'Comum', 'black'],
-			 [14,'Matemática II', 2, 6, 'Comum', 'black'],
-			 [15,'Comunicação', 2, 4, 'Comum', 'black'],
-			 [16,'Metodologia de pesquisa', 2, 2, 'Comum', 'black'],
-			 [17,'Ciência política', 3, 4, 'Comum', 'black'],
-			 [18,'História do Pensamento Econômico', 3, 4, 'Comum', 'black'],
-			 [19,'Estatística', 3, 6, 'Comum', 'black'],
-			 [20,'Teoria das Organizações', 3, 4, 'Comum', 'black'],
-			 [21,'Fundamentos do Estado', 3, 2, 'Comum', 'black'],
-			 [22,'Matemática Financeira', 4, 4, 'Comum', 'black'],
-			 [23,'Microeconomia I', 4, 4, 'Comum', 'black'],
-			 [24,'Fundamentos da Administração Pública', 4, 4, 'Adm. Púb.', 'blue'],
-			 [25,'Demografia', 4, 4, 'Atuárias', 'green'],
-			 [26,'Contabilidade Social', 4, 4, 'Economia', 'red'],
-			 [27,'Opcionais', 4, 4,'Todos' , 'grey'],
-			     [28, 'Tópicos Especiais em Adm. Púb.', 27, 4, 'Adm. Púb.', 'blue'],
-			     [29, 'Tópicos Especiais em C. Atuárias', 27, 4, 'Atuárias', 'green'],
-			     [30, 'Tópicos Especiais em Economia', 27, 4, 'Economia', 'red'],
-			 [31,'Introdução à Contabilidade', 5, 4, 'Comum', 'black'],
-			 [32,'Macroeconomia I', 5, 4, 'Comum', 'black'],
-			 [33,'Direito Constitucional', 5, 2, 'Adm. Púb', 'blue'],
-			 [34,'Psicologia', 5, 2, 'Adm. Púb', 'blue'],
-			 [35,'Cálculo de Probabilidade', 5, 4, 'Atuárias', 'green'],
-			 [36,'Microeconomia II', 5, 4, 'Economia', 'red'],
-			 [37,'Opcionais', 5, 4,'Todos', 'grey'],
-			     [38,'Tópicos Especiais em Adm. Púb. II', 37, 4, 'Adm. Púb.', 'blue'],
-			     [39,'Tópicos Especiais em C. Atuárias II', 37, 4, 'Atuárias', 'green'],
-			     [40,'Tópicos Especiais em Economia II', 37, 4, 'Economia', 'red'],
-			 [41,'Gestão de Custos', 6, 4, 'Comum', 'black'],
-			 [42,'Instituições de Direito Privado', 6, 2, 'Comum', 'black'],
-			 [43,'Análise de Demonstrações Contábeis', 6, 2, 'Comum', 'black'],
-			 [44,'Sistemas de Informação', 6, 4, 'Adm. Púb.', 'blue'],
-			 [45,'Matemática Atuarial I', 6, 4, 'Atuárias', 'green'],
-			 [46,'Macroeconomia II', 6, 4, 'Economia', 'red'],
-			 [47,'Opcionais', 6, 4,'Todos', 'grey'],
-			     [48,'Tópicos Especiais em Adm. Púb. III', 47, 4, 'Adm. Púb.', 'blue'],
-			     [49,'Tópicos Especiais em C. Atuárias III', 47, 4, 'Atuárias', 'green'],
-			     [50,'Tópicos Especiais em Economia III', 47, 4, 'Economia', 'red']
-			 
-          ]);
-
-        var options = {
-          colors: ['black', 'black', 'black'],
-          wordtree: {
-            format: 'explicit',
-            type: 'suffix'
-          }
-        };
-
-        var wordtree = new google.visualization.WordTree(document.getElementById('wordtree_explicit'));
-        wordtree.draw(nodeListData, options);
-      }
-       
-   </script>
+		 
     </head>
 
     <body>
@@ -211,55 +167,53 @@
                                 </div>
                             </div>
                             <br>
-                            <!-- /. ROW  -->
-                            <div class="row">
-                                <div class="col-md-4 col-sm-4" id="larg">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <div class="alert-link">
-                                                <p>De qual curso estamos falando?<button onclick="drawSimpleNodeChart()" class="btn btn-secondary" style="float: right;"><strong>Todos</strong></button></p>
-                                            </div>
+                           
+								 <!-- /. ROW  -->
+               <div class="row">
+                  <div class="col-md-12">                     
+         <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Horizontal Wizard
+                        </div>
+                        <div class="panel-body">
+                             <div id="wizard">
+                <h2>First Step</h2>
+                <section>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut nulla nunc. Maecenas arcu sem, hendrerit a tempor quis, 
+                        sagittis accumsan tellus. In hac habitasse platea dictumst. Donec a semper dui. Nunc eget quam libero. Nam at felis metus. 
+                        Nam tellus dolor, tristique ac tempus nec, iaculis quis nisi.</p>
+                </section>
 
-                                        </div>
+                <h2>Second Step</h2>
+                <section>
+                    <p>Donec mi sapien, hendrerit nec egestas a, rutrum vitae dolor. Nullam venenatis diam ac ligula elementum pellentesque. 
+                        In lobortis sollicitudin felis non eleifend. Morbi tristique tellus est, sed tempor elit. Morbi varius, nulla quis condimentum 
+                        dictum, nisi elit condimentum magna, nec venenatis urna quam in nisi. Integer hendrerit sapien a diam adipiscing consectetur. 
+                        In euismod augue ullamcorper leo dignissim quis elementum arcu porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                        Vestibulum leo velit, blandit ac tempor nec, ultrices id diam. Donec metus lacus, rhoncus sagittis iaculis nec, malesuada a diam. 
+                        Donec non pulvinar urna. Aliquam id velit lacus.</p>
+                </section>
 
+                <h2>Third Step</h2>
+                <section>
+                    <p>Morbi ornare tellus at elit ultrices id dignissim lorem elementum. Sed eget nisl at justo condimentum dapibus. Fusce eros justo, 
+                        pellentesque non euismod ac, rutrum sed quam. Ut non mi tortor. Vestibulum eleifend varius ullamcorper. Aliquam erat volutpat. 
+                        Donec diam massa, porta vel dictum sit amet, iaculis ac massa. Sed elementum dui commodo lectus sollicitudin in auctor mauris 
+                        venenatis.</p>
+                </section>
 
-                                        <!-- Descrição das disciplinas -->
-                                        <div class="panel-body">
-                                            <div class="row">
-                                                 <!-- DIAGRAMA -->
-                                       			 <div id="wordtree_explicit" style="width: 100%; height: auto;"></div>
-                                       			 
-                                                <div class="col-md-4 ">
-                                                    <div class="alert alert-info text-center">
-                                                        <h4> Administração Pública </h4>
-                                                        <hr/>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. Lorem ipsum dolor sit amet, consectetur adipiscing elit </p>
-                                                        <hr/>
-
-                                                        <button onclick="drawSimpleNodeChart()" class="btn btn-info">Ver mais...</button>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 ">
-                                                    <div class="alert alert-success text-center">
-                                                        <h4> Ciências Atuárias </h4>
-                                                        <hr/>
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.</p>
-                                                        <hr/>
-                                                        <button onclick="drawSimpleNodeChart()" class="btn btn-success">Ver mais...</button>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 ">
-                                                    <div class="alert alert-danger text-center">
-                                                        <h4> Economia </h4>
-                                                        <hr/>
-                                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn. Lorem ipsum dolor sit amet, consectetur adipiscing elit gthn.</p>
-                                                        <hr/>
-                                                        <button onclick="drawSimpleNodeChart()" class="btn btn-danger">Ver mais...</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
+                <h2>Forth Step</h2>
+                <section>
+                    <p>Quisque at sem turpis, id sagittis diam. Suspendisse malesuada eros posuere mauris vehicula vulputate. Aliquam sed sem tortor. 
+                        Quisque sed felis ut mauris feugiat iaculis nec ac lectus. Sed consequat vestibulum purus, imperdiet varius est pellentesque vitae. 
+                        Suspendisse consequat cursus eros, vitae tempus enim euismod non. Nullam ut commodo tortor.</p>
+                </section>
+            </div>
+                             
+                        </div>
+                    </div>
+                 </div>
+                </div>
 
                                     </div>
                                 </div>
@@ -271,13 +225,7 @@
             </div>
         </div>
 
-
-
-
-
-
-
-
+		
 
         <section id="footer-sec">
             <div class="container">
