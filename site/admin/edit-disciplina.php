@@ -1,10 +1,36 @@
 <?php
+include_once '../init.php';
+include_once '../cadastro-class.php';
 session_start();
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
 } else if ($_SESSION["emailTipo"] != 1) {
     header("Location:../negado.html");
 }
+
+//$id = $_SESSION["emailID"];
+// busca os dados do usuário a ser editado
+$PDO = db_connect();
+$sql_count = "SELECT COUNT(*) AS total FROM Disciplina ORDER BY idDisciplina ASC";
+$sql = "SELECT
+		Disciplina.idDisciplina,
+		Disciplina.ementa,
+		Disciplina.nome,
+		Disciplina.creditos,
+		Disciplina.Curso_idCurso,
+		Disciplina.periodo,
+		Disciplina.tipo
+	FROM
+		Disciplina
+ORDER BY periodo ASC ";
+$stmt_count = $PDO->prepare($sql_count);
+$stmt_count->execute();
+$total = $stmt_count->fetchColumn();
+$stmt = $PDO->prepare($sql);
+$stmt->execute();
+$materia = $stmt->fetch(PDO::FETCH_ASSOC);
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+
 ?>
 <html>
 
@@ -36,6 +62,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
         <script type="text/javascript" src="../assets/js/validacaodocontato.js"></script>
         <script type="text/javascript" src="../assets/js/validalogin.js"></script>
 
+
     </head>
 
     <body>
@@ -65,6 +92,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                         <li>
                             <a href="edit-user.php">
                                 <?php echo $_SESSION["emailNome"] ?>
+                                
                             </a>
                         </li>
 
@@ -140,108 +168,108 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                         <div id="page-inner">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1 class="page-head-line">Bem Vindo!</h1>
+                                    <h1 class="page-head-line">Usuario</h1>
                                 </div>
                             </div>
-                            <!-- /. ROW -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading"></div>
+                            <!--EDIT USER -->
+                            <div class="row" id="update">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            Alterar Disciplina
+                                        </div>
                                         <div class="panel-body">
-                                            <div class="row">
-                                                <div class="col-md-3 ">
-                                                    <div class="alert alert-info text-center">
-                                                        <i class="fa fa-5x fa-users"></i>
-                                                        <a href="listaUsuario.php"><h3>Usuários</h3></a>
-                                                    </div>
+                                            <form role="form" method="post" name="formAltera" action="../Disciplina/edit-disciplina.php" enctype="multipart/form-data">
+                                                <div class="form-group">
+                                                    <label>Nome Disciplina:</label>
+                                                    <input name="nome" value="<?php echo $materia['nome'] ?>" class="form-control" type="text" required="">
+
                                                 </div>
-                                                <div class="col-md-3 ">
-                                                    <div class="alert alert-success text-center">
-                                                        <i class="fa fa-5x fa-comments"></i>
-                                                        <a href="admin.php"><h3>Fórum</h3></a>
-                                                    </div>
+                                                <div class="form-group">
+                                                    <label>Creditos:</label>
+                                                    <input name="creditos" value="<?php echo $materia['creditos'] ?>" class="form-control" type="text" required="">
+
                                                 </div>
-                                                <div class="col-md-3 ">
-                                                    <div class="alert alert-warning text-center">
-                                                        <i class="fa fa-5x fa-envelope"></i>
-                                                        <a href="listaContato.php"><h3>Mensagens</h3></a>
-                                                    </div>
+                                                <div class="form-group">
+                                                    <label>Periodo:</label>
+                                                    <input name="periodo" value="<?php echo $materia['periodo'] ?>" class="form-control" type="text" required="">
+
                                                 </div>
-                                                <div class="col-md-3 ">
-                                                    <div class="alert alert-danger text-center">
-                                                        <i class="fa fa-5x fa-graduation-cap"></i>
-                                                        <a href="disciplinas.php"><h3>Disciplinas</h3></a>
-                                                    </div>
+
+                                                <div class="form-group">
+                                                    <label>Tipo</label>
+                                                    <input type="text" name="tipo" value="<?php echo $materia['tipo'] ?>" class="form-control" required=""></input>
                                                 </div>
-                                                <div class="col-md-3 ">
-                                                    <div class="alert text-center" style="background-color:#EED2EE">
-                                                        <i class="fa fa-5x fa-calendar" style="color:#BA55D3"></i>
-                                                        <a href="#"><h3>Calendário</h3></a>
-                                                    </div>
+                                                 <div class="form-group">
+                                                    <label>Ementa</label>
+                                                    <input type="text" rows="10" name="ementa" value="<?php echo $materia['ementa'] ?>" class="form-control" required=""></input>
                                                 </div>
-                                            </div>
+                                                <input type="hidden" name="id" value="<?php echo $id ?>">
+
+                                                <button type="submit" class="btn-lg btn-info" href="edit-disciplina.php" name="btnEnviar" value="Cadastrar">Salvar </button>
+
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
+
+
                             </div>
-
                         </div>
-                    </div>
-                    <section id="footer-sec">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <h4>UNIFAL - GRUPO PET</h4>
-                                    <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
-                                </div>
-                                <div class="col-md-4">
-
-                                    <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
-                                    <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
-                                </div>
-                                <div class="col-md-4">
-                                    <h4>SOCIAL LINKS</h4>
-                                    <div class="social-links">
-                                        <a href="#"> <i class="fa fa-facebook fa-2x"></i></a>
-                                        <a href="#"> <i class="fa fa-twitter fa-2x"></i></a>
+                        <section id="footer-sec">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4>UNIFAL - GRUPO PET</h4>
+                                        <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <?php echo $_SESSION["emailNome"] ?>
+                                        <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
+                                        <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h4>SOCIAL LINKS</h4>
+                                        <div class="social-links">
+                                            <a href="#"> <i class="fa fa-facebook fa-2x"></i></a>
+                                            <a href="#"> <i class="fa fa-twitter fa-2x"></i></a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
-                    </section>
-                    <!--FIM DO RODAPÉ-->
+                                <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
+                        </section>
+                        <!--FIM DO RODAPÉ-->
 
-                    <script src="../assets/js/jquery-1.11.1.js"></script>
-                    <!-- BOOTSTRAP SCRIPTS -->
-                    <script src="../assets/js/bootstrap.js"></script>
-                    <!-- CUSTOM SCRIPTS -->
-                    <script src="../assets/js/custom.js"></script>
+                        <script src="../assets/js/jquery-1.11.1.js"></script>
+                        <!-- BOOTSTRAP SCRIPTS -->
+                        <script src="../assets/js/bootstrap.js"></script>
+                        <!-- CUSTOM SCRIPTS -->
+                        <script src="../assets/js/custom.js"></script>
 
-                    <!--forum js-->
-                    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-                    <!-- JQUERY SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
+                        <!--forum js-->
+                        <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+                        <!-- JQUERY SCRIPTS -->
+                        <script src="../forum-calendario/assets/js/wizard/jquery.steps.js"></script>
 
-                    <!-- BOOTSTRAP SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/bootstrap.js"></script>
-                    <!-- METISMENU SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
-                    <!-- CUSTOM SCRIPTS -->
-                    <script src="../forum-calendario/assets/js/custom.js"></script>
-                    <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
+                        <!-- BOOTSTRAP SCRIPTS -->
+                        <script src="../forum-calendario/assets/js/bootstrap.js"></script>
+                        <!-- METISMENU SCRIPTS -->
+                        <script src="../forum-calendario/assets/js/jquery.metisMenu.js"></script>
+                        <!-- CUSTOM SCRIPTS -->
+                        <script src="../forum-calendario/assets/js/custom.js"></script>
+                        <script src="../forum-calendario/assets/js/jquery.mixitup.min.js"></script>
 
-                    <script src="../forum-calesndario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
-                    <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
-                    <script src="../assets/js/jquery-1.10.2.js"></script>
-                    <!-- BOOTSTRAP SCRIPTS -->
-                    <script src="../assets/js/bootstrap.js"></script>
-                    <!-- METISMENU SCRIPTS -->
-                    <script src="../assets/js/jquery.metisMenu.js"></script>
-                    <!-- CUSTOM SCRIPTS -->
-                    <script src="../assets/js/custom.js"></script>
+                        <script src="../forum-calesndario/assets/js/wizard/modernizr-2.6.2.min.js"></script>
+                        <script src="../forum-calendario/assets/js/wizard/jquery.cookie-1.3.1js"></script>
+                        <script src="../assets/js/jquery-1.10.2.js"></script>
+                        <!-- BOOTSTRAP SCRIPTS -->
+                        <script src="../assets/js/bootstrap.js"></script>
+                        <!-- METISMENU SCRIPTS -->
+                        <script src="../assets/js/jquery.metisMenu.js"></script>
+                        <!-- CUSTOM SCRIPTS -->
+                        <script src="../assets/js/custom.js"></script>
 
 
-                    </body>
+                        </body>
 
-                    </html>
+                        </html>

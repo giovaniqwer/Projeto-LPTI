@@ -7,13 +7,15 @@ class Disciplina {
     private $creditos;
     private $curso;
     private $periodo;
+    private $tipo;
 
-    public function __construct($ementa, $nome, $creditos, $curso, $periodo) {
+    public function __construct($ementa, $nome, $creditos, $curso, $periodo, $tipo) {
         $this->setEmenta($ementa);
         $this->setNome($nome);
         $this->setCreditos($creditos);
         $this->setCurso($curso);
         $this->setPeriodo($periodo);
+        $this->setTipo($tipo);
     }
 
     public function getEmenta() {
@@ -55,7 +57,14 @@ class Disciplina {
     public function setPeriodo($periodo) {
         $this->periodo = $periodo;
     }
+    public function getTipo() {
+        return $this->tipo;
+    }
 
+    public function setTipo($tipo) {
+        $this->tipo = $tipo;
+
+}
 }
 
 ?>

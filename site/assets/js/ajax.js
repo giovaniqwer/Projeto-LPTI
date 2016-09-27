@@ -35,22 +35,38 @@ jQuery(document).ready(function () {
         return false;
     });
 });
-$(document).ready(function (e) {
-    $(".ementa").click(function () {
-        $("#modal").fadeIn(50);
+jQuery(document).ready(function () {
+    jQuery('#ajax_materia').submit(function () {
+        var dados = jQuery(this).serialize();
+
+        jQuery.ajax({
+            type: "POST",
+            url: "../Disciplina/add-disciplina.php",
+            data: dados,
+            success: function (data)
+            {
+                alert(data);
+            }
+        });
+        return false;
     });
-    $("#fechar, #modal").click(function (e) {
+});
+$(document).ready(function (e) {
+    $("#add-materia").click(function () {
+        $("#modal-materia").fadeIn(50);
+    });
+    $("#fechar, #modal-materia").click(function (e) {
         if (e.target !== this) {
             return;
         }
-        $("#modal").fadeOut(50);
+        $("#modal-materia").fadeOut(50);
     });
 
 });
 /*jQuery(document).ready(function(){
  jQuery('#ajax_coment').submit(function(){
  var dados = jQuery( this ).serialize();
- 
+
  jQuery.ajax({
  type: "POST",
  url: "../Comentario/add-coment.php",
@@ -60,9 +76,8 @@ $(document).ready(function (e) {
  alert( data );
  }
  });
- 
- 
+
+
  return false;
  });
  });*/
-
