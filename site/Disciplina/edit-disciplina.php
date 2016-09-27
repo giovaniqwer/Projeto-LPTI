@@ -15,7 +15,7 @@ $curso=1;
 $materia = new Disciplina($ementa, $nome, $creditos, $curso, $periodo,$tipo);
 //Atualiza do BD
 $PDO = db_connect();
-$sql = "UPDATE Disciplina SET ementa = :ementa, nome = :nome, creditos = :creditos,Curso_idCurso=:curso, periodo = :periodo, tipo = :tipo WHERE idDisciplina = WHERE idDisciplina=:id";
+$sql = "UPDATE Disciplina SET ementa = :ementa, nome = :nome, creditos = :creditos,Curso_idCurso=:curso, periodo = :periodo, tipo = :tipo WHERE idDisciplina=:id";
 
 $stmt = $PDO->prepare($sql);
 @$stmt->bindParam(':ementa', $materia->getEmenta());

@@ -2,7 +2,7 @@
 session_start();
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
-} else if ($_SESSION["emailTipo"] != 1) {
+} else if ($_SESSION["emailTipo"] != 2) {
     header("Location:../negado.html");
 }
 require_once '../init.php';
@@ -61,50 +61,41 @@ include_once '../Disciplina/p6.php';
 </head>
 <body>
     <!--TOPO DO SITE-->
-    <div class="navbar navbar-inverse navbar-fixed-top ">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#"><img src="../assets/img/logo.png"></a>
-            </div>
-            <div class="navbar-collapse collapse move-me">
-                <ul class="nav navbar-nav navbar-right set-links">
-                    <li>
-                        <a href="inicio.php">INÍCIO</a>
-                    </li>
-                    <li>
-                        <a href="listaUsuario.php">USUÁRIOS</a>
-                    </li>
-                    <li>
-                        <a href="listaContato.php">MENSAGENS</a>
-                    </li>
+        <div class="navbar navbar-inverse navbar-fixed-top ">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="../assets/img/logo.png"></a>
+                </div>
+                <div class="navbar-collapse collapse move-me">
+                    <ul class="nav navbar-nav navbar-right set-links">
+                        <li>
+                            <a href="inicio.php">INÍCIO</a>
+                        </li>
 
-                    <li>
-                        <a href="edit-user.php">
-                            <?php echo $_SESSION["emailNome"] ?>
-                        </a>
-                    </li>
-
-                    <li>
-                        <form action="../logout.php" role="form" method="post" name="formLogin">
-                            <button type="submit" class="active btn btn-block btn-primary btn-lg">Sair
-                                <i class="fa fa-fw fa-lg fa-sign-out"></i>
-                            </button>
-
-                        </form>
-                    </li>
-                </ul>
+                        <li>
+                            <a href="edit-user.php">
+                                <?php echo $_SESSION["emailNome"] ?>
+                            </a>
+                        </li>
+                        <li>
+                            <form action="../logout.php" role="form" method="post" name="formLogin">
+                                <button type="submit" class="active btn btn-block btn-primary btn-lg">Sair
+                                    <i class="fa fa-fw fa-lg fa-sign-out"></i>
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    <br>
+        <br>
         </nav>
         <div class="conteudo">
-                <br>
                     <!-- /. MENU LATERAL -->
                   
                        
@@ -117,11 +108,7 @@ include_once '../Disciplina/p6.php';
 
                                         </div>
                                     </div>
-                                    <div class="btn_disciplina">
-                                        <button type="button" id="add-materia" class="btn btn-primary" href="" name="add-materia" >Adicionar Disiciplina </button>
-                                        <a id="gerenciar" class="btn btn-primary" href="edit-materia.php" name="gerenciar" >Gerenciar </a>
-
-                                    </div>
+                                    
                                     <br />
                                     <br />
 
