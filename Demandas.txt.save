@@ -7,9 +7,7 @@ QUARTO BIMESTRE
 
 1-VALIDAÇÃO REAL DA MATRICULA(ENTRAR EM CONTATO COM O RENAN);
 2- Disciplinas:
-	2.1- Usuário administrador conseguir adicionar uma disciplina e seus atributos;
-	2.2- Visualizacao completa de disciplinas(admin e aluno e usuario não cadastrado);
-	2.3- Usuário adminsitrador conseguir gerenciar as disciplinas(excluir, alterar e etc).
+	2.1- Adicionar Arquivo na ementa;
 3- Seguranca de senha (senha não pode ir em texto claro para o BD) e Verificar se o email é realmente válido(SE EXISTE DE VERDADE);
 4-Pesquisar postagens do fórum utilizando sua palavra chave.
 5-NOTIFICACOES
