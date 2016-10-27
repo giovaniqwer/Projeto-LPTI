@@ -2,10 +2,10 @@
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tempo de Geração: 24/09/2016 às 01:26
--- Versão do servidor: 5.5.50-0ubuntu0.14.04.1
--- Versão do PHP: 5.5.9-1ubuntu4.19
+-- Máquina: localhost
+-- Data de Criação: 27-Out-2016 às 12:00
+-- Versão do servidor: 5.5.47-0ubuntu0.14.04.1
+-- versão do PHP: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Banco de dados: `LPTI`
+-- Base de Dados: `LPTI`
 --
 CREATE DATABASE IF NOT EXISTS `LPTI` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `LPTI`;
@@ -25,7 +25,7 @@ USE `LPTI`;
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Categoria`
+-- Estrutura da tabela `Categoria`
 --
 
 CREATE TABLE IF NOT EXISTS `Categoria` (
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `Categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Fazendo dump de dados para tabela `Categoria`
+-- Extraindo dados da tabela `Categoria`
 --
 
 INSERT INTO `Categoria` (`idCategoria`, `nome`) VALUES
@@ -52,7 +52,7 @@ INSERT INTO `Categoria` (`idCategoria`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Comentario`
+-- Estrutura da tabela `Comentario`
 --
 
 CREATE TABLE IF NOT EXISTS `Comentario` (
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `Comentario` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
--- Fazendo dump de dados para tabela `Comentario`
+-- Extraindo dados da tabela `Comentario`
 --
 
 INSERT INTO `Comentario` (`idComentario`, `idPost`, `idUsuario`, `textoComentario`, `dataComentario`) VALUES
@@ -97,7 +97,7 @@ INSERT INTO `Comentario` (`idComentario`, `idPost`, `idUsuario`, `textoComentari
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `contatos`
+-- Estrutura da tabela `contatos`
 --
 
 CREATE TABLE IF NOT EXISTS `contatos` (
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `contatos` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Fazendo dump de dados para tabela `contatos`
+-- Extraindo dados da tabela `contatos`
 --
 
 INSERT INTO `contatos` (`idcontato`, `nomeContato`, `emailContato`, `comentarioContato`, `data`) VALUES
@@ -122,37 +122,51 @@ INSERT INTO `contatos` (`idcontato`, `nomeContato`, `emailContato`, `comentarioC
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Curso`
+-- Estrutura da tabela `Curso`
 --
 
 CREATE TABLE IF NOT EXISTS `Curso` (
   `idCurso` int(255) NOT NULL AUTO_INCREMENT,
   `nomeCurso` varchar(50) NOT NULL,
   PRIMARY KEY (`idCurso`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Extraindo dados da tabela `Curso`
+--
+
+INSERT INTO `Curso` (`idCurso`, `nomeCurso`) VALUES
+(1, 'Economia');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Disciplina`
+-- Estrutura da tabela `Disciplina`
 --
 
 CREATE TABLE IF NOT EXISTS `Disciplina` (
   `idDisciplina` int(255) NOT NULL AUTO_INCREMENT,
-  `ementa` longtext,
-  `Usuario_idUsuario` int(255) NOT NULL,
+  `ementa` mediumblob,
   `nome` varchar(1000) NOT NULL,
-  `cargaHoraria` varchar(50) NOT NULL,
+  `creditos` int(255) NOT NULL,
   `Curso_idCurso` int(255) NOT NULL,
+  `periodo` int(255) NOT NULL,
+  `tipo` varchar(255) NOT NULL,
   PRIMARY KEY (`idDisciplina`),
-  KEY `fk_Disciplina_Usuario1_idx` (`Usuario_idUsuario`),
   KEY `fk_Disciplina_Curso1_idx` (`Curso_idCurso`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+--
+-- Extraindo dados da tabela `Disciplina`
+--
+
+INSERT INTO `Disciplina` (`idDisciplina`, `ementa`, `nome`, `creditos`, `Curso_idCurso`, `periodo`, `tipo`) VALUES
+(2, 0x356466, 'Engenharia', 15, 1, 5, 'Comum');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Evento`
+-- Estrutura da tabela `Evento`
 --
 
 CREATE TABLE IF NOT EXISTS `Evento` (
@@ -173,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `Evento` (
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Post`
+-- Estrutura da tabela `Post`
 --
 
 CREATE TABLE IF NOT EXISTS `Post` (
@@ -189,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `Post` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
--- Fazendo dump de dados para tabela `Post`
+-- Extraindo dados da tabela `Post`
 --
 
 INSERT INTO `Post` (`idPost`, `idUsuario`, `dataPost`, `conteudoPost`, `Tag`, `Categoria_idCategoria`) VALUES
@@ -214,7 +228,7 @@ INSERT INTO `Post` (`idPost`, `idUsuario`, `dataPost`, `conteudoPost`, `Tag`, `C
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `TipoUsuario`
+-- Estrutura da tabela `TipoUsuario`
 --
 
 CREATE TABLE IF NOT EXISTS `TipoUsuario` (
@@ -224,7 +238,7 @@ CREATE TABLE IF NOT EXISTS `TipoUsuario` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Fazendo dump de dados para tabela `TipoUsuario`
+-- Extraindo dados da tabela `TipoUsuario`
 --
 
 INSERT INTO `TipoUsuario` (`idTipoUsuario`, `tipo`) VALUES
@@ -234,7 +248,7 @@ INSERT INTO `TipoUsuario` (`idTipoUsuario`, `tipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `Usuario`
+-- Estrutura da tabela `Usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `Usuario` (
@@ -251,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `Usuario` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Fazendo dump de dados para tabela `Usuario`
+-- Extraindo dados da tabela `Usuario`
 --
 
 INSERT INTO `Usuario` (`idUsuario`, `nome`, `sobrenome`, `senha`, `email`, `identificacao`, `TipoUsuario_idTipoUsuario`, `Atividade`) VALUES
@@ -261,38 +275,37 @@ INSERT INTO `Usuario` (`idUsuario`, `nome`, `sobrenome`, `senha`, `email`, `iden
 (5, 'Vitor', 'Melo', '123456', 'aluno2@email.com', 2013, 2, 0);
 
 --
--- Restrições para dumps de tabelas
+-- Constraints for dumped tables
 --
 
 --
--- Restrições para tabelas `Comentario`
+-- Limitadores para a tabela `Comentario`
 --
 ALTER TABLE `Comentario`
   ADD CONSTRAINT `fk_ComentPost_PostPost` FOREIGN KEY (`idPost`) REFERENCES `Post` (`idPost`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_ComentUsr_UserUsr` FOREIGN KEY (`idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `Disciplina`
+-- Limitadores para a tabela `Disciplina`
 --
 ALTER TABLE `Disciplina`
-  ADD CONSTRAINT `fk_Disciplina_Curso1` FOREIGN KEY (`Curso_idCurso`) REFERENCES `Curso` (`idCurso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Disciplina_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Disciplina_Curso1` FOREIGN KEY (`Curso_idCurso`) REFERENCES `Curso` (`idCurso`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `Evento`
+-- Limitadores para a tabela `Evento`
 --
 ALTER TABLE `Evento`
   ADD CONSTRAINT `fk_Evento_Usuario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `Post`
+-- Limitadores para a tabela `Post`
 --
 ALTER TABLE `Post`
   ADD CONSTRAINT `fk_PostUsr_UserUsr` FOREIGN KEY (`idUsuario`) REFERENCES `Usuario` (`idUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Post_Categoria1` FOREIGN KEY (`Categoria_idCategoria`) REFERENCES `Categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Restrições para tabelas `Usuario`
+-- Limitadores para a tabela `Usuario`
 --
 ALTER TABLE `Usuario`
   ADD CONSTRAINT `fk_Usuario_TipoUsuario1` FOREIGN KEY (`TipoUsuario_idTipoUsuario`) REFERENCES `TipoUsuario` (`idTipoUsuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
