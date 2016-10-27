@@ -276,7 +276,7 @@ include_once '../Disciplina/p6.php';
                                                 Adicionar Disciplina
                                             </div>
                                             <div class="panel-body">
-                                                <form name="formularioPost" id="ajax_materia" action="" method="post" onsubmit="return validaPost()">
+                                                <form name="formularioPost" id="ajax_materia" action="" method="post" onsubmit="return validaPost()" enctype="multipart/form-data">
                                                     <div class="form-group">
                                                         <label>Nome da Disciplina:</label>
                                                         <input name="editNomeDisciplina" class="form-control" type="text" required="">
@@ -317,8 +317,9 @@ include_once '../Disciplina/p6.php';
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label>Ementa</label>
-                                                        <textarea name="conteudoEmenta" id="pt" class="form-control" rows="3"></textarea>
+                                                   	  <label>Ementa</label>
+                                                    	  <input type="file" name="conteudoEmenta" id="pt" class="form-control" /> 
+                                                    
                                                     </div>
                                                     <button type="submit" id="materia" class="btn btn-info">Salvar</button>
                                                     <br>

@@ -304,9 +304,8 @@ include_once '../Disciplina/p6.php';
                                                     </div>
 
                                                     <div class="form-group">
-                                                    			<input type="file" name="file" id="file" /> 
-                                                        <!--<label>Ementa</label>
-                                                        <textarea name="conteudoEmenta" id="pt" class="form-control" rows="3"></textarea>-->
+                                                        <label>Ementa</label>
+                                                        <textarea name="conteudoEmenta" id="pt" class="form-control" rows="3"></textarea>
                                                     </div>
                                                     <button type="submit" id="materia" class="btn btn-info">Salvar</button>
                                                     <br>
