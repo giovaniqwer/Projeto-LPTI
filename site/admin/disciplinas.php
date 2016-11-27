@@ -106,19 +106,19 @@ include_once '../Disciplina/p6.php';
         <div class="conteudo">
                 <br>
                     <!-- /. MENU LATERAL -->
-                  
-                       
+
+
                             <!-- /. NAV SIDE  -->
                                 <div id="page-inner">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            
+
 
 
                                         </div>
                                     </div>
                                     <div class="btn_disciplina">
-                                        <button type="button" id="add-materia" class="btn btn-primary" href="" name="add-materia" >Adicionar Disiciplina </button>
+                                        <a class="btn btn-primary" href="../Disciplina/add-disciplina-page.php">Adicionar Disiciplina</a>
                                         <a id="gerenciar" class="btn btn-primary" href="edit-materia.php" name="gerenciar" >Gerenciar </a>
 
                                     </div>
@@ -293,8 +293,8 @@ include_once '../Disciplina/p6.php';
                                                                 <option value="Comum">Comum</option>
                                                                 <option value="DOB Adm. Pública">DOB Adm. Pública</option>
                                                                 <option value="DOB Economia">DOB Economia</option>
-                                                                <option value="DOB C. Atuariais">DOB C. Atuariais</option>                                                                
-                                                                <option value="Optativa C. Atuariais">Optativa C. Atuariais</option>                                                      
+                                                                <option value="DOB C. Atuariais">DOB C. Atuariais</option>
+                                                                <option value="Optativa C. Atuariais">Optativa C. Atuariais</option>
                                                                 <option value="Optativa Economia">Optativa Economia</option>
                                                                 <option value="Optativa Adm. Pública">Optativa Adm. Pública</option>
                                                             </ul>
@@ -318,8 +318,7 @@ include_once '../Disciplina/p6.php';
 
                                                     <div class="form-group">
                                                    	  <label>Ementa</label>
-                                                    	  <input type="file" name="conteudoEmenta" id="pt" class="form-control" /> 
-                                                    
+                                                    	  <input type="file" name="arquivo"/>
                                                     </div>
                                                     <button type="submit" id="materia" class="btn btn-info">Salvar</button>
                                                     <br>
@@ -360,7 +359,7 @@ include_once '../Disciplina/p6.php';
                                                                     <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
                                                             </section>
 
-                                                          
+
              <script src="assets/js/jquery-1.10.2.js"></script>
              <!-- BOOTSTRAP SCRIPTS -->
              <script src="assets/js/bootstrap.js"></script>
