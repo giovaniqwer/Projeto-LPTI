@@ -145,7 +145,8 @@ include_once '../Disciplina/p6.php';
                                                                     <div class="alert alert-info">
                                                                         <strong><?php echo $materia ['nome']; ?><br /></strong>
                                                                         <strong>Créditos:</strong> <?php echo $materia ['creditos']; ?><br />
-                                                                        <strong>Tipo: </strong><?php echo $materia ['tipo']; ?><br />
+                                                                        <strong>Tipo: </strong><?php echo $materia ['tipo']; ?><br />                              
+                                                                        <a href="download.php?name=<?php echo $materia['nomeEmenta'];?>">Baixe a Ementa</a><br />
 
 
                                                                     </div>
@@ -167,7 +168,7 @@ include_once '../Disciplina/p6.php';
                                                                         <strong><?php echo $materia ['nome']; ?><br /></strong>
                                                                         <strong>Créditos:</strong> <?php echo $materia ['creditos']; ?><br />
                                                                         <strong>Tipo: </strong><?php echo $materia ['tipo']; ?><br />
-
+																		<a href="download.php?name=<?php echo $materia['nomeEmenta'];?>">Baixe a Ementa</a><br />
 
                                                                     </div>
                                                                 </div>
@@ -187,7 +188,7 @@ include_once '../Disciplina/p6.php';
                                                                         <strong><?php echo $materia ['nome']; ?><br /></strong>
                                                                         <strong>Créditos:</strong> <?php echo $materia ['creditos']; ?><br />
                                                                         <strong>Tipo: </strong><?php echo $materia ['tipo']; ?><br />
-
+																		<a href="download.php?name=<?php echo $materia['nomeEmenta'];?>">Baixe a Ementa</a><br />
 
                                                                     </div>
                                                                 </div>
@@ -208,8 +209,8 @@ include_once '../Disciplina/p6.php';
                                                                         <strong><?php echo $materia ['nome']; ?><br /></strong>
                                                                         <strong>Créditos:</strong> <?php echo $materia ['creditos']; ?><br />
                                                                         <strong>Tipo: </strong><?php echo $materia ['tipo']; ?><br />
-
-
+																		<a href="download.php?name=<?php echo $materia['nomeEmenta'];?>">Baixe a Ementa</a><br />
+	
                                                                     </div>
                                                                 </div>
                                                                 <br /><br /><br /><br /><br />
@@ -229,7 +230,7 @@ include_once '../Disciplina/p6.php';
                                                                         <strong><?php echo $materia ['nome']; ?><br /></strong>
                                                                         <strong>Créditos:</strong> <?php echo $materia ['creditos']; ?><br />
                                                                         <strong>Tipo: </strong><?php echo $materia ['tipo']; ?><br />
-
+																		<a href="download.php?name=<?php echo $materia['nomeEmenta'];?>">Baixe a Ementa</a><br />
 
                                                                     </div>
                                                                 </div>
@@ -250,7 +251,7 @@ include_once '../Disciplina/p6.php';
                                                                         <strong><?php echo $materia ['nome']; ?><br /></strong>
                                                                         <strong>Créditos:</strong> <?php echo $materia ['creditos']; ?><br />
                                                                         <strong>Tipo: </strong><?php echo $materia ['tipo']; ?><br />
-
+																		<a href="download.php?name=<?php echo $materia['nomeEmenta'];?>">Baixe a Ementa</a><br />
 
                                                                     </div>
                                                                 </div>

@@ -152,7 +152,7 @@ if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESS
                                                 <div class="col-md-3 ">
                                                     <div class="alert text-center" style="background-color:#EED2EE">
                                                         <i class="fa fa-5x fa-calendar" style="color:#BA55D3"></i>
-                                                        <a href="#"><h3>Calendário</h3></a>
+                                                        <a href="../calendario/calendario.html"><h3>Calendário</h3></a>
                                                     </div>
                                                 </div>
                                             </div>

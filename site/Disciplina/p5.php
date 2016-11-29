@@ -8,6 +8,7 @@ function sqlp5() {
     $sql_p5 = "SELECT
 			Disciplina.idDisciplina,
 			Disciplina.ementa,
+			Disciplina.nomeEmenta,
 			Disciplina.nome,
 			Disciplina.creditos,
 			Disciplina.Curso_idCurso,

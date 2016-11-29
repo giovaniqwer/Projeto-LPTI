@@ -8,6 +8,7 @@ function sqlp1() {
     $sql_p1 = "SELECT
 			Disciplina.idDisciplina,
 			Disciplina.ementa,
+			Disciplina.nomeEmenta,
 			Disciplina.nome,
 			Disciplina.creditos,
 			Disciplina.Curso_idCurso,

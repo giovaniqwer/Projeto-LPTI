@@ -9,6 +9,7 @@ function sqlp2() {
 			Disciplina.idDisciplina,
 			Disciplina.ementa,
 			Disciplina.nome,
+			Disciplina.nomeEmenta,
 			Disciplina.creditos,
 			Disciplina.Curso_idCurso,
 			Disciplina.periodo,

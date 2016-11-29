@@ -1,9 +1,11 @@
-<?php /*session_start();
+<?php 
+
+session_start();
 if (empty($_SESSION["emailID"]) || empty($_SESSION["emailNome"]) || empty($_SESSION["emailTipo"])) {
     header("Location:../login.php");
 } else if ($_SESSION["emailTipo"] != 1) {
     header("Location:../negado.html");
-}*/
+}
 ?>
 <form action="add-disciplina.php" method="post" enctype="multipart/form-data">
     <div class="form-group">

@@ -35,8 +35,8 @@
             disconnect();
           }
         }
-        function inserirAluno($ementa, $nome, $creditos, $periodo, $tipo){
-          $sqlAluno = "insert into Disciplina(ementa, nome, creditos, Curso_idCurso, periodo, tipo) VALUES ('$ementa','$nome','$creditos', 1, '$periodo', '$tipo')";
+        function inserirDisciplina($ementa, $nome_ementa, $nome, $creditos, $curso, $periodo, $tipo){
+          $sqlAluno = "INSERT INTO Disciplina(ementa, nomeEmenta, nome, creditos, Curso_idCurso, periodo, tipo) VALUES ('$ementa', '$nome_ementa', '$nome','$creditos', '$periodo', '$periodo', '$tipo')";
           $this->executeQuery($sqlAluno);
         }
     }

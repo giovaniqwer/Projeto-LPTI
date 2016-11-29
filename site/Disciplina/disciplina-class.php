@@ -3,14 +3,16 @@
 class Disciplina {
 
     private $ementa;
+    private $nome_ementa;
     private $nome;
     private $creditos;
     private $curso;
     private $periodo;
     private $tipo;
 
-    public function __construct($ementa, $nome, $creditos, $curso, $periodo, $tipo) {
+    public function __construct($ementa, $nome_ementa, $nome, $creditos, $curso, $periodo, $tipo) {
         $this->setEmenta($ementa);
+        $this->setEmentaNome($nome_ementa);
         $this->setNome($nome);
         $this->setCreditos($creditos);
         $this->setCurso($curso);
@@ -24,6 +26,14 @@ class Disciplina {
 
     public function setEmenta($ementa) {
         $this->ementa = $ementa;
+    }
+    
+    public function getEmentaNome() {
+        return $this->nome_ementa;
+    }
+
+    public function setEmentaNome($nome_ementa) {
+        $this->nome_ementa = $nome_ementa;
     }
 
     public function getNome() {
