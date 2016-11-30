@@ -27,11 +27,8 @@ else {
     $sobrenome = utf8_decode($sobrenome);
     $email = utf8_decode($email);
     $atividade = 0;
-    if ($matricula % 2 == 0) {
-        $tipo = 1;
-    } else if ($matricula % 2 != 0) {
-        $tipo = 2;
-    }
+     $tipo = 2;
+    
     $usuario = new Usuario($nome, $sobrenome, $senha, $email, $matricula, $tipo, $atividade);
 
     // insere no BD

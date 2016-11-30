@@ -16,12 +16,13 @@
 	$classificacao = isset($_POST['txtClassificacao']) ? $_POST['txtClassificacao'] : null;
 	 
  		// instancia objeto aluno
- 		 $evento = new evento($data, $local, $palestrante, $horario, $tema, $descricao, $classificacao);
+ 		 $evento = new evento($data, $local,$horario, $palestrante,  $tema, $descricao, $classificacao);
 	
  		// atualiza o BD
  		$PDO = db_connect();
- 		$sql = "UPDATE Evento SET data = :data, local = :local, palestrante = :palestrante, horario= :horario, tema = :tema, descricao = :descricao, classificacao = :classificacao WHERE idEvento = :idEvento";
+ 		$sql = "UPDATE Evento SET data = :data, local = :local, horario= :horario,palestrante = :palestrante, tema = :tema, descricao = :descricao, classificacao = :classificacao WHERE idEvento = :idEvento";
  		$stmt = $PDO-> prepare($sql);
+ 		
  		$stmt->bindParam( ':data' , $evento->getData());
 		$stmt->bindParam( ':local' , $evento->getLoc());
 		$stmt->bindParam( ':palestrante' , $evento->getPales());
@@ -33,7 +34,7 @@
 
  		if ($stmt->execute())
  		{
- 			header ('Location:index.html');
+ 			header ('Location:index.php');
  		}
  		else
  		{

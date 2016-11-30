@@ -151,7 +151,7 @@ $stmt->execute();
                     <div id="page-inner">
                         <div class="row">
                             <div class="col-md-12">
-                                <h1 class="page-head-line">PRINCIPAL</h1>
+                                <h1 class="page-head-line">Iniciação Cientifica</h1>
 
                             </div>
                         </div>

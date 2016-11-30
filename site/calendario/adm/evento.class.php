@@ -10,7 +10,7 @@
 		private $classificacao;
 		
 		//construtor//
-		public function __construct($data, $local, $palestrante, $horario, $tema, $descricao, $classificacao){
+		public function __construct($data, $local,$horario, $palestrante, $tema, $descricao, $classificacao){
 			$this->setData($data);
 			$this->setLoc($local);
 			$this->setPales($palestrante);
@@ -32,6 +32,8 @@
 			$this->data = "$datap[2]-$datap[1]-$datap[0]";			
 		}
 		public function getData(){
+			$datap = explode('/', $data);
+		$this->data = "$datap[2]-$datap[0]-$datap[1]";
 			return $this->data;
 		}
 		//pega e entrega palestrante//

@@ -110,7 +110,7 @@ $stmt->execute();
                         <div class="sidebar-collapse">
                             <ul class="nav" id="main-menu">
                                 <li>
-                                    <a class="active-menu" href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                    <a class="active-menu" href="aluno.php"><i class="fa fa-dashboard "></i>Principal<br></a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-bell"></i>Eventos<span class="fa arrow"></span></a>

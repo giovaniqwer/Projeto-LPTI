@@ -160,13 +160,7 @@ $stmt->execute();
                             <div class="row">
                                 <div class="col-md-12">
                                     <h1 class="page-head-line">Iniciação Cientifica</h1>
-                                    <center>
-                                        <div id="divBusca">
-                                            <img src="img/search3.png" alt="Buscar..." />
-                                            <input type="text" id="txtBusca" placeholder="Buscar..." />
-                                            <button id="btnBusca">Buscar</button>
-                                        </div>
-                                    </center>
+                                  
                                 </div>
                             </div>
                             <br>

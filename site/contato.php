@@ -118,27 +118,7 @@ require 'init.php';
                 </body>
             </div>
             <!--RODA PÉ-->
-            <section id="footer-sec">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h4>UNIFAL - GRUPO PET</h4>
-                            <p style="padding-right:50px;"> PET BICE Instituto de Ciências Sociais Aplicadas ICSA – UNIFAL/MG Rede Social</p>
-                        </div>
-                        <div class="col-md-4">
-                            <h4>Informações</h4>Avenida Celina Ferreira Ottoni, 4000, Bloco B, 1º Andar, Sala B-106A,&nbsp;Padre Vítor,&nbsp;Varginha/MG – Brasil – Tel.: (35) 3219-8640
-                            <strong>Email:</strong>direcao.varginha@unifal-mg.edu.br
-                        </div>
-                        <div class="col-md-4">
-                            <h4>SOCIAL LINKS</h4>
-                            <div class="social-links">
-                                <a href="#"> <i class="fa fa-facebook fa-2x"></i></a>
-                                <a href="#"> <i class="fa fa-twitter fa-2x"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <br>© 2016 Supremacia UNIFAL| Todos os direitos reservados.</div>
-            </section>
+
             <!--SCRIPTS JS-->
             <script src="assets/js/jquery-1.11.1.js"></script>
             <script src="assets/js/bootstrap.js"></script>

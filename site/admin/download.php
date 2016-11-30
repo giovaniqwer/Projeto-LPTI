@@ -1,13 +1,12 @@
 <?php
-$FileNo=$_GET['name'];
-$FilePaths = "/home/www/Projeto-LPTI-master/site/uploads/".$FileNo;
+$name=$_GET['name'];
+$FilePaths = "/home/www/Projeto-LPTI/site/uploads/".$name;
 download_file($FilePaths);
 
 function download_file( $fullPath )
 {
   if( headers_sent() )
     die('Headers Sent');
-
 
   if(ini_get('zlib.output_compression'))
     ini_set('zlib.output_compression', 'Off');

@@ -191,7 +191,6 @@ $stmt->execute();
                                           <td><?php echo $materia ['tipo'] ?> </td>
                                         <td>
                                             <a href="../Disciplina/delete.php?id=<?php echo $materia['idDisciplina'] ?>" class="btn btn-sm btn-primary" onclick="return confirm('Deseja realmente Excluir esta disciplina ?');">Remover</a>
-                                            <a href="edit-disciplina.php?id=<?php echo $materia['idDisciplina'] ?>" class="btn btn-sm btn-primary"> Editar</a>
                                         </td>
                                         
                                     </tr>

@@ -101,7 +101,7 @@ $stmt->execute();
                     <div class="sidebar-collapse">
                         <ul class="nav" id="main-menu">
                             <li>
-                                <a href="forum.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                <a href="forum.php"><i class="fa fa-dashboard "></i>Pesquisa e extensão<br></a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-bell"></i>Eventos<span class="fa arrow"></span></a>
@@ -145,7 +145,7 @@ $stmt->execute();
                     <div id="page-inner">
                         <div class="row">
                             <div class="col-md-12">
-                                <h1 class="page-head-line">PRINCIPAL</h1>
+                                <h1 class="page-head-line">Pesquisa e Extensão</h1>
 
                             </div>
                         </div>

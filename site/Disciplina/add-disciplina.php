@@ -14,8 +14,8 @@
     echo "Arquivo muito grande! <br>";
     $dadosOK = false;
   }else{
-    $file_src = '../uploads/'.$_FILES['arquivo']['name'];
-    if(!move_uploaded_file($_FILES['arquivo']['tmp_name'], $file_src)){
+    $file_src = '../uploads/'.$arquivo['name'];
+    if(!move_uploaded_file($arquivo['tmp_name'], $file_src)){
       echo "Erro ao mover arquivo <br>";
       $dadosOK = false;
   }

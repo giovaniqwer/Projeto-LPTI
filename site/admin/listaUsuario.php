@@ -152,19 +152,13 @@ $stmt->execute();
                                 <div class="col-md-12">
                                     <h1 class="page-head-line">USUÁRIOS</h1>
 
-                                    <center>
-                                        <div id="divBusca">
-                                            <img src="img/search3.png" alt="Buscar..." />
-                                            <input type="text" id="txtBusca" placeholder="Buscar..." />
-                                            <button id="btnBusca">Buscar</button>
-                                        </div>
-                                    </center>
+                                    
 
                                     <br />
 
 
                                     <!-- Table -->
-                                    <table class="table" id="largura">
+                                    <table class="table" >
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -207,30 +201,7 @@ $stmt->execute();
                                                 </tr>
                                             <?php endwhile; ?>
                                         </tbody>
-                                        <div class="col-md-6" id="boxlateral">
-                                            <div class="panel panel-info">
-                                                <div class="panel-heading">
-                                                    <i class="fa fa-bars  fa-fw"></i>Menu
-                                                </div>
 
-                                                <div class="panel-body">
-                                                    <div class="list-group">
-
-                                                        <a href="#" class="list-group-item">
-                                                            <div class="add-post">
-                                                                <i class="fa fa-plus fa-fw"></i> Adicionar Postagem
-                                                            </div>
-                                                            <span class="pull-right text-muted small"><em></em>
-                                                            </span>
-                                                        </a>
-                                                    </div>
-
-                                                    <!-- /.list-group -->
-
-                                                </div>
-
-                                            </div>
-                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -240,61 +211,6 @@ $stmt->execute();
 
 
 
-            <!--JANELA MODAL ADD POST-->
-            <div id="modal">
-                <div class="modal-box">
-                    <div class="modal-box-conteudo">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                Postagem
-                            </div>
-                            <div class="panel-body">
-                                <form name="formularioPost" id="formPost" action="../Post/add-post.php" method="post">
-                                    <div class="form-group">
-                                        <label>Post:</label>
-                                        <textarea name="conteudoPost" class="form-control" rows="3"></textarea>
-                                        <label>Categoria:</label>
-                                    </div>
-
-                                    <div class="btn-group">
-                                        <select data-toggle="dropdown" name=categoriaPost class="btn btn-primary dropdown-toggle"><span class="caret"></span>
-                                            <ul class="dropdown-menu">
-                                                <option value="1">Mini Curso</option>
-                                                <option value="2">Palestra</option>
-                                                <option value="3">Entretenimento</option>
-                                                <option value="4">Estágio</option>
-                                                <option value="5">Anúncio</option>
-                                                <option value="6">Pesquisa e Extensão</option>
-                                                <option value="7">Iniciacao Cientifica</option>
-                                                <option value="8">Monitorias</option>
-                                                <option value="9">Outros</option>
-                                            </ul>
-                                        </select>
-                                        <br />
-                                        <br>
-                                        <div class="input-group">
-                                            <label>Palavra Chave:</label>
-                                            <input type="text" name="tagPost" class="form-control" placeholder="Adicionar Tag" />
-                                        </div>
-                                    </div>
-
-
-                                    <button type="submit" id="post" class="btn btn-info">Postar</button>
-                                    <br>
-                                    <br>
-                                    <div class="btn-add-post">
-                                        <button type="button" id="fechar" class="btn btn-info">X</button>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <!--FIM JANELA MODAL ADD POST-->
 
             <script src="../assets/js/jquery-1.11.1.js"></script>
             <!-- BOOTSTRAP SCRIPTS -->

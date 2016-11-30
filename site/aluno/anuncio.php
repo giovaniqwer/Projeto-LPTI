@@ -111,7 +111,7 @@ $stmt->execute();
                         <div class="sidebar-collapse">
                             <ul class="nav" id="main-menu">
                                 <li>
-                                    <a  href="admin.php"><i class="fa fa-dashboard "></i>Principal<br></a>
+                                    <a  href="aluno.php"><i class="fa fa-dashboard "></i>Principal<br></a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-bell"></i>Eventos<span class="fa arrow"></span></a>
@@ -158,14 +158,8 @@ $stmt->execute();
                         <div id="page-inner">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h1 class="page-head-line">Principal</h1>
-                                    <center>
-                                        <div id="divBusca">
-                                            <img src="img/search3.png" alt="Buscar..." />
-                                            <input type="text" id="txtBusca" placeholder="Buscar..." />
-                                            <button id="btnBusca">Buscar</button>
-                                        </div>
-                                    </center>
+                                    <h1 class="page-head-line">Anúncio</h1>
+                                    
                                 </div>
                             </div>
                             <br>
